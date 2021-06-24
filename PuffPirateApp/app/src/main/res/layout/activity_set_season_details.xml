@@ -1,0 +1,1102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetSeasonDetailsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top|left"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/SeasonDetailTitle"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Set Season Details"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/numSeasonsLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="left|center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/numSeasonsText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="# of Seasons:"
+                    android:textColor="#040303"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/seasonsSpinner"
+                    android:layout_width="91dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/s1Layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/s1Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Season 1"
+                    android:textColor="#070707"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="fill_horizontal|center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/s1NameEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:orientation="vertical" >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/s1StartDateText"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Start Date: "
+                                android:textColor="#040303"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/s1StartDateTextFormat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="MM-DD"
+                                android:textColor="#040303"
+                                android:textSize="8sp"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/s1StartMonthSpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                        <Spinner
+                            android:id="@+id/s1StartDaySpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/s1EndDateText"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="End Date: "
+                                android:textColor="#040303"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/s1EndDateTextFormat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="MM/DD"
+                                android:textColor="#040303"
+                                android:textSize="8sp"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/s1EndMonthSpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                        <Spinner
+                            android:id="@+id/s1EndDaySpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/s2Layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/s2Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Season 2"
+                    android:textColor="#070707"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="fill_horizontal|center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/s2NameEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:orientation="vertical" >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/s2StartDateText"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Start Date: "
+                                android:textColor="#040303"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/s2StartDateTextFormat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="MM-DD"
+                                android:textColor="#040303"
+                                android:textSize="8sp"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/s2StartMonthSpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                        <Spinner
+                            android:id="@+id/s2StartDaySpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/s2EndDateText"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="End Date: "
+                                android:textColor="#040303"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/s2EndDateTextFormat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="MM/DD"
+                                android:textColor="#040303"
+                                android:textSize="8sp"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/s2EndMonthSpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                        <Spinner
+                            android:id="@+id/s2EndDaySpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/s3Layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/s3Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Season 3"
+                    android:textColor="#070707"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="fill_horizontal|center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/s3NameEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:orientation="vertical" >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/s3StartDateText"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Start Date: "
+                                android:textColor="#040303"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/s3StartDateTextFormat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="MM-DD"
+                                android:textColor="#040303"
+                                android:textSize="8sp"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/s3StartMonthSpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                        <Spinner
+                            android:id="@+id/s3StartDaySpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/s3EndDateText"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="End Date: "
+                                android:textColor="#040303"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/s3EndDateTextFormat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="MM/DD"
+                                android:textColor="#040303"
+                                android:textSize="8sp"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/s3EndMonthSpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                        <Spinner
+                            android:id="@+id/s3EndDaySpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/s4Layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/s4Label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Season 4"
+                    android:textColor="#070707"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="fill_horizontal|center_vertical"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:id="@+id/s4NameEdit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textColor="#000000"
+                        android:textColorHint="#000000"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:orientation="vertical" >
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/s4StartDateText"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="Start Date: "
+                                android:textColor="#040303"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/s4StartDateTextFormat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="MM-DD"
+                                android:textColor="#040303"
+                                android:textSize="8sp"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/s4StartMonthSpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                        <Spinner
+                            android:id="@+id/s4StartDaySpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="left|center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center|center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/s4EndDateText"
+                                android:layout_width="80dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="End Date: "
+                                android:textColor="#040303"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/s4EndDateTextFormat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:text="MM/DD"
+                                android:textColor="#040303"
+                                android:textSize="8sp"
+                                android:textStyle="normal" />
+
+                        </LinearLayout>
+
+                        <Spinner
+                            android:id="@+id/s4EndMonthSpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                        <Spinner
+                            android:id="@+id/s4EndDaySpinner"
+                            android:layout_width="125dp"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="4dp"
+                            android:layout_marginLeft="4dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_horizontal"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/seasonCancel"
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:onClick="cancel"
+                    android:text="Cancel"
+                    app:backgroundTint="#F44336" />
+
+                <Button
+                    android:id="@+id/seasonSubmit"
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="32dp"
+                    android:onClick="submitSeasonDetails"
+                    android:text="Submit"
+                    app:backgroundTint="#26C62C" />
+
+
+            </LinearLayout>
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s2Label"-->
+            <!--                android:layout_width="423dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="4dp"-->
+            <!--                android:layout_marginLeft="4dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:text="Season 2"-->
+            <!--                android:textColor="#070707"-->
+            <!--                android:textSize="18sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/s1StartDateSet" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/s2NameEdit"-->
+            <!--                android:layout_width="209dp"-->
+            <!--                android:layout_height="35dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:ems="10"-->
+            <!--                android:inputType="textPersonName"-->
+            <!--                android:text="Name"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="16sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s2NameLabel"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s2NameLabel"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s2NameLabel" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s2NameLabel"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:text="Name:"-->
+            <!--                android:textColor="#090808"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/s2Label" />-->
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s2TierText"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:text="Tier #:"-->
+            <!--                android:textColor="#040303"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s2NameEdit"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s2NameEdit"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s2NameEdit" />-->
+
+            <!--            <Spinner-->
+            <!--                android:id="@+id/s2Spinner"-->
+            <!--                android:layout_width="91dp"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_marginStart="4dp"-->
+            <!--                android:layout_marginLeft="4dp"-->
+            <!--                android:background="@android:drawable/btn_dropdown"-->
+            <!--                android:spinnerMode="dropdown"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s2TierText"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s2TierText"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s2TierText" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s3Label"-->
+            <!--                android:layout_width="423dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="4dp"-->
+            <!--                android:layout_marginLeft="4dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:text="Season 3"-->
+            <!--                android:textColor="#070707"-->
+            <!--                android:textSize="18sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/s2StartDateSet" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/s3NameEdit"-->
+            <!--                android:layout_width="209dp"-->
+            <!--                android:layout_height="35dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:ems="10"-->
+            <!--                android:inputType="textPersonName"-->
+            <!--                android:text="Name"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="16sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s3NameLabel"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s3NameLabel"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s3NameLabel" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s3NameLabel"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:text="Name:"-->
+            <!--                android:textColor="#090808"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/s3Label" />-->
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s3TierText"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:text="Tier #:"-->
+            <!--                android:textColor="#040303"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s3NameEdit"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s3NameEdit"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s3NameEdit" />-->
+
+            <!--            <Spinner-->
+            <!--                android:id="@+id/s3Spinner"-->
+            <!--                android:layout_width="91dp"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_marginStart="4dp"-->
+            <!--                android:layout_marginLeft="4dp"-->
+            <!--                android:background="@android:drawable/btn_dropdown"-->
+            <!--                android:spinnerMode="dropdown"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s3TierText"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s3TierText"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s3TierText" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s4Label"-->
+            <!--                android:layout_width="423dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="4dp"-->
+            <!--                android:layout_marginLeft="4dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:text="Season 4"-->
+            <!--                android:textColor="#070707"-->
+            <!--                android:textSize="18sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/s3StartDateSet" />-->
+
+            <!--            <EditText-->
+            <!--                android:id="@+id/s4NameEdit"-->
+            <!--                android:layout_width="209dp"-->
+            <!--                android:layout_height="35dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:ems="10"-->
+            <!--                android:inputType="textPersonName"-->
+            <!--                android:text="Name"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="16sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s4NameLabel"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s4NameLabel"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s4NameLabel" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s4NameLabel"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:text="Name:"-->
+            <!--                android:textColor="#090808"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/s4Label" />-->
+
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s4TierText"-->
+            <!--                android:layout_width="wrap_content"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:text="Tier #:"-->
+            <!--                android:textColor="#040303"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s4NameEdit"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s4NameEdit"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s4NameEdit" />-->
+
+            <!--            <Spinner-->
+            <!--                android:id="@+id/s4Spinner"-->
+            <!--                android:layout_width="91dp"-->
+            <!--                android:layout_height="50dp"-->
+            <!--                android:layout_marginStart="4dp"-->
+            <!--                android:layout_marginLeft="4dp"-->
+            <!--                android:background="@android:drawable/btn_dropdown"-->
+            <!--                android:spinnerMode="dropdown"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s4TierText"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s4TierText"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s4TierText" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s2StartDate"-->
+            <!--                android:layout_width="95dp"-->
+            <!--                android:layout_height="20dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s2StartDateSet"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s2StartDateSet"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s2StartDateSet" />-->
+
+            <!--            <Button-->
+            <!--                android:id="@+id/s2StartDateSet"-->
+            <!--                android:layout_width="96dp"-->
+            <!--                android:layout_height="51dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:text="Set Start Date"-->
+            <!--                android:textSize="10sp"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/s2NameLabel" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s2EndDate"-->
+            <!--                android:layout_width="95dp"-->
+            <!--                android:layout_height="20dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s2EndDateSet"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s2EndDateSet"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s2EndDateSet" />-->
+
+            <!--            <Button-->
+            <!--                android:id="@+id/s2EndDateSet"-->
+            <!--                android:layout_width="96dp"-->
+            <!--                android:layout_height="51dp"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginLeft="16dp"-->
+            <!--                android:text="Set End Date"-->
+            <!--                android:textSize="10sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s2StartDate"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s2StartDate"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s2StartDate" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s3StartDate"-->
+            <!--                android:layout_width="95dp"-->
+            <!--                android:layout_height="20dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s3StartDateSet"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s3StartDateSet"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s3StartDateSet" />-->
+
+            <!--            <Button-->
+            <!--                android:id="@+id/s3StartDateSet"-->
+            <!--                android:layout_width="96dp"-->
+            <!--                android:layout_height="51dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:text="Set Start Date"-->
+            <!--                android:textSize="10sp"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/s3NameLabel" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s3EndDate"-->
+            <!--                android:layout_width="95dp"-->
+            <!--                android:layout_height="20dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s3EndDateSet"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s3EndDateSet"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s3EndDateSet" />-->
+
+            <!--            <Button-->
+            <!--                android:id="@+id/s3EndDateSet"-->
+            <!--                android:layout_width="96dp"-->
+            <!--                android:layout_height="51dp"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginLeft="16dp"-->
+            <!--                android:text="Set End Date"-->
+            <!--                android:textSize="10sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s3StartDate"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s3StartDate"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s3StartDate" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s4StartDate"-->
+            <!--                android:layout_width="95dp"-->
+            <!--                android:layout_height="20dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s4StartDateSet"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s4StartDateSet"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s4StartDateSet" />-->
+
+            <!--            <Button-->
+            <!--                android:id="@+id/s4StartDateSet"-->
+            <!--                android:layout_width="96dp"-->
+            <!--                android:layout_height="51dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:layout_marginTop="16dp"-->
+            <!--                android:text="Set Start Date"-->
+            <!--                android:textSize="10sp"-->
+            <!--                app:layout_constraintStart_toStartOf="parent"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/s4NameLabel" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/s4EndDate"-->
+            <!--                android:layout_width="95dp"-->
+            <!--                android:layout_height="20dp"-->
+            <!--                android:layout_marginStart="8dp"-->
+            <!--                android:layout_marginLeft="8dp"-->
+            <!--                android:textColor="#000000"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s4EndDateSet"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s4EndDateSet"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s4EndDateSet" />-->
+
+            <!--            <Button-->
+            <!--                android:id="@+id/s4EndDateSet"-->
+            <!--                android:layout_width="96dp"-->
+            <!--                android:layout_height="51dp"-->
+            <!--                android:layout_marginStart="16dp"-->
+            <!--                android:layout_marginLeft="16dp"-->
+            <!--                android:text="Set End Date"-->
+            <!--                android:textSize="10sp"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/s4StartDate"-->
+            <!--                app:layout_constraintStart_toEndOf="@+id/s4StartDate"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/s4StartDate" />-->
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

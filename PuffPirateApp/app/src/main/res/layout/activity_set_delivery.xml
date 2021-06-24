@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SetDeliveryActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/DeliveryTitle"
+                android:layout_width="418dp"
+                android:layout_height="37dp"
+                android:gravity="center"
+                android:text="Set Delivery Rates"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/s1DeliveryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/s1DeliveryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Season 1 Charge: $"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/s1Delivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/s2DeliveryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/s2DeliveryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Season 2 Charge: $"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/s2Delivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/s3DeliveryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/s3DeliveryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Season 3 Charge: $"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/s3Delivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/s4DeliveryLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/s4DeliveryText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Season 4 Charge: $"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/s4Delivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="numberDecimal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/DeliveryCancel"
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:background="#000000"
+                    android:onClick="cancel"
+                    android:text="Cancel"
+                    app:backgroundTint="#F44336"/>
+
+                <Button
+                    android:id="@+id/DeliverySubmit"
+                    android:layout_width="150dp"
+                    android:layout_height="70dp"
+                    android:layout_marginLeft="32dp"
+                    android:background="#000000"
+                    android:onClick="submitDeliveryRates"
+                    android:text="Set Rates"
+                    app:backgroundTint="#26C62C"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+<!--    <TextView-->
+<!--        android:id="@+id/s1DeliveryText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginLeft="24dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:text="Season 1 Charge: "-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/DeliveryTitle" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/s2DeliveryText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginLeft="24dp"-->
+<!--        android:layout_marginTop="64dp"-->
+<!--        android:text="Season 2 Charge: "-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/s1DeliveryText" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/s3DeliveryText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginLeft="24dp"-->
+<!--        android:layout_marginTop="64dp"-->
+<!--        android:text="Season 3 Charge: "-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/s2DeliveryText" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/s4DeliveryText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginLeft="24dp"-->
+<!--        android:layout_marginTop="64dp"-->
+<!--        android:text="Season 4 Charge: "-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="16sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/s3DeliveryText" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/DeliveryTitle"-->
+<!--        android:layout_width="418dp"-->
+<!--        android:layout_height="37dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:gravity="center"-->
+<!--        android:text="Set Delivery Charge Rates"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textStyle="bold"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/s1Delivery"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="numberDecimal"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/s1DeliveryText"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/s1DeliveryText"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/s1DeliveryText" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/s2Delivery"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="numberDecimal"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/s2DeliveryText"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/s2DeliveryText"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/s2DeliveryText" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/s3Delivery"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="numberDecimal"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/s3DeliveryText"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/s3DeliveryText"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/s3DeliveryText" />-->
+
+<!--    <EditText-->
+<!--        android:id="@+id/s4Delivery"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="numberDecimal"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/s4DeliveryText"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/s4DeliveryText"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/s4DeliveryText" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/DeliverySubmit"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:layout_marginTop="64dp"-->
+<!--        android:layout_marginEnd="32dp"-->
+<!--        android:layout_marginRight="32dp"-->
+<!--        android:background="#000000"-->
+<!--        android:onClick="submitDeliveryRates"-->
+<!--        android:text="Set Rates"-->
+<!--        app:backgroundTint="#26C62C"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/s4Delivery" />-->
+
+<!--    <Button-->
+<!--        android:id="@+id/DeliveryCancel"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="70dp"-->
+<!--        android:layout_marginStart="32dp"-->
+<!--        android:layout_marginLeft="32dp"-->
+<!--        android:layout_marginTop="68dp"-->
+<!--        android:background="#000000"-->
+<!--        android:onClick="cancel"-->
+<!--        android:text="Cancel"-->
+<!--        app:backgroundTint="#F44336"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/s4Delivery" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/s1DDollarSign"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="$"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/s1Delivery"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/s1Delivery"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/s1Delivery" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/s2DDollarSign"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="$"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/s2Delivery"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/s2Delivery"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/s2Delivery" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/s3DDollarSign"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="$"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/s3Delivery"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/s3Delivery"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/s3Delivery" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/s4DDollarSign"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="$"-->
+<!--        android:textColor="#000000"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/s4Delivery"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/s4Delivery"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/s4Delivery" />-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

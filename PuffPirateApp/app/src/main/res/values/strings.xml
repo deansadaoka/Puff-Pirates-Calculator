@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Tiered Calculator</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="date_label_set">Billing Cycle Start Date: </string>
+    <string name="date_button_set">Set Date</string>
+    <string name="date_view_set">The Date is: </string>
+    <string name="date_selected"></string>
+    <string name="z_val">z: </string>
+    <string name="s1_start_date"><b><u></u></b></string>
+</resources>
