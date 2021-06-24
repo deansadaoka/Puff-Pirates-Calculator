@@ -6,7 +6,7 @@ import android.util.Log;
 
 import java.util.Date;
 
-public class Season implements Parcelable {
+public class Season {
 
     private static final int JAN_DAYS = 31;
     private static final int FEB_DAYS = 28;
@@ -36,27 +36,6 @@ public class Season implements Parcelable {
     public int[] endDate; // [month, day]
 
     public String name;
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeDoubleArray(energyRange);
-        dest.writeDoubleArray(utilRates);
-        dest.writeDouble(delivery);
-        dest.writeDouble(fixed);
-        dest.writeDouble(regulatory);
-        dest.writeDouble(taxRate);
-        dest.writeInt(tier);
-        dest.writeDouble(monthlyBill);
-        dest.writeDouble(tax);
-        dest.writeString(name);
-        dest.writeIntArray(startDate);
-        dest.writeIntArray(endDate);
-    }
 
     public Season(int tier) {
         this.tier = tier;
@@ -103,18 +82,7 @@ public class Season implements Parcelable {
         startDate = in.createIntArray();
         endDate = in.createIntArray();
     }
-
-    public static final Creator<Season> CREATOR = new Creator<Season>() {
-        @Override
-        public Season createFromParcel(Parcel in) {
-            return new Season(in);
-        }
-
-        @Override
-        public Season[] newArray(int size) {
-            return new Season[size];
-        }
-    };
+    
 
     /**
      * Calculates the tax <br>

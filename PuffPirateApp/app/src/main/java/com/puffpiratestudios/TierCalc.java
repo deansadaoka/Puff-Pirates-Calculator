@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TierCalc implements Parcelable {
+public class TierCalc {
 
     public ArrayList<Season> seasons;
     public int startYear;
@@ -36,32 +36,6 @@ public class TierCalc implements Parcelable {
         numTiers = 2;
     }
 
-    protected TierCalc(Parcel in) {
-        seasons = in.createTypedArrayList(Season.CREATOR);
-        numSeasons = in.readInt();
-        numTiers = in.readInt();
-        startYear = in.readInt();
-        startMonth = in.readInt();
-        startDay = in.readInt();
-        monthsPerBillingCycle = in.readInt();
-        a = in.readDouble();
-        b = in.readDouble();
-        c = in.readDouble();
-        z = in.readDouble();
-    }
-
-    public static final Creator<TierCalc> CREATOR = new Creator<TierCalc>() {
-        @Override
-        public TierCalc createFromParcel(Parcel in) {
-            return new TierCalc(in);
-        }
-
-        @Override
-        public TierCalc[] newArray(int size) {
-            return new TierCalc[size];
-        }
-    };
-
     public void updateSeasonTier(int season, int new_tier) {
         seasons.get(season - 1).tier = new_tier;
     }
@@ -70,26 +44,6 @@ public class TierCalc implements Parcelable {
         for (Season s : seasons) {
             s.tier = new_tier;
         }
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeTypedList(seasons);
-        dest.writeInt(startYear);
-        dest.writeInt(startMonth);
-        dest.writeInt(startDay);
-        dest.writeInt(numSeasons);
-        dest.writeInt(numTiers);
-        dest.writeInt(monthsPerBillingCycle);
-        dest.writeDouble(a);
-        dest.writeDouble(b);
-        dest.writeDouble(c);
-        dest.writeDouble(z);
     }
 
     /**
