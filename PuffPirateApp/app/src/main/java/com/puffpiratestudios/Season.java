@@ -139,7 +139,6 @@ public class Season {
                 break;
         }
         calcTax();
-        Log.i("INFO", String.format("%f", monthlyBill));
         return getTotal();
     }
 

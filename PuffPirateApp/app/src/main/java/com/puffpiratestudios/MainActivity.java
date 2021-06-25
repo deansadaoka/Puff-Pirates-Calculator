@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final int UTILITY_RATES_ACTIVITY_REQUEST_CODE = 6;
     private static final int TIER_RANGES_ACTIVITY_REQUEST_CODE = 7;
     private static final int SEASON_DETAILS_ACTIVITY_REQUEST_CODE = 8;
+    private static final int TOU_ZONES_ACTIVITY_REQUEST_CODE = 9;
 
     private static final String SHARED_PREFERENCES_DATA_FILE = "calcData";
     private static final String SHARED_PREFERENCES_DATA_KEY = "Calc_Data";
@@ -117,11 +118,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         dateView = (TextView) findViewById(R.id.dateText);
         calendar = Calendar.getInstance();
 
-        if (!dateExists()) {
-            calcs[calcType].startYear = calendar.get(Calendar.YEAR);
-            calcs[calcType].startMonth = calendar.get(Calendar.MONTH) + 1;
-            calcs[calcType].startDay = calendar.get(Calendar.DAY_OF_MONTH);
+        for (int x = 0; x < 3; x++) {
+            if (!dateExists(x)) {
+                calcs[calcType].startYear = calendar.get(Calendar.YEAR);
+                calcs[calcType].startMonth = calendar.get(Calendar.MONTH) + 1;
+                calcs[calcType].startDay = calendar.get(Calendar.DAY_OF_MONTH);
+            }
         }
+
         showDate();
 
 
@@ -272,11 +276,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivityForResult(i, SEASON_DETAILS_ACTIVITY_REQUEST_CODE);
     }
 
+    public void setZoneDetails(View v) {
+        Intent i = new Intent(this, SetTOUZonesActivity.class);
+        i.putExtra("numSeasons", calcs[calcType].numSeasons);
+
+        startActivityForResult(i, TOU_ZONES_ACTIVITY_REQUEST_CODE);
+    }
+
 
     public void calculateTotal() {
-//        calcs[calcType].a = Double.parseDouble(aVal.toString());
-//        calcs[calcType].b = Double.parseDouble(bVal.toString());
-//        calcs[calcType].c = Double.parseDouble(cVal.toString());
         calcs[calcType].a = a;
         calcs[calcType].b = b;
         calcs[calcType].c = c;
@@ -358,8 +366,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
 
-    public boolean dateExists() {
-        return (calcs[calcType].startYear != 0 && calcs[calcType].startDay != 0 && calcs[calcType].startMonth != 0);
+    public boolean dateExists(int type) {
+        return (calcs[type].startYear != 0 && calcs[type].startDay != 0 && calcs[type].startMonth != 0);
     }
 
     @Override
@@ -467,6 +475,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     calcs[calcType].seasons.get(2).endDate[1] = data.getIntExtra("s3EndDateDay", calcs[calcType].seasons.get(2).endDate[1]);
                     calcs[calcType].seasons.get(3).endDate[1] = data.getIntExtra("s4EndDateDay", calcs[calcType].seasons.get(3).endDate[1]);
                 }
+            case TOU_ZONES_ACTIVITY_REQUEST_CODE:
+                if (resultCode == RESULT_OK) {
+
+                }
         }
         calcs[calcType].z = calcs[calcType].a + calcs[calcType].b + calcs[calcType].c;
         aVal.setText(String.format("%.04f", calcs[calcType].a));
@@ -525,11 +537,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         switch (calcType) {
             case 0:
                 findViewById(R.id.ToSetTierRanges).setVisibility(View.VISIBLE);
+                findViewById(R.id.ToSetZoneDetails).setVisibility(View.GONE);
+                findViewById(R.id.ToSetUtilityRates).setVisibility(View.VISIBLE);
                 break;
             case 1:
                 findViewById(R.id.ToSetTierRanges).setVisibility(View.GONE);
+                findViewById(R.id.ToSetZoneDetails).setVisibility(View.GONE);
+                findViewById(R.id.ToSetUtilityRates).setVisibility(View.VISIBLE);
+                break;
             case 2:
                 findViewById(R.id.ToSetTierRanges).setVisibility(View.GONE);
+                findViewById(R.id.ToSetZoneDetails).setVisibility(View.VISIBLE);
+                findViewById(R.id.ToSetUtilityRates).setVisibility(View.GONE);
+                break;
         }
     }
 

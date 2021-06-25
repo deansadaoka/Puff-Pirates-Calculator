@@ -232,4 +232,6 @@ public class Calc {
     private double dailyEnergyUsage() {
         return z * 24;
     }
+
+
 }

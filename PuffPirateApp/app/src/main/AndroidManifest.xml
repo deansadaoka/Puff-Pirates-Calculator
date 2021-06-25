@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PuffPirateApp">
-        <activity android:name=".SetBillingRateStructureActivity"></activity>
+        <activity android:name=".SetTOUZonesActivity"></activity>
+        <activity android:name=".SetBillingRateStructureActivity" />
         <activity android:name=".SetSeasonDetailsActivity" />
         <activity android:name=".SetTierRangesActivity" />
         <activity android:name=".SetUtilityRatesActivity" />
