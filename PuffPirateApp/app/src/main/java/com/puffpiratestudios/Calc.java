@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TierCalc {
+public class Calc {
 
     public ArrayList<Season> seasons;
     public int startYear;
@@ -21,9 +21,11 @@ public class TierCalc {
 
     public int numTiers;
 
+    public int billingStructure; //1 = tiered, 2 = flat, 3 = TOU
+
     public double a, b, c, z;
 
-    public TierCalc() {
+    public Calc(int billingStructure) {
         this.seasons = new ArrayList<Season>();
         for (int i = 0; i < 4; i++) {
             seasons.add(new Season());
@@ -34,15 +36,12 @@ public class TierCalc {
         startMonth = 0;
         monthsPerBillingCycle = 1;
         numTiers = 2;
-    }
-
-    public void updateSeasonTier(int season, int new_tier) {
-        seasons.get(season - 1).tier = new_tier;
+        this.billingStructure = billingStructure;
     }
 
     public void updateAllSeasonTiers(int new_tier) {
-        for (Season s : seasons) {
-            s.tier = new_tier;
+        for (int i = 0; i < 4; i ++) {
+            seasons.get(i).tier = new_tier;
         }
     }
 
@@ -180,7 +179,7 @@ public class TierCalc {
 
         for (Map.Entry<Integer, Integer> s : sMap.entrySet()) {
             double pctOfBC = ((double)s.getValue() / totalDays);
-            totalCost += (pctOfBC * seasons.get(s.getKey()).calcTotal(energyPerCycle));
+            totalCost += (pctOfBC * seasons.get(s.getKey()).calcTotal(energyPerCycle, billingStructure));
         }
 
         return totalCost;

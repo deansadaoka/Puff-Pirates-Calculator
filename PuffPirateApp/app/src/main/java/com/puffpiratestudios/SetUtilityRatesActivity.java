@@ -13,6 +13,7 @@ import android.widget.TextView;
 public class SetUtilityRatesActivity extends AppCompatActivity {
 
     int numSeasons;
+    int calcType;
 
     int s1Tier;
     int s2Tier;
@@ -118,6 +119,9 @@ public class SetUtilityRatesActivity extends AppCompatActivity {
         Intent i = getIntent();
 
         numSeasons = i.getIntExtra("numSeasons", 1);
+
+        calcType = i.getIntExtra("calcType", 1);
+
         s1Tier = i.getIntExtra("s1Tier", 2);
         s2Tier = i.getIntExtra("s2Tier", 2);
         s3Tier = i.getIntExtra("s3Tier", 2);
@@ -158,6 +162,7 @@ public class SetUtilityRatesActivity extends AppCompatActivity {
         s4t4UtilText.setText(String.format("%.4f", s4t4Util));
 
         setSeasonsVisible(numSeasons);
+        setTypeVisible(calcType);
         setS1TierVisible(s1Tier);
         setS2TierVisible(s2Tier);
         setS3TierVisible(s3Tier);
@@ -316,6 +321,23 @@ public class SetUtilityRatesActivity extends AppCompatActivity {
                 findViewById(R.id.s4t2UtilLayout).setVisibility(View.VISIBLE);
                 findViewById(R.id.s4t3UtilLayout).setVisibility(View.VISIBLE);
                 findViewById(R.id.s4t4UtilLayout).setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+    public void setTypeVisible(int structure) {
+        switch(structure) {
+            case 1:
+                ((TextView)findViewById(R.id.s1t1UtilText)).setText("Season 1 Tier 1 Rate: $");
+                ((TextView)findViewById(R.id.s2t1UtilText)).setText("Season 2 Tier 1 Rate: $");
+                ((TextView)findViewById(R.id.s3t1UtilText)).setText("Season 3 Tier 1 Rate: $");
+                ((TextView)findViewById(R.id.s4t1UtilText)).setText("Season 4 Tier 1 Rate: $");
+                break;
+            case 2:
+                ((TextView)findViewById(R.id.s1t1UtilText)).setText("Season 1 Rate: $");
+                ((TextView)findViewById(R.id.s2t1UtilText)).setText("Season 2 Rate: $");
+                ((TextView)findViewById(R.id.s3t1UtilText)).setText("Season 3 Rate: $");
+                ((TextView)findViewById(R.id.s4t1UtilText)).setText("Season 4 Rate: $");
                 break;
         }
     }

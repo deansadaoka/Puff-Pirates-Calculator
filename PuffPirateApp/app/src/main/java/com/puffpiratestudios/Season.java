@@ -82,7 +82,7 @@ public class Season {
         startDate = in.createIntArray();
         endDate = in.createIntArray();
     }
-    
+
 
     /**
      * Calculates the tax <br>
@@ -96,7 +96,7 @@ public class Season {
      * Calculates the monthly bill for the season <br>
      * IMPORTANT: Energy Usage (kW/h for billing period) must be set prior
      */
-    public void calcMonthlyBill(double energyUsage) {
+    public void calcMonthlyBillTiered(double energyUsage) {
         monthlyBill = 0;
         for (int t = 0; t < tier && t < 3; t++) {
             if (t == tier - 1) {
@@ -109,6 +109,11 @@ public class Season {
         if (tier == 4) {
             monthlyBill += ((energyUsage - energyRange[3]) * utilRates[3]) > 0 ? ((energyUsage - energyRange[3]) * utilRates[3]) : 0;
         }
+    }
+
+    public void calcMonthlyBillFlat(double energyUsage) {
+        monthlyBill = 0;
+        monthlyBill = energyUsage * utilRates[0];
     }
 
     /**
@@ -124,9 +129,17 @@ public class Season {
      * Calculates the monthly cost for the season
      * @return total cost
      */
-    public double calcTotal(double energyUsage) {
-        calcMonthlyBill(energyUsage);
+    public double calcTotal(double energyUsage, int billingStructure) {
+        switch(billingStructure) {
+            case 1:
+                calcMonthlyBillTiered(energyUsage);
+                break;
+            case 2:
+                calcMonthlyBillFlat(energyUsage);
+                break;
+        }
         calcTax();
+        Log.i("INFO", String.format("%f", monthlyBill));
         return getTotal();
     }
 
