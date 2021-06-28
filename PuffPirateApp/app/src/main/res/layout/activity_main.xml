@@ -193,6 +193,13 @@
                     android:text="Set TOU Zone Details"/>
 
                 <Button
+                    android:id="@+id/ToSetHolidayDetails"
+                    android:layout_width="380dp"
+                    android:layout_height="40dp"
+                    android:onClick="setHolidayDetails"
+                    android:text="Set Holiday Details"/>
+
+                <Button
                     android:id="@+id/ToSetTierRanges"
                     android:layout_width="380dp"
                     android:layout_height="40dp"

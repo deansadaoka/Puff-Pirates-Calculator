@@ -25,6 +25,7 @@ public class Calc {
 
     public String[] zoneNames;
 
+    public ArrayList<String>[] holidayNames;
     public ArrayList<GregorianCalendar>[] holidays; // [USA, Canada]
     int country; // 0 = USA, 1 = CANADA
     boolean holidaysOff, sundaysOff, saturdaysOff;
@@ -49,6 +50,10 @@ public class Calc {
         holidays = new ArrayList[2];
         holidays[0] = new ArrayList<>();
         holidays[1] = new ArrayList<>();
+
+        holidayNames = new ArrayList[2];
+        holidayNames[0] = new ArrayList<>();
+        holidayNames[1] = new ArrayList<>();
 
         holidaysOff = false;
         sundaysOff = false;
@@ -270,6 +275,29 @@ public class Calc {
         }
 
         return (int)(days - numSat - numSun - numHolidays);
+    }
+
+    public long[] getHolidayDatesArray(int country) {
+        long[] ret = new long[holidays[country].size()];
+        for (int i = 0; i < holidays[country].size(); i++) {
+            ret[i] = holidays[country].get(i).getTime().getTime();
+        }
+        return ret;
+    }
+
+    public void updateHolidayNames(ArrayList<String> names, int country) {
+        holidayNames[country].clear();
+        for (String name : names) {
+            holidayNames[country].add(name);
+        }
+    }
+
+    public void updateHolidayDates(long[] dates, int country) {
+        holidays[country].clear();
+        for (int i = 0; i < dates.length; i++) {
+            holidays[country].add(new GregorianCalendar());
+            holidays[country].get(i).setTimeInMillis(dates[i]);
+        }
     }
 
 

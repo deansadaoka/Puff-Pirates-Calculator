@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final int TIER_RANGES_ACTIVITY_REQUEST_CODE = 7;
     private static final int SEASON_DETAILS_ACTIVITY_REQUEST_CODE = 8;
     private static final int TOU_ZONES_ACTIVITY_REQUEST_CODE = 9;
+    private static final int HOLIDAY_DETAILS_ACTIVITY_REQUEST_CODE = 10;
 
     private static final String SHARED_PREFERENCES_DATA_FILE = "calcData";
     private static final String SHARED_PREFERENCES_DATA_KEY = "Calc_Data";
@@ -352,6 +353,20 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         startActivityForResult(i, TOU_ZONES_ACTIVITY_REQUEST_CODE);
     }
 
+    public void setHolidayDetails(View v) {
+        Intent i = new Intent(this, SetHolidaysActivity.class);
+
+        i.putExtra("country", calcs[calcType].country);
+
+        i.putExtra("datesUSA", calcs[calcType].getHolidayDatesArray(0));
+        i.putExtra("datesCA", calcs[calcType].getHolidayDatesArray(1));
+
+        i.putExtra("holidayNamesUSA", calcs[calcType].holidayNames[0]);
+        i.putExtra("holidayNamesCA", calcs[calcType].holidayNames[1]);
+
+        startActivityForResult(i, HOLIDAY_DETAILS_ACTIVITY_REQUEST_CODE);
+    }
+
 
     public void calculateTotal() {
         calcs[calcType].a = a;
@@ -450,6 +465,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     calcs[calcType].seasons.get(2).fixed = data.getDoubleExtra("s3Fixed", calcs[calcType].seasons.get(2).fixed);
                     calcs[calcType].seasons.get(3).fixed = data.getDoubleExtra("s4Fixed", calcs[calcType].seasons.get(3).fixed);
                 }
+                break;
             case REGULATORY_CHARGES_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
                     calcs[calcType].seasons.get(0).regulatory = data.getDoubleExtra("s1Reg", calcs[calcType].seasons.get(0).regulatory);
@@ -457,6 +473,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     calcs[calcType].seasons.get(2).regulatory = data.getDoubleExtra("s3Reg", calcs[calcType].seasons.get(2).regulatory);
                     calcs[calcType].seasons.get(3).regulatory = data.getDoubleExtra("s4Reg", calcs[calcType].seasons.get(3).regulatory);
                 }
+                break;
             case DELIVERY_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
                     calcs[calcType].seasons.get(0).delivery = data.getDoubleExtra("s1Delivery", calcs[calcType].seasons.get(0).delivery);
@@ -464,6 +481,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     calcs[calcType].seasons.get(2).delivery = data.getDoubleExtra("s3Delivery", calcs[calcType].seasons.get(2).delivery);
                     calcs[calcType].seasons.get(3).delivery = data.getDoubleExtra("s4Delivery", calcs[calcType].seasons.get(3).delivery);
                 }
+                break;
             case TAX_RATES_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
                     calcs[calcType].seasons.get(0).taxRate = data.getDoubleExtra("s1Tax", calcs[calcType].seasons.get(0).taxRate);
@@ -471,6 +489,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     calcs[calcType].seasons.get(2).taxRate = data.getDoubleExtra("s3Tax", calcs[calcType].seasons.get(2).taxRate);
                     calcs[calcType].seasons.get(3).taxRate = data.getDoubleExtra("s4Tax", calcs[calcType].seasons.get(3).taxRate);
                 }
+                break;
             case UTILITY_RATES_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
                     calcs[calcType].seasons.get(0).utilRates[0] = data.getDoubleExtra("s1t1Util", calcs[calcType].seasons.get(0).utilRates[0]);
@@ -490,6 +509,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     calcs[calcType].seasons.get(3).utilRates[2] = data.getDoubleExtra("s4t3Util", calcs[calcType].seasons.get(3).utilRates[2]);
                     calcs[calcType].seasons.get(3).utilRates[3] = data.getDoubleExtra("s4t4Util", calcs[calcType].seasons.get(3).utilRates[3]);
                 }
+                break;
             case TIER_RANGES_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
 
@@ -515,6 +535,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     calcs[calcType].seasons.get(3).energyRange[2] = data.getDoubleExtra("s4t3Tier", calcs[calcType].seasons.get(3).energyRange[2]);
                     calcs[calcType].seasons.get(3).energyRange[3] = data.getDoubleExtra("s4t4Tier", calcs[calcType].seasons.get(3).energyRange[3]);
                 }
+                break;
             case SEASON_DETAILS_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
                     calcs[calcType].numSeasons = data.getIntExtra("numSeasons", calcs[calcType].numSeasons);
@@ -544,6 +565,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     calcs[calcType].seasons.get(2).endDate[1] = data.getIntExtra("s3EndDateDay", calcs[calcType].seasons.get(2).endDate[1]);
                     calcs[calcType].seasons.get(3).endDate[1] = data.getIntExtra("s4EndDateDay", calcs[calcType].seasons.get(3).endDate[1]);
                 }
+                break;
             case TOU_ZONES_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
                     calcs[calcType].seasons.get(0).numZones = data.getIntExtra("s1NumZones", calcs[calcType].seasons.get(0).numZones);
@@ -649,6 +671,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     calcs[calcType].seasons.get(3).zones[3].toMinute = data.getIntExtra("s4OutToMin", calcs[calcType].seasons.get(3).zones[3].toMinute);
 
                 }
+                break;
+            case HOLIDAY_DETAILS_ACTIVITY_REQUEST_CODE:
+                if (resultCode == RESULT_OK) {
+                    calcs[calcType].updateHolidayNames(data.getStringArrayListExtra("holidayNamesUSA"), 0);
+                    calcs[calcType].updateHolidayNames(data.getStringArrayListExtra("holidayNamesCA"), 1);
+                    calcs[calcType].updateHolidayDates(data.getLongArrayExtra("datesUSA"), 0);
+                    calcs[calcType].updateHolidayDates(data.getLongArrayExtra("datesCA"), 1);
+                }
+                break;
+
+
         }
         calcs[calcType].z = calcs[calcType].a + calcs[calcType].b + calcs[calcType].c;
         aVal.setText(String.format("%.04f", calcs[calcType].a));

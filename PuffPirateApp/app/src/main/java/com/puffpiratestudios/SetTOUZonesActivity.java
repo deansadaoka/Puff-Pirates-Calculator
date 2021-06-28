@@ -658,7 +658,7 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
 
     public void openTimeSetDialog() {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, AlertDialog.THEME_HOLO_DARK, onTimeSetListener, 0, 0, true);
-        timePickerDialog.setTitle("Set Title");
+        timePickerDialog.setTitle("Set Time");
         timePickerDialog.show();
     }
 
