@@ -8,40 +8,35 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-public class SetTOUZonesActivity extends AppCompatActivity {
+public class SetTOUZonesActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    private static final int S1_Z1_FROM_TIME = 1;
-    private static final int S1_Z1_TO_TIME = 2;
-    private static final int S1_Z2_FROM_TIME = 3;
-    private static final int S1_Z2_TO_TIME = 4;
-    private static final int S1_Z3_FROM_TIME = 5;
-    private static final int S1_Z3_TO_TIME = 6;
+    private static final int S1_OUT_TO_Z1_TIME = 1;
+    private static final int S1_Z1_TO_Z2_TIME = 2;
+    private static final int S1_Z2_TO_Z3_TIME = 3;
+    private static final int S1_Z3_TO_OUT_TIME = 4;
 
-    private static final int S2_Z1_FROM_TIME = 7;
-    private static final int S2_Z1_TO_TIME = 8;
-    private static final int S2_Z2_FROM_TIME = 9;
-    private static final int S2_Z2_TO_TIME = 10;
-    private static final int S2_Z3_FROM_TIME = 11;
-    private static final int S2_Z3_TO_TIME = 12;
+    private static final int S2_OUT_TO_Z1_TIME = 5;
+    private static final int S2_Z1_TO_Z2_TIME = 6;
+    private static final int S2_Z2_TO_Z3_TIME = 7;
+    private static final int S2_Z3_TO_OUT_TIME = 8;
 
-    private static final int S3_Z1_FROM_TIME = 13;
-    private static final int S3_Z1_TO_TIME = 14;
-    private static final int S3_Z2_FROM_TIME = 15;
-    private static final int S3_Z2_TO_TIME = 16;
-    private static final int S3_Z3_FROM_TIME = 17;
-    private static final int S3_Z3_TO_TIME = 18;
+    private static final int S3_OUT_TO_Z1_TIME = 9;
+    private static final int S3_Z1_TO_Z2_TIME = 10;
+    private static final int S3_Z2_TO_Z3_TIME = 11;
+    private static final int S3_Z3_TO_OUT_TIME = 12;
 
-    private static final int S4_Z1_FROM_TIME = 19;
-    private static final int S4_Z1_TO_TIME = 20;
-    private static final int S4_Z2_FROM_TIME = 21;
-    private static final int S4_Z2_TO_TIME = 22;
-    private static final int S4_Z3_FROM_TIME = 23;
-    private static final int S4_Z3_TO_TIME = 24;
+    private static final int S4_OUT_TO_Z1_TIME = 13;
+    private static final int S4_Z1_TO_Z2_TIME = 14;
+    private static final int S4_Z2_TO_Z3_TIME = 15;
+    private static final int S4_Z3_TO_OUT_TIME = 16;
 
 
     Button s1z1FromButton;
@@ -73,80 +68,63 @@ public class SetTOUZonesActivity extends AppCompatActivity {
     Button s4z3ToButton;
 
 
-    EditText s1ZoneName;
-    EditText s2ZoneName;
-    EditText s3ZoneName;
-    EditText s4ZoneName;
+    EditText z1NameEdit;
+    EditText z2NameEdit;
+    EditText z3NameEdit;
 
 
-    EditText s1z1Rate;
-    EditText s1z2Rate;
-    EditText s1z3Rate;
+    EditText s1z1RateEdit;
+    EditText s1z2RateEdit;
+    EditText s1z3RateEdit;
 
-    EditText s2z1Rate;
-    EditText s2z2Rate;
-    EditText s2z3Rate;
+    EditText s2z1RateEdit;
+    EditText s2z2RateEdit;
+    EditText s2z3RateEdit;
 
-    EditText s3z1Rate;
-    EditText s3z2Rate;
-    EditText s3z3Rate;
+    EditText s3z1RateEdit;
+    EditText s3z2RateEdit;
+    EditText s3z3RateEdit;
 
-    EditText s4z1Rate;
-    EditText s4z2Rate;
-    EditText s4z3Rate;
+    EditText s4z1RateEdit;
+    EditText s4z2RateEdit;
+    EditText s4z3RateEdit;
 
 
-    int s1z1FromHour;
-    int s1z1FromMin;
-    int s1z1ToHour;
-    int s1z1ToMin;
-    int s1z2FromHour;
-    int s1z2FromMin;
-    int s1z2ToHour;
-    int s1z2ToMin;
-    int s1z3FromHour;
-    int s1z3FromMin;
-    int s1z3ToHour;
-    int s1z3ToMin;
+    int s1_out_z1_hour;
+    int s1_out_z1_min;
+    int s1_z1_z2_hour;
+    int s1_z1_z2_min;
+    int s1_z2_z3_hour;
+    int s1_z2_z3_min;
+    int s1_z3_out_hour;
+    int s1_z3_out_min;
 
-    int s2z1FromHour;
-    int s2z1FromMin;
-    int s2z1ToHour;
-    int s2z1ToMin;
-    int s2z2FromHour;
-    int s2z2FromMin;
-    int s2z2ToHour;
-    int s2z2ToMin;
-    int s2z3FromHour;
-    int s2z3FromMin;
-    int s2z3ToHour;
-    int s2z3ToMin;
+    int s2_out_z1_hour;
+    int s2_out_z1_min;
+    int s2_z1_z2_hour;
+    int s2_z1_z2_min;
+    int s2_z2_z3_hour;
+    int s2_z2_z3_min;
+    int s2_z3_out_hour;
+    int s2_z3_out_min;
 
-    int s3z1FromHour;
-    int s3z1FromMin;
-    int s3z1ToHour;
-    int s3z1ToMin;
-    int s3z2FromHour;
-    int s3z2FromMin;
-    int s3z2ToHour;
-    int s3z2ToMin;
-    int s3z3FromHour;
-    int s3z3FromMin;
-    int s3z3ToHour;
-    int s3z3ToMin;
+    int s3_out_z1_hour;
+    int s3_out_z1_min;
+    int s3_z1_z2_hour;
+    int s3_z1_z2_min;
+    int s3_z2_z3_hour;
+    int s3_z2_z3_min;
+    int s3_z3_out_hour;
+    int s3_z3_out_min;
 
-    int s4z1FromHour;
-    int s4z1FromMin;
-    int s4z1ToHour;
-    int s4z1ToMin;
-    int s4z2FromHour;
-    int s4z2FromMin;
-    int s4z2ToHour;
-    int s4z2ToMin;
-    int s4z3FromHour;
-    int s4z3FromMin;
-    int s4z3ToHour;
-    int s4z3ToMin;
+    int s4_out_z1_hour;
+    int s4_out_z1_min;
+    int s4_z1_z2_hour;
+    int s4_z1_z2_min;
+    int s4_z2_z3_hour;
+    int s4_z2_z3_min;
+    int s4_z3_out_hour;
+    int s4_z3_out_min;
 
 
     TextView s1OutFrom;
@@ -159,10 +137,10 @@ public class SetTOUZonesActivity extends AppCompatActivity {
     TextView s4OutTo;
 
 
-    EditText s1OutRate;
-    EditText s2OutRate;
-    EditText s3OutRate;
-    EditText s4OutRate;
+    EditText s1OutRateEdit;
+    EditText s2OutRateEdit;
+    EditText s3OutRateEdit;
+    EditText s4OutRateEdit;
 
 
     int s1NumZones;
@@ -171,7 +149,42 @@ public class SetTOUZonesActivity extends AppCompatActivity {
     int s4NumZones;
 
 
+    Spinner s1ZoneSpinner;
+    Spinner s2ZoneSpinner;
+    Spinner s3ZoneSpinner;
+    Spinner s4ZoneSpinner;
+
+
+    String z1Name;
+    String z2Name;
+    String z3Name;
+    String z4Name;
+
+
+    double s1z1Rate;
+    double s1z2Rate;
+    double s1z3Rate;
+    double s1OutRate;
+
+    double s2z1Rate;
+    double s2z2Rate;
+    double s2z3Rate;
+    double s2OutRate;
+
+    double s3z1Rate;
+    double s3z2Rate;
+    double s3z3Rate;
+    double s3OutRate;
+
+    double s4z1Rate;
+    double s4z2Rate;
+    double s4z3Rate;
+    double s4OutRate;
+
+
     int currentTimeEdit;
+
+    int numSeasons;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -199,31 +212,30 @@ public class SetTOUZonesActivity extends AppCompatActivity {
         s4Title.setTextColor(getResources().getColor(R.color.white));
 
 
-        s1ZoneName = findViewById(R.id.s1ZoneNameEdit);
-        s2ZoneName = findViewById(R.id.s2ZoneNameEdit);
-        s3ZoneName = findViewById(R.id.s3ZoneNameEdit);
-        s4ZoneName = findViewById(R.id.s4ZoneNameEdit);
+        z1NameEdit = findViewById(R.id.z1NameEdit);
+        z2NameEdit = findViewById(R.id.z2NameEdit);
+        z3NameEdit = findViewById(R.id.z3NameEdit);
 
 
-        s1z1Rate = findViewById(R.id.s1z1RateEdit);
-        s2z1Rate = findViewById(R.id.s2z1RateEdit);
-        s3z1Rate = findViewById(R.id.s3z1RateEdit);
-        s4z1Rate = findViewById(R.id.s4z1RateEdit);
+        s1z1RateEdit = findViewById(R.id.s1z1RateEdit);
+        s2z1RateEdit = findViewById(R.id.s2z1RateEdit);
+        s3z1RateEdit = findViewById(R.id.s3z1RateEdit);
+        s4z1RateEdit = findViewById(R.id.s4z1RateEdit);
 
-        s1z2Rate = findViewById(R.id.s1z2RateEdit);
-        s2z2Rate = findViewById(R.id.s2z2RateEdit);
-        s3z2Rate = findViewById(R.id.s3z2RateEdit);
-        s4z2Rate = findViewById(R.id.s4z2RateEdit);
+        s1z2RateEdit = findViewById(R.id.s1z2RateEdit);
+        s2z2RateEdit = findViewById(R.id.s2z2RateEdit);
+        s3z2RateEdit = findViewById(R.id.s3z2RateEdit);
+        s4z2RateEdit = findViewById(R.id.s4z2RateEdit);
 
-        s1z3Rate = findViewById(R.id.s1z3RateEdit);
-        s2z3Rate = findViewById(R.id.s2z3RateEdit);
-        s3z3Rate = findViewById(R.id.s3z3RateEdit);
-        s4z3Rate = findViewById(R.id.s4z3RateEdit);
+        s1z3RateEdit = findViewById(R.id.s1z3RateEdit);
+        s2z3RateEdit = findViewById(R.id.s2z3RateEdit);
+        s3z3RateEdit = findViewById(R.id.s3z3RateEdit);
+        s4z3RateEdit = findViewById(R.id.s4z3RateEdit);
 
-        s1OutRate = findViewById(R.id.s1OutRateEdit);
-        s2OutRate = findViewById(R.id.s2OutRateEdit);
-        s3OutRate = findViewById(R.id.s3OutRateEdit);
-        s4OutRate = findViewById(R.id.s4OutRateEdit);
+        s1OutRateEdit = findViewById(R.id.s1OutRateEdit);
+        s2OutRateEdit = findViewById(R.id.s2OutRateEdit);
+        s3OutRateEdit = findViewById(R.id.s3OutRateEdit);
+        s4OutRateEdit = findViewById(R.id.s4OutRateEdit);
 
 
         s1z1FromButton = findViewById(R.id.s1z1FromButton);
@@ -263,12 +275,264 @@ public class SetTOUZonesActivity extends AppCompatActivity {
         s4OutTo = findViewById(R.id.s4OutTo);
 
 
+        Intent i = getIntent();
+
+        numSeasons = i.getIntExtra("numSeasons", 1);
+
+        s1NumZones = i.getIntExtra("s1NumZones", 2);
+        s2NumZones = i.getIntExtra("s2NumZones", 2);
+        s3NumZones = i.getIntExtra("s3NumZones", 2);
+        s4NumZones = i.getIntExtra("s4NumZones", 2);
+
+        z1Name = i.getStringExtra("z1Name");
+        z2Name = i.getStringExtra("z2Name");
+        z3Name = i.getStringExtra("z3Name");
+        z1NameEdit.setText(z1Name);
+        z2NameEdit.setText(z2Name);
+        z3NameEdit.setText(z3Name);
+
+        s1z1Rate = i.getDoubleExtra("s1z1Rate", 0);
+        s2z1Rate = i.getDoubleExtra("s2z1Rate", 0);
+        s3z1Rate = i.getDoubleExtra("s3z1Rate", 0);
+        s4z1Rate = i.getDoubleExtra("s4z1Rate", 0);
+        s1z1RateEdit.setText(String.format("%.04f", s1z1Rate));
+        s2z1RateEdit.setText(String.format("%.04f", s2z1Rate));
+        s3z1RateEdit.setText(String.format("%.04f", s3z1Rate));
+        s4z1RateEdit.setText(String.format("%.04f", s4z1Rate));
+
+        s1z2Rate = i.getDoubleExtra("s1z2Rate", 0);
+        s2z2Rate = i.getDoubleExtra("s2z2Rate", 0);
+        s3z2Rate = i.getDoubleExtra("s3z2Rate", 0);
+        s4z2Rate = i.getDoubleExtra("s4z2Rate", 0);
+        s1z2RateEdit.setText(String.format("%.04f", s1z2Rate));
+        s2z2RateEdit.setText(String.format("%.04f", s2z2Rate));
+        s3z2RateEdit.setText(String.format("%.04f", s3z2Rate));
+        s4z2RateEdit.setText(String.format("%.04f", s4z2Rate));
+
+        s1z3Rate = i.getDoubleExtra("s1z3Rate", 0);
+        s2z3Rate = i.getDoubleExtra("s2z3Rate", 0);
+        s3z3Rate = i.getDoubleExtra("s3z3Rate", 0);
+        s4z3Rate = i.getDoubleExtra("s4z3Rate", 0);
+        s1z3RateEdit.setText(String.format("%.04f", s1z3Rate));
+        s2z3RateEdit.setText(String.format("%.04f", s2z3Rate));
+        s3z3RateEdit.setText(String.format("%.04f", s3z3Rate));
+        s4z3RateEdit.setText(String.format("%.04f", s4z3Rate));
+
+        s1OutRate = i.getDoubleExtra("s1OutRate", 0);
+        s2OutRate = i.getDoubleExtra("s2OutRate", 0);
+        s3OutRate = i.getDoubleExtra("s3OutRate", 0);
+        s4OutRate = i.getDoubleExtra("s4OutRate", 0);
+        s1OutRateEdit.setText(String.format("%.04f", s1OutRate));
+        s2OutRateEdit.setText(String.format("%.04f", s2OutRate));
+        s3OutRateEdit.setText(String.format("%.04f", s3OutRate));
+        s4OutRateEdit.setText(String.format("%.04f", s4OutRate));
+
+
+
+        String[] zoneOptions = new String[] {"2", "3", "4"};
+        ArrayAdapter<String> zoneAdapter = new ArrayAdapter<String>(SetTOUZonesActivity.this,
+                android.R.layout.simple_spinner_item,zoneOptions);
+        zoneAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        s1ZoneSpinner = findViewById(R.id.s1ZoneSpinner);
+        s2ZoneSpinner = findViewById(R.id.s2ZoneSpinner);
+        s3ZoneSpinner = findViewById(R.id.s3ZoneSpinner);
+        s4ZoneSpinner = findViewById(R.id.s4ZoneSpinner);
+
+        s1ZoneSpinner.setAdapter(zoneAdapter);
+        s2ZoneSpinner.setAdapter(zoneAdapter);
+        s3ZoneSpinner.setAdapter(zoneAdapter);
+        s4ZoneSpinner.setAdapter(zoneAdapter);
+
+        s1ZoneSpinner.setOnItemSelectedListener(this);
+        s2ZoneSpinner.setOnItemSelectedListener(this);
+        s3ZoneSpinner.setOnItemSelectedListener(this);
+        s4ZoneSpinner.setOnItemSelectedListener(this);
+
+        s1ZoneSpinner.setSelection(s1NumZones - 2);
+        s2ZoneSpinner.setSelection(s2NumZones - 2);
+        s3ZoneSpinner.setSelection(s3NumZones - 2);
+        s4ZoneSpinner.setSelection(s4NumZones - 2);
+
+        setSeasonsVisible(numSeasons);
+
+
+        s1_out_z1_hour = i.getIntExtra("s1_z1_from_hour", 0);
+        s1_out_z1_min = i.getIntExtra("s1_z1_from_min", 0);
+        s1_z1_z2_hour = i.getIntExtra("s1_z2_from_hour", 0);
+        s1_z1_z2_min = i.getIntExtra("s1_z2_from_min", 0);
+        s1_z2_z3_hour = i.getIntExtra("s1_z3_from_hour", 0);
+        s1_z2_z3_min = i.getIntExtra("s1_z3_from_min", 0);
+        s1_z3_out_hour = i.getIntExtra("s1_out_from_hour", 0);
+        s1_z3_out_min = i.getIntExtra("s1_out_from_min", 0);
+
+        s1OutTo.setText(formatTime(s1_out_z1_hour, s1_out_z1_min));
+        s1z1FromButton.setText(formatTime(s1_out_z1_hour, s1_out_z1_min));
+        s1z1ToButton.setText(formatTime(s1_z1_z2_hour, s1_z1_z2_min));
+        s1z2FromButton.setText(formatTime(s1_z1_z2_hour, s1_z1_z2_min));
+        s1z2ToButton.setText(formatTime(s1_z2_z3_hour, s1_z2_z3_min));
+        s1z3FromButton.setText(formatTime(s1_z2_z3_hour, s1_z2_z3_min));
+        s1z3ToButton.setText(formatTime(s1_z3_out_hour, s1_z3_out_min));
+        s1OutFrom.setText(formatTime(s1_z3_out_hour, s1_z3_out_min));
+
+        s2_out_z1_hour = i.getIntExtra("s2_z1_from_hour", 0);
+        s2_out_z1_min = i.getIntExtra("s2_z1_from_min", 0);
+        s2_z1_z2_hour = i.getIntExtra("s2_z2_from_hour", 0);
+        s2_z1_z2_min = i.getIntExtra("s2_z2_from_min", 0);
+        s2_z2_z3_hour = i.getIntExtra("s2_z3_from_hour", 0);
+        s2_z2_z3_min = i.getIntExtra("s2_z3_from_min", 0);
+        s2_z3_out_hour = i.getIntExtra("s2_out_from_hour", 0);
+        s2_z3_out_min = i.getIntExtra("s2_out_from_min", 0);
+
+        s2OutTo.setText(formatTime(s2_out_z1_hour, s2_out_z1_min));
+        s2z1FromButton.setText(formatTime(s2_out_z1_hour, s2_out_z1_min));
+        s2z1ToButton.setText(formatTime(s2_z1_z2_hour, s2_z1_z2_min));
+        s2z2FromButton.setText(formatTime(s2_z1_z2_hour, s2_z1_z2_min));
+        s2z2ToButton.setText(formatTime(s2_z2_z3_hour, s2_z2_z3_min));
+        s2z3FromButton.setText(formatTime(s2_z2_z3_hour, s2_z2_z3_min));
+        s2z3ToButton.setText(formatTime(s2_z3_out_hour, s2_z3_out_min));
+        s2OutFrom.setText(formatTime(s2_z3_out_hour, s2_z3_out_min));
+
+        s3_out_z1_hour = i.getIntExtra("s3_z1_from_hour", 0);
+        s3_out_z1_min = i.getIntExtra("s3_z1_from_min", 0);
+        s3_z1_z2_hour = i.getIntExtra("s3_z2_from_hour", 0);
+        s3_z1_z2_min = i.getIntExtra("s3_z2_from_min", 0);
+        s3_z2_z3_hour = i.getIntExtra("s3_z3_from_hour", 0);
+        s3_z2_z3_min = i.getIntExtra("s3_z3_from_min", 0);
+        s3_z3_out_hour = i.getIntExtra("s3_out_from_hour", 0);
+        s3_z3_out_min = i.getIntExtra("s3_out_from_min", 0);
+
+        s3OutTo.setText(formatTime(s3_out_z1_hour, s3_out_z1_min));
+        s3z1FromButton.setText(formatTime(s3_out_z1_hour, s3_out_z1_min));
+        s3z1ToButton.setText(formatTime(s3_z1_z2_hour, s3_z1_z2_min));
+        s3z2FromButton.setText(formatTime(s3_z1_z2_hour, s3_z1_z2_min));
+        s3z2ToButton.setText(formatTime(s3_z2_z3_hour, s3_z2_z3_min));
+        s3z3FromButton.setText(formatTime(s3_z2_z3_hour, s3_z2_z3_min));
+        s3z3ToButton.setText(formatTime(s3_z3_out_hour, s3_z3_out_min));
+        s3OutFrom.setText(formatTime(s3_z3_out_hour, s3_z3_out_min));
+
+        s4_out_z1_hour = i.getIntExtra("s4_z1_from_hour", 0);
+        s4_out_z1_min = i.getIntExtra("s4_z1_from_min", 0);
+        s4_z1_z2_hour = i.getIntExtra("s4_z2_from_hour", 0);
+        s4_z1_z2_min = i.getIntExtra("s4_z2_from_min", 0);
+        s4_z2_z3_hour = i.getIntExtra("s4_z3_from_hour", 0);
+        s4_z2_z3_min = i.getIntExtra("s4_z3_from_min", 0);
+        s4_z3_out_hour = i.getIntExtra("s4_out_from_hour", 0);
+        s4_z3_out_min = i.getIntExtra("s4_out_from_min", 0);
+
+        s4OutTo.setText(formatTime(s4_out_z1_hour, s4_out_z1_min));
+        s4z1FromButton.setText(formatTime(s4_out_z1_hour, s4_out_z1_min));
+        s4z1ToButton.setText(formatTime(s4_z1_z2_hour, s4_z1_z2_min));
+        s4z2FromButton.setText(formatTime(s4_z1_z2_hour, s4_z1_z2_min));
+        s4z2ToButton.setText(formatTime(s4_z2_z3_hour, s4_z2_z3_min));
+        s4z3FromButton.setText(formatTime(s4_z2_z3_hour, s4_z2_z3_min));
+        s4z3ToButton.setText(formatTime(s4_z3_out_hour, s4_z3_out_min));
+        s4OutFrom.setText(formatTime(s4_z3_out_hour, s4_z3_out_min));
+
 
 
     }
 
     public void submit(View v) {
         Intent i = new Intent();
+
+        i.putExtra("z1Name", z1NameEdit.getText().toString());
+        i.putExtra("z2Name", z2NameEdit.getText().toString());
+        i.putExtra("z3Name", z3NameEdit.getText().toString());
+
+        i.putExtra("s1z1Rate", Double.parseDouble(s1z1RateEdit.getText().toString()));
+        i.putExtra("s2z1Rate", Double.parseDouble(s2z1RateEdit.getText().toString()));
+        i.putExtra("s3z1Rate", Double.parseDouble(s3z1RateEdit.getText().toString()));
+        i.putExtra("s4z1Rate", Double.parseDouble(s4z1RateEdit.getText().toString()));
+
+        i.putExtra("s1z2Rate", Double.parseDouble(s1z2RateEdit.getText().toString()));
+        i.putExtra("s2z2Rate", Double.parseDouble(s2z2RateEdit.getText().toString()));
+        i.putExtra("s3z2Rate", Double.parseDouble(s3z2RateEdit.getText().toString()));
+        i.putExtra("s4z2Rate", Double.parseDouble(s4z2RateEdit.getText().toString()));
+
+        i.putExtra("s1z3Rate", Double.parseDouble(s1z3RateEdit.getText().toString()));
+        i.putExtra("s2z3Rate", Double.parseDouble(s2z3RateEdit.getText().toString()));
+        i.putExtra("s3z3Rate", Double.parseDouble(s3z3RateEdit.getText().toString()));
+        i.putExtra("s4z3Rate", Double.parseDouble(s4z3RateEdit.getText().toString()));
+
+        i.putExtra("s1OutRate", Double.parseDouble(s1OutRateEdit.getText().toString()));
+        i.putExtra("s2OutRate", Double.parseDouble(s2OutRateEdit.getText().toString()));
+        i.putExtra("s3OutRate", Double.parseDouble(s3OutRateEdit.getText().toString()));
+        i.putExtra("s4OutRate", Double.parseDouble(s4OutRateEdit.getText().toString()));
+
+        i.putExtra("s1NumZones", s1NumZones);
+        i.putExtra("s2NumZones", s2NumZones);
+        i.putExtra("s3NumZones", s3NumZones);
+        i.putExtra("s4NumZones", s4NumZones);
+
+
+        i.putExtra("s1OutFromHour", s1_z3_out_hour);
+        i.putExtra("s1OutFromMin", s1_z3_out_min);
+        i.putExtra("s1OutToHour", s1_out_z1_hour);
+        i.putExtra("s1OutToMin", s1_out_z1_min);
+        i.putExtra("s1z1FromHour", s1_out_z1_hour);
+        i.putExtra("s1z1FromMin", s1_out_z1_min);
+        i.putExtra("s1z1ToHour", s1_z1_z2_hour);
+        i.putExtra("s1z1ToMin", s1_z1_z2_min);
+        i.putExtra("s1z2FromHour", s1_z1_z2_hour);
+        i.putExtra("s1z2FromMin", s1_z1_z2_min);
+        i.putExtra("s1z2ToHour", s1_z2_z3_hour);
+        i.putExtra("s1z2ToMin", s1_z2_z3_min);
+        i.putExtra("s1z3FromHour", s1_z2_z3_hour);
+        i.putExtra("s1z3FromMin", s1_z2_z3_min);
+        i.putExtra("s1z3ToHour", s1_z3_out_hour);
+        i.putExtra("s1z3ToMin", s1_z3_out_min);
+
+        i.putExtra("s2OutFromHour", s2_z3_out_hour);
+        i.putExtra("s2OutFromMin", s2_z3_out_min);
+        i.putExtra("s2OutToHour", s2_out_z1_hour);
+        i.putExtra("s2OutToMin", s2_out_z1_min);
+        i.putExtra("s2z1FromHour", s2_out_z1_hour);
+        i.putExtra("s2z1FromMin", s2_out_z1_min);
+        i.putExtra("s2z1ToHour", s2_z1_z2_hour);
+        i.putExtra("s2z1ToMin", s2_z1_z2_min);
+        i.putExtra("s2z2FromHour", s2_z1_z2_hour);
+        i.putExtra("s2z2FromMin", s2_z1_z2_min);
+        i.putExtra("s2z2ToHour", s2_z2_z3_hour);
+        i.putExtra("s2z2ToMin", s2_z2_z3_min);
+        i.putExtra("s2z3FromHour", s2_z2_z3_hour);
+        i.putExtra("s2z3FromMin", s2_z2_z3_min);
+        i.putExtra("s2z3ToHour", s2_z3_out_hour);
+        i.putExtra("s2z3ToMin", s2_z3_out_min);
+
+        i.putExtra("s3OutFromHour", s3_z3_out_hour);
+        i.putExtra("s3OutFromMin", s3_z3_out_min);
+        i.putExtra("s3OutToHour", s3_out_z1_hour);
+        i.putExtra("s3OutToMin", s3_out_z1_min);
+        i.putExtra("s3z1FromHour", s3_out_z1_hour);
+        i.putExtra("s3z1FromMin", s3_out_z1_min);
+        i.putExtra("s3z1ToHour", s3_z1_z2_hour);
+        i.putExtra("s3z1ToMin", s3_z1_z2_min);
+        i.putExtra("s3z2FromHour", s3_z1_z2_hour);
+        i.putExtra("s3z2FromMin", s3_z1_z2_min);
+        i.putExtra("s3z2ToHour", s3_z2_z3_hour);
+        i.putExtra("s3z2ToMin", s3_z2_z3_min);
+        i.putExtra("s3z3FromHour", s3_z2_z3_hour);
+        i.putExtra("s3z3FromMin", s3_z2_z3_min);
+        i.putExtra("s3z3ToHour", s3_z3_out_hour);
+        i.putExtra("s3z3ToMin", s3_z3_out_min);
+
+        i.putExtra("s4OutFromHour", s4_z3_out_hour);
+        i.putExtra("s4OutFromMin", s4_z3_out_min);
+        i.putExtra("s4OutToHour", s4_out_z1_hour);
+        i.putExtra("s4OutToMin", s4_out_z1_min);
+        i.putExtra("s4z1FromHour", s4_out_z1_hour);
+        i.putExtra("s4z1FromMin", s4_out_z1_min);
+        i.putExtra("s4z1ToHour", s4_z1_z2_hour);
+        i.putExtra("s4z1ToMin", s4_z1_z2_min);
+        i.putExtra("s4z2FromHour", s4_z1_z2_hour);
+        i.putExtra("s4z2FromMin", s4_z1_z2_min);
+        i.putExtra("s4z2ToHour", s4_z2_z3_hour);
+        i.putExtra("s4z2ToMin", s4_z2_z3_min);
+        i.putExtra("s4z3FromHour", s4_z2_z3_hour);
+        i.putExtra("s4z3FromMin", s4_z2_z3_min);
+        i.putExtra("s4z3ToHour", s4_z3_out_hour);
+        i.putExtra("s4z3ToMin", s4_z3_out_min);
 
         setResult(RESULT_OK, i);
         finish();
@@ -284,125 +548,109 @@ public class SetTOUZonesActivity extends AppCompatActivity {
         @Override
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             switch (currentTimeEdit) {
-                case S1_Z1_FROM_TIME:
-                    s1z1FromHour = hourOfDay;
-                    s1z1FromMin = minute;
-                    s1z1FromButton.setText(formatTime(s1z1FromHour, s1z1FromMin));
+                case S1_OUT_TO_Z1_TIME:
+                    s1_out_z1_hour = hourOfDay;
+                    s1_out_z1_min = minute;
+                    s1OutTo.setText(formatTime(s1_out_z1_hour, s1_out_z1_min));
+                    s1z1FromButton.setText(formatTime(s1_out_z1_hour, s1_out_z1_min));
                     break;
-                case S1_Z1_TO_TIME:
-                    s1z1ToHour = hourOfDay;
-                    s1z1ToMin = minute;
-                    s1z1ToButton.setText(formatTime(s1z1ToHour, s1z1ToMin));
+                case S1_Z1_TO_Z2_TIME:
+                    s1_z1_z2_hour = hourOfDay;
+                    s1_z1_z2_min = minute;
+                    s1z1ToButton.setText(formatTime(s1_z1_z2_hour, s1_z1_z2_min));
+                    s1z2FromButton.setText(formatTime(s1_z1_z2_hour, s1_z1_z2_min));
+                    set_s1_out_from_text();
                     break;
-                case S1_Z2_FROM_TIME:
-                    s1z2FromHour = hourOfDay;
-                    s1z2FromMin = minute;
-                    s1z2FromButton.setText(formatTime(s1z2FromHour, s1z2FromMin));
+                case S1_Z2_TO_Z3_TIME:
+                    s1_z2_z3_hour = hourOfDay;
+                    s1_z2_z3_min = minute;
+                    s1z2ToButton.setText(formatTime(s1_z2_z3_hour, s1_z2_z3_min));
+                    s1z3FromButton.setText(formatTime(s1_z2_z3_hour, s1_z2_z3_min));
+                    set_s1_out_from_text();
                     break;
-                case S1_Z2_TO_TIME:
-                    s1z2ToHour = hourOfDay;
-                    s1z2ToMin = minute;
-                    s1z2ToButton.setText(formatTime(s1z2ToHour, s1z2ToMin));
+                case S1_Z3_TO_OUT_TIME:
+                    s1_z3_out_hour = hourOfDay;
+                    s1_z3_out_min = minute;
+                    s1z3ToButton.setText(formatTime(s1_z3_out_hour, s1_z3_out_min));
+                    set_s1_out_from_text();
                     break;
-                case S1_Z3_FROM_TIME:
-                    s1z3FromHour = hourOfDay;
-                    s1z3FromMin = minute;
-                    s1z3FromButton.setText(formatTime(s1z3FromHour, s1z3FromMin));
+                case S2_OUT_TO_Z1_TIME:
+                    s2_out_z1_hour = hourOfDay;
+                    s2_out_z1_min = minute;
+                    s2OutTo.setText(formatTime(s2_out_z1_hour, s2_out_z1_min));
+                    s2z1FromButton.setText(formatTime(s2_out_z1_hour, s2_out_z1_min));
                     break;
-                case S1_Z3_TO_TIME:
-                    s1z3ToHour = hourOfDay;
-                    s1z3ToMin = minute;
-                    s1z3ToButton.setText(formatTime(s1z3ToHour, s1z3ToMin));
+                case S2_Z1_TO_Z2_TIME:
+                    s2_z1_z2_hour = hourOfDay;
+                    s2_z1_z2_min = minute;
+                    s2z1ToButton.setText(formatTime(s2_z1_z2_hour, s2_z1_z2_min));
+                    s2z2FromButton.setText(formatTime(s2_z1_z2_hour, s2_z1_z2_min));
+                    set_s2_out_from_text();
                     break;
-                case S2_Z1_FROM_TIME:
-                    s2z1FromHour = hourOfDay;
-                    s2z1FromMin = minute;
-                    s2z1FromButton.setText(formatTime(s2z1FromHour, s2z1FromMin));
+                case S2_Z2_TO_Z3_TIME:
+                    s2_z2_z3_hour = hourOfDay;
+                    s2_z2_z3_min = minute;
+                    s2z2ToButton.setText(formatTime(s2_z2_z3_hour, s2_z2_z3_min));
+                    s2z3FromButton.setText(formatTime(s2_z2_z3_hour, s2_z2_z3_min));
+                    set_s2_out_from_text();
                     break;
-                case S2_Z1_TO_TIME:
-                    s2z1ToHour = hourOfDay;
-                    s2z1ToMin = minute;
-                    s2z1ToButton.setText(formatTime(s2z1ToHour, s2z1ToMin));
+                case S2_Z3_TO_OUT_TIME:
+                    s2_z3_out_hour = hourOfDay;
+                    s2_z3_out_min = minute;
+                    s2z3ToButton.setText(formatTime(s2_z3_out_hour, s2_z3_out_min));
+                    set_s2_out_from_text();
                     break;
-                case S2_Z2_FROM_TIME:
-                    s2z2FromHour = hourOfDay;
-                    s2z2FromMin = minute;
-                    s2z2FromButton.setText(formatTime(s2z2FromHour, s2z2FromMin));
+                case S3_OUT_TO_Z1_TIME:
+                    s3_out_z1_hour = hourOfDay;
+                    s3_out_z1_min = minute;
+                    s3OutTo.setText(formatTime(s3_out_z1_hour, s3_out_z1_min));
+                    s3z1FromButton.setText(formatTime(s3_out_z1_hour, s3_out_z1_min));
                     break;
-                case S2_Z2_TO_TIME:
-                    s2z2ToHour = hourOfDay;
-                    s2z2ToMin = minute;
-                    s2z2ToButton.setText(formatTime(s2z2ToHour, s2z2ToMin));
+                case S3_Z1_TO_Z2_TIME:
+                    s3_z1_z2_hour = hourOfDay;
+                    s3_z1_z2_min = minute;
+                    s3z1ToButton.setText(formatTime(s3_z1_z2_hour, s3_z1_z2_min));
+                    s3z2FromButton.setText(formatTime(s3_z1_z2_hour, s3_z1_z2_min));
+                    set_s3_out_from_text();
                     break;
-                case S2_Z3_FROM_TIME:
-                    s2z3FromHour = hourOfDay;
-                    s2z3FromMin = minute;
-                    s2z3FromButton.setText(formatTime(s2z3FromHour, s2z3FromMin));
+                case S3_Z2_TO_Z3_TIME:
+                    s3_z2_z3_hour = hourOfDay;
+                    s3_z2_z3_min = minute;
+                    s3z2ToButton.setText(formatTime(s3_z2_z3_hour, s3_z2_z3_min));
+                    s3z3FromButton.setText(formatTime(s3_z2_z3_hour, s3_z2_z3_min));
+                    set_s3_out_from_text();
                     break;
-                case S2_Z3_TO_TIME:
-                    s2z3ToHour = hourOfDay;
-                    s2z3ToMin = minute;
-                    s2z3ToButton.setText(formatTime(s2z3ToHour, s2z3ToMin));
+                case S3_Z3_TO_OUT_TIME:
+                    s3_z3_out_hour = hourOfDay;
+                    s3_z3_out_min = minute;
+                    s3z3ToButton.setText(formatTime(s3_z3_out_hour, s3_z3_out_min));
+                    set_s3_out_from_text();
                     break;
-                case S3_Z1_FROM_TIME:
-                    s3z1FromHour = hourOfDay;
-                    s3z1FromMin = minute;
-                    s3z1FromButton.setText(formatTime(s3z1FromHour, s3z1FromMin));
+                case S4_OUT_TO_Z1_TIME:
+                    s4_out_z1_hour = hourOfDay;
+                    s4_out_z1_min = minute;
+                    s4OutTo.setText(formatTime(s4_out_z1_hour, s4_out_z1_min));
+                    s4z1FromButton.setText(formatTime(s4_out_z1_hour, s4_out_z1_min));
                     break;
-                case S3_Z1_TO_TIME:
-                    s3z1ToHour = hourOfDay;
-                    s3z1ToMin = minute;
-                    s3z1ToButton.setText(formatTime(s3z1ToHour, s3z1ToMin));
+                case S4_Z1_TO_Z2_TIME:
+                    s4_z1_z2_hour = hourOfDay;
+                    s4_z1_z2_min = minute;
+                    s4z1ToButton.setText(formatTime(s4_z1_z2_hour, s4_z1_z2_min));
+                    s4z2FromButton.setText(formatTime(s4_z1_z2_hour, s4_z1_z2_min));
+                    set_s4_out_from_text();
                     break;
-                case S3_Z2_FROM_TIME:
-                    s3z2FromHour = hourOfDay;
-                    s3z2FromMin = minute;
-                    s3z2FromButton.setText(formatTime(s3z2FromHour, s3z2FromMin));
+                case S4_Z2_TO_Z3_TIME:
+                    s4_z2_z3_hour = hourOfDay;
+                    s4_z2_z3_min = minute;
+                    s4z2ToButton.setText(formatTime(s4_z2_z3_hour, s4_z2_z3_min));
+                    s4z3FromButton.setText(formatTime(s4_z2_z3_hour, s4_z2_z3_min));
+                    set_s4_out_from_text();
                     break;
-                case S3_Z2_TO_TIME:
-                    s3z2ToHour = hourOfDay;
-                    s3z2ToMin = minute;
-                    s3z2ToButton.setText(formatTime(s3z2ToHour, s3z2ToMin));
-                    break;
-                case S3_Z3_FROM_TIME:
-                    s3z3FromHour = hourOfDay;
-                    s3z3FromMin = minute;
-                    s3z3FromButton.setText(formatTime(s3z3FromHour, s3z3FromMin));
-                    break;
-                case S3_Z3_TO_TIME:
-                    s3z3ToHour = hourOfDay;
-                    s3z3ToMin = minute;
-                    s3z3ToButton.setText(formatTime(s3z3ToHour, s3z3ToMin));
-                    break;
-                case S4_Z1_FROM_TIME:
-                    s4z1FromHour = hourOfDay;
-                    s4z1FromMin = minute;
-                    s4z1FromButton.setText(formatTime(s4z1FromHour, s4z1FromMin));
-                    break;
-                case S4_Z1_TO_TIME:
-                    s4z1ToHour = hourOfDay;
-                    s4z1ToMin = minute;
-                    s4z1ToButton.setText(formatTime(s4z1ToHour, s4z1ToMin));
-                    break;
-                case S4_Z2_FROM_TIME:
-                    s4z2FromHour = hourOfDay;
-                    s4z2FromMin = minute;
-                    s4z2FromButton.setText(formatTime(s4z2FromHour, s4z2FromMin));
-                    break;
-                case S4_Z2_TO_TIME:
-                    s4z2ToHour = hourOfDay;
-                    s4z2ToMin = minute;
-                    s4z2ToButton.setText(formatTime(s4z2ToHour, s4z2ToMin));
-                    break;
-                case S4_Z3_FROM_TIME:
-                    s4z3FromHour = hourOfDay;
-                    s4z3FromMin = minute;
-                    s4z3FromButton.setText(formatTime(s4z3FromHour, s4z3FromMin));
-                    break;
-                case S4_Z3_TO_TIME:
-                    s4z3ToHour = hourOfDay;
-                    s4z3ToMin = minute;
-                    s4z3ToButton.setText(formatTime(s4z3ToHour, s4z3ToMin));
+                case S4_Z3_TO_OUT_TIME:
+                    s4_z3_out_hour = hourOfDay;
+                    s4_z3_out_min = minute;
+                    s4z3ToButton.setText(formatTime(s4_z3_out_hour, s4_z3_out_min));
+                    set_s4_out_from_text();
                     break;
             }
         }
@@ -419,45 +667,219 @@ public class SetTOUZonesActivity extends AppCompatActivity {
                 .append(String.format("%02d", minute))).toString();
     }
 
-    public void s1z1FromClicked(View view) { currentTimeEdit = S1_Z1_FROM_TIME; openTimeSetDialog(); }
-    public void s1z1ToClicked(View view) { currentTimeEdit = S1_Z1_TO_TIME; openTimeSetDialog(); }
+    public void set_s1_out_from_text() {
+        switch(s1NumZones) {
+            case 2:
+                s1OutFrom.setText(formatTime(s1_z1_z2_hour, s1_z1_z2_min));
+                break;
+            case 3:
+                s1OutFrom.setText(formatTime(s1_z2_z3_hour, s1_z2_z3_min));
+                break;
+            case 4:
+                s1OutFrom.setText(formatTime(s1_z3_out_hour, s1_z3_out_min));
+                break;
+        }
+    }
 
-    public void s1z2FromClicked(View view) { currentTimeEdit = S1_Z2_FROM_TIME; openTimeSetDialog(); }
-    public void s1z2ToClicked(View view) { currentTimeEdit = S1_Z2_TO_TIME; openTimeSetDialog(); }
+    public void set_s2_out_from_text() {
+        switch(s2NumZones) {
+            case 2:
+                s2OutFrom.setText(formatTime(s2_z1_z2_hour, s2_z1_z2_min));
+                break;
+            case 3:
+                s2OutFrom.setText(formatTime(s2_z2_z3_hour, s2_z2_z3_min));
+                break;
+            case 4:
+                s2OutFrom.setText(formatTime(s2_z3_out_hour, s2_z3_out_min));
+                break;
+        }
+    }
 
-    public void s1z3FromClicked(View view) { currentTimeEdit = S1_Z3_FROM_TIME; openTimeSetDialog(); }
-    public void s1z3ToClicked(View view) { currentTimeEdit = S1_Z3_TO_TIME; openTimeSetDialog(); }
+    public void set_s3_out_from_text() {
+        switch(s3NumZones) {
+            case 2:
+                s3OutFrom.setText(formatTime(s3_z1_z2_hour, s3_z1_z2_min));
+                break;
+            case 3:
+                s3OutFrom.setText(formatTime(s3_z2_z3_hour, s3_z2_z3_min));
+                break;
+            case 4:
+                s3OutFrom.setText(formatTime(s3_z3_out_hour, s3_z3_out_min));
+                break;
+        }
+    }
+
+    public void set_s4_out_from_text() {
+        switch(s4NumZones) {
+            case 2:
+                s4OutFrom.setText(formatTime(s4_z1_z2_hour, s4_z1_z2_min));
+                break;
+            case 3:
+                s4OutFrom.setText(formatTime(s4_z2_z3_hour, s4_z2_z3_min));
+                break;
+            case 4:
+                s4OutFrom.setText(formatTime(s4_z3_out_hour, s4_z3_out_min));
+                break;
+        }
+    }
+
+    public void s1z1FromClicked(View view) { currentTimeEdit = S1_OUT_TO_Z1_TIME; openTimeSetDialog(); }
+    public void s1z1ToClicked(View view) { currentTimeEdit = S1_Z1_TO_Z2_TIME; openTimeSetDialog(); }
+
+    public void s1z2FromClicked(View view) { currentTimeEdit = S1_Z1_TO_Z2_TIME; openTimeSetDialog(); }
+    public void s1z2ToClicked(View view) { currentTimeEdit = S1_Z2_TO_Z3_TIME; openTimeSetDialog(); }
+
+    public void s1z3FromClicked(View view) { currentTimeEdit = S1_Z2_TO_Z3_TIME; openTimeSetDialog(); }
+    public void s1z3ToClicked(View view) { currentTimeEdit = S1_Z3_TO_OUT_TIME; openTimeSetDialog(); }
 
 
-    public void s2z1FromClicked(View view) { currentTimeEdit = S2_Z1_FROM_TIME; openTimeSetDialog(); }
-    public void s2z1ToClicked(View view) { currentTimeEdit = S2_Z1_TO_TIME; openTimeSetDialog(); }
+    public void s2z1FromClicked(View view) { currentTimeEdit = S2_OUT_TO_Z1_TIME; openTimeSetDialog(); }
+    public void s2z1ToClicked(View view) { currentTimeEdit = S2_Z1_TO_Z2_TIME; openTimeSetDialog(); }
 
-    public void s2z2FromClicked(View view) { currentTimeEdit = S2_Z2_FROM_TIME; openTimeSetDialog(); }
-    public void s2z2ToClicked(View view) { currentTimeEdit = S2_Z2_TO_TIME; openTimeSetDialog(); }
+    public void s2z2FromClicked(View view) { currentTimeEdit = S2_Z1_TO_Z2_TIME; openTimeSetDialog(); }
+    public void s2z2ToClicked(View view) { currentTimeEdit = S2_Z2_TO_Z3_TIME; openTimeSetDialog(); }
 
-    public void s2z3FromClicked(View view) { currentTimeEdit = S2_Z3_FROM_TIME; openTimeSetDialog(); }
-    public void s2z3ToClicked(View view) { currentTimeEdit = S2_Z3_TO_TIME; openTimeSetDialog(); }
-
-
-    public void s3z1FromClicked(View view) { currentTimeEdit = S3_Z1_FROM_TIME; openTimeSetDialog(); }
-    public void s3z1ToClicked(View view) { currentTimeEdit = S3_Z1_TO_TIME; openTimeSetDialog(); }
-
-    public void s3z2FromClicked(View view) { currentTimeEdit = S3_Z2_FROM_TIME; openTimeSetDialog(); }
-    public void s3z2ToClicked(View view) { currentTimeEdit = S3_Z2_TO_TIME; openTimeSetDialog(); }
-
-    public void s3z3FromClicked(View view) { currentTimeEdit = S3_Z3_FROM_TIME; openTimeSetDialog(); }
-    public void s3z3ToClicked(View view) { currentTimeEdit = S3_Z3_TO_TIME; openTimeSetDialog(); }
+    public void s2z3FromClicked(View view) { currentTimeEdit = S2_Z2_TO_Z3_TIME; openTimeSetDialog(); }
+    public void s2z3ToClicked(View view) { currentTimeEdit = S2_Z3_TO_OUT_TIME; openTimeSetDialog(); }
 
 
-    public void s4z1FromClicked(View view) { currentTimeEdit = S4_Z1_FROM_TIME; openTimeSetDialog(); }
-    public void s4z1ToClicked(View view) { currentTimeEdit = S4_Z1_TO_TIME; openTimeSetDialog(); }
+    public void s3z1FromClicked(View view) { currentTimeEdit = S3_OUT_TO_Z1_TIME; openTimeSetDialog(); }
+    public void s3z1ToClicked(View view) { currentTimeEdit = S3_Z1_TO_Z2_TIME; openTimeSetDialog(); }
 
-    public void s4z2FromClicked(View view) { currentTimeEdit = S4_Z2_FROM_TIME; openTimeSetDialog(); }
-    public void s4z2ToClicked(View view) { currentTimeEdit = S4_Z2_TO_TIME; openTimeSetDialog(); }
+    public void s3z2FromClicked(View view) { currentTimeEdit = S3_Z1_TO_Z2_TIME; openTimeSetDialog(); }
+    public void s3z2ToClicked(View view) { currentTimeEdit = S3_Z2_TO_Z3_TIME; openTimeSetDialog(); }
 
-    public void s4z3FromClicked(View view) { currentTimeEdit = S4_Z3_FROM_TIME; openTimeSetDialog(); }
-    public void s4z3ToClicked(View view) { currentTimeEdit = S4_Z3_TO_TIME; openTimeSetDialog(); }
+    public void s3z3FromClicked(View view) { currentTimeEdit = S3_Z2_TO_Z3_TIME; openTimeSetDialog(); }
+    public void s3z3ToClicked(View view) { currentTimeEdit = S3_Z3_TO_OUT_TIME; openTimeSetDialog(); }
 
 
+    public void s4z1FromClicked(View view) { currentTimeEdit = S4_OUT_TO_Z1_TIME; openTimeSetDialog(); }
+    public void s4z1ToClicked(View view) { currentTimeEdit = S4_Z1_TO_Z2_TIME; openTimeSetDialog(); }
 
+    public void s4z2FromClicked(View view) { currentTimeEdit = S4_Z1_TO_Z2_TIME; openTimeSetDialog(); }
+    public void s4z2ToClicked(View view) { currentTimeEdit = S4_Z2_TO_Z3_TIME; openTimeSetDialog(); }
+
+    public void s4z3FromClicked(View view) { currentTimeEdit = S4_Z2_TO_Z3_TIME; openTimeSetDialog(); }
+    public void s4z3ToClicked(View view) { currentTimeEdit = S4_Z3_TO_OUT_TIME; openTimeSetDialog(); }
+
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        switch(parent.getId()) {
+            case R.id.s1ZoneSpinner:
+                s1NumZones = parent.getSelectedItemPosition() + 2;
+                setS1ZonesVisible(s1NumZones);
+                break;
+            case R.id.s2ZoneSpinner:
+                s2NumZones = parent.getSelectedItemPosition() + 2;
+                setS2ZonesVisible(s2NumZones);
+                break;
+            case R.id.s3ZoneSpinner:
+                s3NumZones = parent.getSelectedItemPosition() + 2;
+                setS3ZonesVisible(s3NumZones);
+                break;
+            case R.id.s4ZoneSpinner:
+                s4NumZones = parent.getSelectedItemPosition() + 2;
+                setS4ZonesVisible(s4NumZones);
+                break;
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    public void setSeasonsVisible(int n) {
+        switch(n) {
+            case 1:
+                findViewById(R.id.s2ZoneLayout).setVisibility(View.GONE);
+                findViewById(R.id.s3ZoneLayout).setVisibility(View.GONE);
+                findViewById(R.id.s4ZoneLayout).setVisibility(View.GONE);
+                break;
+            case 2:
+                findViewById(R.id.s2ZoneLayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s3ZoneLayout).setVisibility(View.GONE);
+                findViewById(R.id.s4ZoneLayout).setVisibility(View.GONE);
+                break;
+            case 3:
+                findViewById(R.id.s2ZoneLayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s3ZoneLayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s4ZoneLayout).setVisibility(View.GONE);
+                break;
+            case 4:
+                findViewById(R.id.s2ZoneLayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s3ZoneLayout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s4ZoneLayout).setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+    public void setS1ZonesVisible(int n) {
+        switch(n) {
+            case 2:
+                findViewById(R.id.s1z2Layout).setVisibility(View.GONE);
+                findViewById(R.id.s1z3Layout).setVisibility(View.GONE);
+                break;
+            case 3:
+                findViewById(R.id.s1z2Layout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s1z3Layout).setVisibility(View.GONE);
+                break;
+            case 4:
+                findViewById(R.id.s1z2Layout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s1z3Layout).setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+    public void setS2ZonesVisible(int n) {
+        switch(n) {
+            case 2:
+                findViewById(R.id.s2z2Layout).setVisibility(View.GONE);
+                findViewById(R.id.s2z3Layout).setVisibility(View.GONE);
+                break;
+            case 3:
+                findViewById(R.id.s2z2Layout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s2z3Layout).setVisibility(View.GONE);
+                break;
+            case 4:
+                findViewById(R.id.s2z2Layout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s2z3Layout).setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+    public void setS3ZonesVisible(int n) {
+        switch(n) {
+            case 2:
+                findViewById(R.id.s3z2Layout).setVisibility(View.GONE);
+                findViewById(R.id.s3z3Layout).setVisibility(View.GONE);
+                break;
+            case 3:
+                findViewById(R.id.s3z2Layout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s3z3Layout).setVisibility(View.GONE);
+                break;
+            case 4:
+                findViewById(R.id.s3z2Layout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s3z3Layout).setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
+    public void setS4ZonesVisible(int n) {
+        switch(n) {
+            case 2:
+                findViewById(R.id.s4z2Layout).setVisibility(View.GONE);
+                findViewById(R.id.s4z3Layout).setVisibility(View.GONE);
+                break;
+            case 3:
+                findViewById(R.id.s4z2Layout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s4z3Layout).setVisibility(View.GONE);
+                break;
+            case 4:
+                findViewById(R.id.s4z2Layout).setVisibility(View.VISIBLE);
+                findViewById(R.id.s4z3Layout).setVisibility(View.VISIBLE);
+                break;
+        }
+    }
 }

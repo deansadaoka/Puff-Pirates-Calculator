@@ -35,6 +35,9 @@ public class Season {
     public int[] startDate; // [month, day]
     public int[] endDate; // [month, day]
 
+    public Zone[] zones; // [zone 1, zone 2, zone 3, outside zones]
+    public int numZones;
+
     public String name;
 
     public Season(int tier) {
@@ -49,7 +52,13 @@ public class Season {
         this.utilRates = new double[4];
         this.startDate = new int[2];
         this.endDate = new int[2];
+        this.zones = new Zone[4];
+        this.numZones = 2;
         name = "Name";
+
+        for (int i = 0; i < 4; i++) {
+            zones[i] = new Zone();
+        }
     }
 
     // If no tier, tier set to 2 by default
@@ -65,22 +74,13 @@ public class Season {
         this.utilRates = new double[4];
         this.startDate = new int[2];
         this.endDate = new int[2];
+        this.zones = new Zone[4];
+        this.numZones = 2;
         name = "Name";
-    }
 
-    protected Season(Parcel in) {
-        energyRange = in.createDoubleArray();
-        utilRates = in.createDoubleArray();
-        delivery = in.readDouble();
-        fixed = in.readDouble();
-        regulatory = in.readDouble();
-        taxRate = in.readDouble();
-        tier = in.readInt();
-        monthlyBill = in.readDouble();
-        tax = in.readDouble();
-        name = in.readString();
-        startDate = in.createIntArray();
-        endDate = in.createIntArray();
+        for (int i = 0; i < 4; i++) {
+            zones[i] = new Zone();
+        }
     }
 
 

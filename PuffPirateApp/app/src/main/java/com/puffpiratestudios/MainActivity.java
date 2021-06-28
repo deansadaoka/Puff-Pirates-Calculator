@@ -67,6 +67,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Context context = getApplicationContext();
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_DATA_FILE, MODE_PRIVATE);
 
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(SHARED_PREFERENCES_DATA_KEY);
+        editor.commit();
+
         if (sharedPreferences.contains(SHARED_PREFERENCES_DATA_KEY)) {
             Gson gson = new Gson();
             String calcJson = sharedPreferences.getString(SHARED_PREFERENCES_DATA_KEY, "NaN");
@@ -280,6 +284,71 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent i = new Intent(this, SetTOUZonesActivity.class);
         i.putExtra("numSeasons", calcs[calcType].numSeasons);
 
+        i.putExtra("s1NumZones", calcs[calcType].seasons.get(0).numZones);
+        i.putExtra("s2NumZones", calcs[calcType].seasons.get(1).numZones);
+        i.putExtra("s3NumZones", calcs[calcType].seasons.get(2).numZones);
+        i.putExtra("s4NumZones", calcs[calcType].seasons.get(3).numZones);
+
+        i.putExtra("z1Name", calcs[calcType].zoneNames[0]);
+        i.putExtra("z2Name", calcs[calcType].zoneNames[1]);
+        i.putExtra("z3Name", calcs[calcType].zoneNames[2]);
+
+        i.putExtra("s1z1Rate", calcs[calcType].seasons.get(0).zones[0].rate);
+        i.putExtra("s2z1Rate", calcs[calcType].seasons.get(1).zones[0].rate);
+        i.putExtra("s3z1Rate", calcs[calcType].seasons.get(2).zones[0].rate);
+        i.putExtra("s4z1Rate", calcs[calcType].seasons.get(3).zones[0].rate);
+
+        i.putExtra("s1z2Rate", calcs[calcType].seasons.get(0).zones[1].rate);
+        i.putExtra("s2z2Rate", calcs[calcType].seasons.get(1).zones[1].rate);
+        i.putExtra("s3z2Rate", calcs[calcType].seasons.get(2).zones[1].rate);
+        i.putExtra("s4z2Rate", calcs[calcType].seasons.get(3).zones[1].rate);
+
+        i.putExtra("s1z3Rate", calcs[calcType].seasons.get(0).zones[2].rate);
+        i.putExtra("s2z3Rate", calcs[calcType].seasons.get(1).zones[2].rate);
+        i.putExtra("s3z3Rate", calcs[calcType].seasons.get(2).zones[2].rate);
+        i.putExtra("s4z3Rate", calcs[calcType].seasons.get(3).zones[2].rate);
+
+        i.putExtra("s1OutRate", calcs[calcType].seasons.get(0).zones[3].rate);
+        i.putExtra("s2OutRate", calcs[calcType].seasons.get(1).zones[3].rate);
+        i.putExtra("s3OutRate", calcs[calcType].seasons.get(2).zones[3].rate);
+        i.putExtra("s4OutRate", calcs[calcType].seasons.get(3).zones[3].rate);
+
+        i.putExtra("s1_z1_from_hour", calcs[calcType].seasons.get(0).zones[0].fromHour);
+        i.putExtra("s1_z1_from_min", calcs[calcType].seasons.get(0).zones[0].fromMinute);
+        i.putExtra("s1_z2_from_hour", calcs[calcType].seasons.get(0).zones[1].fromHour);
+        i.putExtra("s1_z2_from_min", calcs[calcType].seasons.get(0).zones[1].fromMinute);
+        i.putExtra("s1_z3_from_hour", calcs[calcType].seasons.get(0).zones[2].fromHour);
+        i.putExtra("s1_z3_from_min", calcs[calcType].seasons.get(0).zones[2].fromMinute);
+        i.putExtra("s1_out_from_hour", calcs[calcType].seasons.get(0).zones[3].fromHour);
+        i.putExtra("s1_out_from_min", calcs[calcType].seasons.get(0).zones[3].fromMinute);
+
+        i.putExtra("s2_z1_from_hour", calcs[calcType].seasons.get(1).zones[0].fromHour);
+        i.putExtra("s2_z1_from_min", calcs[calcType].seasons.get(1).zones[0].fromMinute);
+        i.putExtra("s2_z2_from_hour", calcs[calcType].seasons.get(1).zones[1].fromHour);
+        i.putExtra("s2_z2_from_min", calcs[calcType].seasons.get(1).zones[1].fromMinute);
+        i.putExtra("s2_z3_from_hour", calcs[calcType].seasons.get(1).zones[2].fromHour);
+        i.putExtra("s2_z3_from_min", calcs[calcType].seasons.get(1).zones[2].fromMinute);
+        i.putExtra("s2_out_from_hour", calcs[calcType].seasons.get(1).zones[3].fromHour);
+        i.putExtra("s2_out_from_min", calcs[calcType].seasons.get(1).zones[3].fromMinute);
+
+        i.putExtra("s3_z1_from_hour", calcs[calcType].seasons.get(2).zones[0].fromHour);
+        i.putExtra("s3_z1_from_min", calcs[calcType].seasons.get(2).zones[0].fromMinute);
+        i.putExtra("s3_z2_from_hour", calcs[calcType].seasons.get(2).zones[1].fromHour);
+        i.putExtra("s3_z2_from_min", calcs[calcType].seasons.get(2).zones[1].fromMinute);
+        i.putExtra("s3_z3_from_hour", calcs[calcType].seasons.get(2).zones[2].fromHour);
+        i.putExtra("s3_z3_from_min", calcs[calcType].seasons.get(2).zones[2].fromMinute);
+        i.putExtra("s3_out_from_hour", calcs[calcType].seasons.get(2).zones[3].fromHour);
+        i.putExtra("s3_out_from_min", calcs[calcType].seasons.get(2).zones[3].fromMinute);
+
+        i.putExtra("s4_z1_from_hour", calcs[calcType].seasons.get(3).zones[0].fromHour);
+        i.putExtra("s4_z1_from_min", calcs[calcType].seasons.get(3).zones[0].fromMinute);
+        i.putExtra("s4_z2_from_hour", calcs[calcType].seasons.get(3).zones[1].fromHour);
+        i.putExtra("s4_z2_from_min", calcs[calcType].seasons.get(3).zones[1].fromMinute);
+        i.putExtra("s4_z3_from_hour", calcs[calcType].seasons.get(3).zones[2].fromHour);
+        i.putExtra("s4_z3_from_min", calcs[calcType].seasons.get(3).zones[2].fromMinute);
+        i.putExtra("s4_out_from_hour", calcs[calcType].seasons.get(3).zones[3].fromHour);
+        i.putExtra("s4_out_from_min", calcs[calcType].seasons.get(3).zones[3].fromMinute);
+
         startActivityForResult(i, TOU_ZONES_ACTIVITY_REQUEST_CODE);
     }
 
@@ -477,6 +546,107 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
             case TOU_ZONES_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
+                    calcs[calcType].seasons.get(0).numZones = data.getIntExtra("s1NumZones", calcs[calcType].seasons.get(0).numZones);
+                    calcs[calcType].seasons.get(1).numZones = data.getIntExtra("s2NumZones", calcs[calcType].seasons.get(1).numZones);
+                    calcs[calcType].seasons.get(2).numZones = data.getIntExtra("s3NumZones", calcs[calcType].seasons.get(2).numZones);
+                    calcs[calcType].seasons.get(3).numZones = data.getIntExtra("s4NumZones", calcs[calcType].seasons.get(3).numZones);
+
+                    calcs[calcType].zoneNames[0] = data.getStringExtra("z1Name");
+                    calcs[calcType].zoneNames[1] = data.getStringExtra("z2Name");
+                    calcs[calcType].zoneNames[2] = data.getStringExtra("z3Name");
+
+                    calcs[calcType].seasons.get(0).zones[0].rate = data.getDoubleExtra("s1z1Rate", calcs[calcType].seasons.get(0).zones[0].rate);
+                    calcs[calcType].seasons.get(1).zones[0].rate = data.getDoubleExtra("s2z1Rate", calcs[calcType].seasons.get(1).zones[0].rate);
+                    calcs[calcType].seasons.get(2).zones[0].rate = data.getDoubleExtra("s3z1Rate", calcs[calcType].seasons.get(2).zones[0].rate);
+                    calcs[calcType].seasons.get(3).zones[0].rate = data.getDoubleExtra("s4z1Rate", calcs[calcType].seasons.get(3).zones[0].rate);
+
+                    calcs[calcType].seasons.get(0).zones[1].rate = data.getDoubleExtra("s1z2Rate", calcs[calcType].seasons.get(0).zones[1].rate);
+                    calcs[calcType].seasons.get(1).zones[1].rate = data.getDoubleExtra("s2z2Rate", calcs[calcType].seasons.get(1).zones[1].rate);
+                    calcs[calcType].seasons.get(2).zones[1].rate = data.getDoubleExtra("s3z2Rate", calcs[calcType].seasons.get(2).zones[1].rate);
+                    calcs[calcType].seasons.get(3).zones[1].rate = data.getDoubleExtra("s4z2Rate", calcs[calcType].seasons.get(3).zones[1].rate);
+
+                    calcs[calcType].seasons.get(0).zones[2].rate = data.getDoubleExtra("s1z3Rate", calcs[calcType].seasons.get(0).zones[2].rate);
+                    calcs[calcType].seasons.get(1).zones[2].rate = data.getDoubleExtra("s2z3Rate", calcs[calcType].seasons.get(1).zones[2].rate);
+                    calcs[calcType].seasons.get(2).zones[2].rate = data.getDoubleExtra("s3z3Rate", calcs[calcType].seasons.get(2).zones[2].rate);
+                    calcs[calcType].seasons.get(3).zones[2].rate = data.getDoubleExtra("s4z3Rate", calcs[calcType].seasons.get(3).zones[2].rate);
+
+                    calcs[calcType].seasons.get(0).zones[3].rate = data.getDoubleExtra("s1OutRate", calcs[calcType].seasons.get(0).zones[3].rate);
+                    calcs[calcType].seasons.get(1).zones[3].rate = data.getDoubleExtra("s2OutRate", calcs[calcType].seasons.get(1).zones[3].rate);
+                    calcs[calcType].seasons.get(2).zones[3].rate = data.getDoubleExtra("s3OutRate", calcs[calcType].seasons.get(2).zones[3].rate);
+                    calcs[calcType].seasons.get(3).zones[3].rate = data.getDoubleExtra("s4OutRate", calcs[calcType].seasons.get(3).zones[3].rate);
+
+                    calcs[calcType].seasons.get(0).zones[0].fromHour = data.getIntExtra("s1z1FromHour", calcs[calcType].seasons.get(0).zones[0].fromHour);
+                    calcs[calcType].seasons.get(1).zones[0].fromHour = data.getIntExtra("s2z1FromHour", calcs[calcType].seasons.get(1).zones[0].fromHour);
+                    calcs[calcType].seasons.get(2).zones[0].fromHour = data.getIntExtra("s3z1FromHour", calcs[calcType].seasons.get(2).zones[0].fromHour);
+                    calcs[calcType].seasons.get(3).zones[0].fromHour = data.getIntExtra("s4z1FromHour", calcs[calcType].seasons.get(3).zones[0].fromHour);
+                    calcs[calcType].seasons.get(0).zones[0].fromMinute = data.getIntExtra("s1z1FromMin", calcs[calcType].seasons.get(0).zones[0].fromMinute);
+                    calcs[calcType].seasons.get(1).zones[0].fromMinute = data.getIntExtra("s2z1FromMin", calcs[calcType].seasons.get(1).zones[0].fromMinute);
+                    calcs[calcType].seasons.get(2).zones[0].fromMinute = data.getIntExtra("s3z1FromMin", calcs[calcType].seasons.get(2).zones[0].fromMinute);
+                    calcs[calcType].seasons.get(3).zones[0].fromMinute = data.getIntExtra("s4z1FromMin", calcs[calcType].seasons.get(3).zones[0].fromMinute);
+
+                    calcs[calcType].seasons.get(0).zones[1].fromHour = data.getIntExtra("s1z2FromHour", calcs[calcType].seasons.get(0).zones[1].fromHour);
+                    calcs[calcType].seasons.get(1).zones[1].fromHour = data.getIntExtra("s2z2FromHour", calcs[calcType].seasons.get(1).zones[1].fromHour);
+                    calcs[calcType].seasons.get(2).zones[1].fromHour = data.getIntExtra("s3z2FromHour", calcs[calcType].seasons.get(2).zones[1].fromHour);
+                    calcs[calcType].seasons.get(3).zones[1].fromHour = data.getIntExtra("s4z2FromHour", calcs[calcType].seasons.get(3).zones[1].fromHour);
+                    calcs[calcType].seasons.get(0).zones[1].fromMinute = data.getIntExtra("s1z2FromMin", calcs[calcType].seasons.get(0).zones[1].fromMinute);
+                    calcs[calcType].seasons.get(1).zones[1].fromMinute = data.getIntExtra("s2z2FromMin", calcs[calcType].seasons.get(1).zones[1].fromMinute);
+                    calcs[calcType].seasons.get(2).zones[1].fromMinute = data.getIntExtra("s3z2FromMin", calcs[calcType].seasons.get(2).zones[1].fromMinute);
+                    calcs[calcType].seasons.get(3).zones[1].fromMinute = data.getIntExtra("s4z2FromMin", calcs[calcType].seasons.get(3).zones[1].fromMinute);
+
+                    calcs[calcType].seasons.get(0).zones[2].fromHour = data.getIntExtra("s1z3FromHour", calcs[calcType].seasons.get(0).zones[2].fromHour);
+                    calcs[calcType].seasons.get(1).zones[2].fromHour = data.getIntExtra("s2z3FromHour", calcs[calcType].seasons.get(1).zones[2].fromHour);
+                    calcs[calcType].seasons.get(2).zones[2].fromHour = data.getIntExtra("s3z3FromHour", calcs[calcType].seasons.get(2).zones[2].fromHour);
+                    calcs[calcType].seasons.get(3).zones[2].fromHour = data.getIntExtra("s4z3FromHour", calcs[calcType].seasons.get(3).zones[2].fromHour);
+                    calcs[calcType].seasons.get(0).zones[2].fromMinute = data.getIntExtra("s1z3FromMin", calcs[calcType].seasons.get(0).zones[2].fromMinute);
+                    calcs[calcType].seasons.get(1).zones[2].fromMinute = data.getIntExtra("s2z3FromMin", calcs[calcType].seasons.get(1).zones[2].fromMinute);
+                    calcs[calcType].seasons.get(2).zones[2].fromMinute = data.getIntExtra("s3z3FromMin", calcs[calcType].seasons.get(2).zones[2].fromMinute);
+                    calcs[calcType].seasons.get(3).zones[2].fromMinute = data.getIntExtra("s4z3FromMin", calcs[calcType].seasons.get(3).zones[2].fromMinute);
+
+                    calcs[calcType].seasons.get(0).zones[3].fromHour = data.getIntExtra("s1OutFromHour", calcs[calcType].seasons.get(0).zones[3].fromHour);
+                    calcs[calcType].seasons.get(1).zones[3].fromHour = data.getIntExtra("s2OutFromHour", calcs[calcType].seasons.get(1).zones[3].fromHour);
+                    calcs[calcType].seasons.get(2).zones[3].fromHour = data.getIntExtra("s3OutFromHour", calcs[calcType].seasons.get(2).zones[3].fromHour);
+                    calcs[calcType].seasons.get(3).zones[3].fromHour = data.getIntExtra("s4OutFromHour", calcs[calcType].seasons.get(3).zones[3].fromHour);
+                    calcs[calcType].seasons.get(0).zones[3].fromMinute = data.getIntExtra("s1OutFromMin", calcs[calcType].seasons.get(0).zones[3].fromMinute);
+                    calcs[calcType].seasons.get(1).zones[3].fromMinute = data.getIntExtra("s2OutFromMin", calcs[calcType].seasons.get(1).zones[3].fromMinute);
+                    calcs[calcType].seasons.get(2).zones[3].fromMinute = data.getIntExtra("s3OutFromMin", calcs[calcType].seasons.get(2).zones[3].fromMinute);
+                    calcs[calcType].seasons.get(3).zones[3].fromMinute = data.getIntExtra("s4OutFromMin", calcs[calcType].seasons.get(3).zones[3].fromMinute);
+
+
+                    calcs[calcType].seasons.get(0).zones[0].toHour = data.getIntExtra("s1z1ToHour", calcs[calcType].seasons.get(0).zones[0].toHour);
+                    calcs[calcType].seasons.get(1).zones[0].toHour = data.getIntExtra("s2z1ToHour", calcs[calcType].seasons.get(1).zones[0].toHour);
+                    calcs[calcType].seasons.get(2).zones[0].toHour = data.getIntExtra("s3z1ToHour", calcs[calcType].seasons.get(2).zones[0].toHour);
+                    calcs[calcType].seasons.get(3).zones[0].toHour = data.getIntExtra("s4z1ToHour", calcs[calcType].seasons.get(3).zones[0].toHour);
+                    calcs[calcType].seasons.get(0).zones[0].toMinute = data.getIntExtra("s1z1ToMin", calcs[calcType].seasons.get(0).zones[0].toMinute);
+                    calcs[calcType].seasons.get(1).zones[0].toMinute = data.getIntExtra("s2z1ToMin", calcs[calcType].seasons.get(1).zones[0].toMinute);
+                    calcs[calcType].seasons.get(2).zones[0].toMinute = data.getIntExtra("s3z1ToMin", calcs[calcType].seasons.get(2).zones[0].toMinute);
+                    calcs[calcType].seasons.get(3).zones[0].toMinute = data.getIntExtra("s4z1ToMin", calcs[calcType].seasons.get(3).zones[0].toMinute);
+
+                    calcs[calcType].seasons.get(0).zones[1].toHour = data.getIntExtra("s1z2ToHour", calcs[calcType].seasons.get(0).zones[1].toHour);
+                    calcs[calcType].seasons.get(1).zones[1].toHour = data.getIntExtra("s2z2ToHour", calcs[calcType].seasons.get(1).zones[1].toHour);
+                    calcs[calcType].seasons.get(2).zones[1].toHour = data.getIntExtra("s3z2ToHour", calcs[calcType].seasons.get(2).zones[1].toHour);
+                    calcs[calcType].seasons.get(3).zones[1].toHour = data.getIntExtra("s4z2ToHour", calcs[calcType].seasons.get(3).zones[1].toHour);
+                    calcs[calcType].seasons.get(0).zones[1].toMinute = data.getIntExtra("s1z2ToMin", calcs[calcType].seasons.get(0).zones[1].toMinute);
+                    calcs[calcType].seasons.get(1).zones[1].toMinute = data.getIntExtra("s2z2ToMin", calcs[calcType].seasons.get(1).zones[1].toMinute);
+                    calcs[calcType].seasons.get(2).zones[1].toMinute = data.getIntExtra("s3z2ToMin", calcs[calcType].seasons.get(2).zones[1].toMinute);
+                    calcs[calcType].seasons.get(3).zones[1].toMinute = data.getIntExtra("s4z2ToMin", calcs[calcType].seasons.get(3).zones[1].toMinute);
+
+                    calcs[calcType].seasons.get(0).zones[2].toHour = data.getIntExtra("s1z3ToHour", calcs[calcType].seasons.get(0).zones[2].toHour);
+                    calcs[calcType].seasons.get(1).zones[2].toHour = data.getIntExtra("s2z3ToHour", calcs[calcType].seasons.get(1).zones[2].toHour);
+                    calcs[calcType].seasons.get(2).zones[2].toHour = data.getIntExtra("s3z3ToHour", calcs[calcType].seasons.get(2).zones[2].toHour);
+                    calcs[calcType].seasons.get(3).zones[2].toHour = data.getIntExtra("s4z3ToHour", calcs[calcType].seasons.get(3).zones[2].toHour);
+                    calcs[calcType].seasons.get(0).zones[2].toMinute = data.getIntExtra("s1z3ToMin", calcs[calcType].seasons.get(0).zones[2].toMinute);
+                    calcs[calcType].seasons.get(1).zones[2].toMinute = data.getIntExtra("s2z3ToMin", calcs[calcType].seasons.get(1).zones[2].toMinute);
+                    calcs[calcType].seasons.get(2).zones[2].toMinute = data.getIntExtra("s3z3ToMin", calcs[calcType].seasons.get(2).zones[2].toMinute);
+                    calcs[calcType].seasons.get(3).zones[2].toMinute = data.getIntExtra("s4z3ToMin", calcs[calcType].seasons.get(3).zones[2].toMinute);
+
+                    calcs[calcType].seasons.get(0).zones[3].toHour = data.getIntExtra("s1OutToHour", calcs[calcType].seasons.get(0).zones[3].toHour);
+                    calcs[calcType].seasons.get(1).zones[3].toHour = data.getIntExtra("s2OutToHour", calcs[calcType].seasons.get(1).zones[3].toHour);
+                    calcs[calcType].seasons.get(2).zones[3].toHour = data.getIntExtra("s3OutToHour", calcs[calcType].seasons.get(2).zones[3].toHour);
+                    calcs[calcType].seasons.get(3).zones[3].toHour = data.getIntExtra("s4OutToHour", calcs[calcType].seasons.get(3).zones[3].toHour);
+                    calcs[calcType].seasons.get(0).zones[3].toMinute = data.getIntExtra("s1OutToMin", calcs[calcType].seasons.get(0).zones[3].toMinute);
+                    calcs[calcType].seasons.get(1).zones[3].toMinute = data.getIntExtra("s2OutToMin", calcs[calcType].seasons.get(1).zones[3].toMinute);
+                    calcs[calcType].seasons.get(2).zones[3].toMinute = data.getIntExtra("s3OutToMin", calcs[calcType].seasons.get(2).zones[3].toMinute);
+                    calcs[calcType].seasons.get(3).zones[3].toMinute = data.getIntExtra("s4OutToMin", calcs[calcType].seasons.get(3).zones[3].toMinute);
 
                 }
         }

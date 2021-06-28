@@ -1,10 +1,8 @@
 package com.puffpiratestudios;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
-
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +23,12 @@ public class Calc {
 
     public double a, b, c, z;
 
+    public String[] zoneNames;
+
+    public ArrayList<GregorianCalendar>[] holidays; // [USA, Canada]
+    int country; // 0 = USA, 1 = CANADA
+    boolean holidaysOff, sundaysOff, saturdaysOff;
+
     public Calc(int billingStructure) {
         this.seasons = new ArrayList<Season>();
         for (int i = 0; i < 4; i++) {
@@ -37,6 +41,19 @@ public class Calc {
         monthsPerBillingCycle = 1;
         numTiers = 2;
         this.billingStructure = billingStructure;
+        zoneNames = new String[3];
+        zoneNames[0] = "Name";
+        zoneNames[1] = "Name";
+        zoneNames[2] = "Name";
+
+        holidays = new ArrayList[2];
+        holidays[0] = new ArrayList<>();
+        holidays[1] = new ArrayList<>();
+
+        holidaysOff = false;
+        sundaysOff = false;
+        saturdaysOff = false;
+        country = 0;
     }
 
     public void updateAllSeasonTiers(int new_tier) {
@@ -231,6 +248,28 @@ public class Calc {
 
     private double dailyEnergyUsage() {
         return z * 24;
+    }
+
+    public int numDaysBetweenPeriod(GregorianCalendar start, GregorianCalendar end) {
+        long numHolidays = 0;
+
+        final int startW = start.get(Calendar.DAY_OF_WEEK);
+        final int endW = end.get(Calendar.DAY_OF_WEEK);
+
+        long days = (end.getTime().getTime() - start.getTime().getTime()) / (1000 * 60 * 60 * 24);
+
+        long numSat = saturdaysOff ? (days + startW) / 7 : 0;
+        long numSun = sundaysOff ? ((days + startW) / 7) + (startW == Calendar.SUNDAY ? 1 : 0) + (endW == Calendar.SUNDAY ? 1 : 0): 0;
+
+        if (holidaysOff) {
+            for (GregorianCalendar ld : holidays[country]) {
+                if ((start.before(ld) || start.equals(ld)) && end.after(ld)) {
+                    numHolidays++;
+                }
+            }
+        }
+
+        return (int)(days - numSat - numSun - numHolidays);
     }
 
 

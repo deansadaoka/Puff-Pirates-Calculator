@@ -32,6 +32,80 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="left|center"
+                android:layout_marginTop="16dp">
+
+                <TextView
+                    android:id="@+id/z1NameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zone 1 Name: "
+                    android:textColor="#040303"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/z1NameEdit"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/z2NameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zone 2 Name: "
+                    android:textColor="#040303"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="32dp"/>
+
+                <EditText
+                    android:id="@+id/z2NameEdit"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/z3NameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zone 3 Name: "
+                    android:textColor="#040303"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="32dp"/>
+
+                <EditText
+                    android:id="@+id/z3NameEdit"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:textColor="#000000"
+                    android:textColorHint="#000000"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/s1ZoneLayout"
@@ -58,26 +132,7 @@
                     android:gravity="left|center_vertical"
                     android:orientation="horizontal" >
 
-                    <TextView
-                        android:id="@+id/s1ZoneNameText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Zone Name: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
 
-                    <EditText
-                        android:id="@+id/s1ZoneNameEdit"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/s1ZoneNumText"
@@ -419,26 +474,6 @@
                     android:gravity="left|center_vertical"
                     android:orientation="horizontal" >
 
-                    <TextView
-                        android:id="@+id/s2ZoneNameText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Zone Name: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/s2ZoneNameEdit"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/s2ZoneNumText"
@@ -783,26 +818,6 @@
                     android:gravity="left|center_vertical"
                     android:orientation="horizontal" >
 
-                    <TextView
-                        android:id="@+id/s3ZoneNameText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Zone Name: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/s3ZoneNameEdit"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/s3ZoneNumText"
@@ -1144,27 +1159,6 @@
                     android:layout_height="wrap_content"
                     android:gravity="left|center_vertical"
                     android:orientation="horizontal" >
-
-                    <TextView
-                        android:id="@+id/s4ZoneNameText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Zone Name: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/s4ZoneNameEdit"
-                        android:layout_width="150dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/s4ZoneNumText"

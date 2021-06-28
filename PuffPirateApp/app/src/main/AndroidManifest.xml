@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PuffPirateApp">
-        <activity android:name=".SetTOUZonesActivity"></activity>
+        <activity
+            android:name=".SetHolidaysActivity"
+            android:label="@string/title_activity_set_holidays"
+            android:theme="@style/Theme.PuffPirateApp.NoActionBar"></activity>
+        <activity android:name=".SetTOUZonesActivity" />
         <activity android:name=".SetBillingRateStructureActivity" />
         <activity android:name=".SetSeasonDetailsActivity" />
         <activity android:name=".SetTierRangesActivity" />
