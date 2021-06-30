@@ -7,97 +7,91 @@
     android:layout_height="match_parent"
     tools:context=".SetHolidaysActivity">
 
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical|top">
+
+
+        <TextView
+            android:id="@+id/HolidayTitle"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Set Holiday Dates"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/countrySpinner"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+
+        <ListView
+            android:id="@+id/USAListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <ListView
+            android:id="@+id/CAListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_vertical|top">
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal">
 
+            <Button
+                android:id="@+id/holidayCancel"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:background="#000000"
+                android:onClick="cancel"
+                android:text="Cancel"
+                app:backgroundTint="#F44336" />
 
-            <TextView
-                android:id="@+id/HolidayTitle"
-                android:layout_width="match_parent"
-                android:layout_height="37dp"
-                android:layout_marginTop="16dp"
-                android:gravity="center"
-                android:text="Set Holiday Dates"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Spinner
-                android:id="@+id/countrySpinner"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginLeft="4dp"
-                android:background="@android:drawable/btn_dropdown"
-                android:spinnerMode="dropdown" />
-
-            <ExpandableListView
-                android:id="@+id/USAListView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
-
-            <ExpandableListView
-                android:id="@+id/CAListView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/holidayCancel"
-                    android:layout_width="150dp"
-                    android:layout_height="70dp"
-                    android:background="#000000"
-                    android:onClick="cancel"
-                    android:text="Cancel"
-                    app:backgroundTint="#F44336" />
-
-                <Button
-                    android:id="@+id/holidaySubmit"
-                    android:layout_width="150dp"
-                    android:layout_height="70dp"
-                    android:layout_marginLeft="32dp"
-                    android:background="#000000"
-                    android:onClick="submit"
-                    android:text="Submit"
-                    app:backgroundTint="#26C62C" />
-            </LinearLayout>
-
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/holidayFAB"
-                android:layout_width="56dp"
-                android:layout_height="56dp"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="10dp"
-                android:backgroundTint="@color/teal_700"
-                android:elevation="8dp"
-                android:src="@android:drawable/ic_input_add"
-                app:tint="@color/white"/>
-
-
+            <Button
+                android:id="@+id/holidaySubmit"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_marginLeft="32dp"
+                android:background="#000000"
+                android:onClick="submit"
+                android:text="Submit"
+                app:backgroundTint="#26C62C" />
         </LinearLayout>
 
-    </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/holidayFAB"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:backgroundTint="@color/teal_700"
+            android:elevation="8dp"
+            android:src="@android:drawable/ic_input_add"
+            app:tint="@color/white"/>
+
+
+    </LinearLayout>
+
 
 
 

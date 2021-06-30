@@ -116,6 +116,16 @@ public class Season {
         monthlyBill = energyUsage * utilRates[0];
     }
 
+    public double calcTOUTotal(double energyUsage, double[] percentInZones) {
+        monthlyBill = 0;
+        for (int i = 0; i < numZones - 1; i++) {
+            monthlyBill += energyUsage * (0.01 * percentInZones[i]) * zones[i].rate;
+        }
+        monthlyBill += energyUsage * (0.01 * percentInZones[3]) * zones[3].rate;
+        calcTax();
+        return getTotal();
+    }
+
     /**
      * Sums all costs and returns total. <br>
      * All costs must be calculated prior
@@ -390,7 +400,7 @@ public class Season {
         return days;
     }
 
-    private boolean dateInSeason(int[] d) {
+    public boolean dateInSeason(int[] d) {
         int[] tempEnd = new int[2];
         tempEnd[0] = endDate[0];
         tempEnd[1] = endDate[1];

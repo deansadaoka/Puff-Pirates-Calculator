@@ -178,6 +178,159 @@
                     android:background="@android:drawable/btn_dropdown"
                     android:spinnerMode="dropdown" />
 
+                <LinearLayout
+                    android:id="@+id/TOUProperties"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TOU Rates Applicable On: "
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+
+                    <CheckBox
+                        android:id="@+id/saturdayCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="Saturday"
+                        android:textSize="14sp"
+                        android:onClick="TOUPropertiesUpdate"/>
+
+                    <CheckBox
+                        android:id="@+id/sundayCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="Sunday"
+                        android:textSize="14sp"
+                        android:onClick="TOUPropertiesUpdate"/>
+
+                    <CheckBox
+                        android:id="@+id/holidaysCheckBox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="Holidays"
+                        android:textSize="14sp"
+                        android:onClick="TOUPropertiesUpdate"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="USA"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="14sp"/>
+
+                    <Switch
+                        android:id="@+id/USAorCA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="TOUPropertiesUpdate"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Canada"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="14sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/pctInZonesLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="% in Zones: "
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="Zone 1: "
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="14sp"/>
+
+                    <EditText
+                        android:id="@+id/zone1PCT"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:inputType="numberDecimal"
+                        android:text="0.00%"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="Zone 2: "
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="14sp"/>
+
+                    <EditText
+                        android:id="@+id/zone2PCT"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:inputType="numberDecimal"
+                        android:text="0.00%"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="Zone 3: "
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="14sp"/>
+
+                    <EditText
+                        android:id="@+id/zone3PCT"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:inputType="numberDecimal"
+                        android:text="0.00%"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="Out of Zone: "
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="14sp"/>
+
+                    <EditText
+                        android:id="@+id/zoneOutPCT"
+                        android:layout_width="70dp"
+                        android:layout_height="40dp"
+                        android:inputType="numberDecimal"
+                        android:text="0.00%"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
                 <Button
                     android:id="@+id/ToSetSeasonDetails"
                     android:layout_width="380dp"

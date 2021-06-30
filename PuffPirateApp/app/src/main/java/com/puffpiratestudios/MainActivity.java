@@ -11,12 +11,17 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +56,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     TextView bVal;
     TextView cVal;
 
+    EditText zone1PCT;
+    EditText zone2PCT;
+    EditText zone3PCT;
+    EditText zoneOutPCT;
+
     Spinner billingFrequencySpinner;
 
     Spinner billingStructureSpinner;
@@ -68,9 +78,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Context context = getApplicationContext();
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_DATA_FILE, MODE_PRIVATE);
 
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove(SHARED_PREFERENCES_DATA_KEY);
-        editor.commit();
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.remove(SHARED_PREFERENCES_DATA_KEY);
+//        editor.commit();
 
         if (sharedPreferences.contains(SHARED_PREFERENCES_DATA_KEY)) {
             Gson gson = new Gson();
@@ -104,10 +114,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         c = calcs[0].c;
         z = calcs[0].z;
 
+        ((CheckBox)findViewById(R.id.saturdayCheckBox)).setChecked(calcs[2].saturdaysOff);
+        ((CheckBox)findViewById(R.id.sundayCheckBox)).setChecked(calcs[2].sundaysOff);
+        ((CheckBox)findViewById(R.id.sundayCheckBox)).setChecked(calcs[2].sundaysOff);
+
+        if (calcs[2].country == 1) {
+            ((Switch)findViewById(R.id.USAorCA)).setChecked(true);
+        }
+        else {
+            ((Switch)findViewById(R.id.USAorCA)).setChecked(false);
+        }
+
 
         TextView billingInfo = (TextView) findViewById(R.id.BillingInfo);
         billingInfo.setBackgroundColor(Color.parseColor("#FF5555"));
         billingInfo.setTextColor(getResources().getColor(R.color.white));
+
+        zone1PCT = findViewById(R.id.zone1PCT);
+        zone2PCT = findViewById(R.id.zone2PCT);
+        zone3PCT = findViewById(R.id.zone3PCT);
+        zoneOutPCT = findViewById(R.id.zoneOutPCT);
+
+        initZonePCT();
 
         zVal = findViewById(R.id.zTextVal);
         zVal.setText(String.format("%.04f", z));
@@ -132,6 +160,17 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
         showDate();
+
+        calcs[calcType].saturdaysOff = ((CheckBox)findViewById(R.id.saturdayCheckBox)).isChecked();
+        calcs[calcType].sundaysOff = ((CheckBox)findViewById(R.id.sundayCheckBox)).isChecked();
+        calcs[calcType].holidaysOff = ((CheckBox)findViewById(R.id.holidaysCheckBox)).isChecked();
+
+        if (((Switch)findViewById(R.id.USAorCA)).isChecked()) {
+            calcs[calcType].country = 1;
+        }
+        else {
+            calcs[calcType].country = 0;
+        }
 
 
         String[] frequencyOptions = new String[] {"Monthly", "Bi-Monthly", "Quarterly"};
@@ -372,6 +411,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         calcs[calcType].a = a;
         calcs[calcType].b = b;
         calcs[calcType].c = c;
+        calcs[2].pctInZones[0] = Double.parseDouble(zone1PCT.getText().toString().replace("%", ""));
+        calcs[2].pctInZones[1] = Double.parseDouble(zone2PCT.getText().toString().replace("%", ""));
+        calcs[2].pctInZones[2] = Double.parseDouble(zone3PCT.getText().toString().replace("%", ""));
+        calcs[2].pctInZones[3] = Double.parseDouble(zoneOutPCT.getText().toString().replace("%", ""));
         double total = calcs[calcType].calculateTotal();
         ((TextView)findViewById(R.id.total)).setText(formatTotal(total));
     }
@@ -446,6 +489,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         calcs[calcType].b = Double.parseDouble(bVal.getText().toString());
         calcs[calcType].c = Double.parseDouble(cVal.getText().toString());
         calcs[calcType].z = calcs[calcType].a + calcs[calcType].b + calcs[calcType].c;
+        calcs[calcType].pctInZones[0] = Double.parseDouble(zone1PCT.getText().toString().replace("%", ""));
+        calcs[calcType].pctInZones[1] = Double.parseDouble(zone2PCT.getText().toString().replace("%", ""));
+        calcs[calcType].pctInZones[2] = Double.parseDouble(zone3PCT.getText().toString().replace("%", ""));
+        calcs[calcType].pctInZones[3] = Double.parseDouble(zoneOutPCT.getText().toString().replace("%", ""));
+        calcs[calcType].saturdaysOff = ((CheckBox)findViewById(R.id.saturdayCheckBox)).isChecked();
+        calcs[calcType].sundaysOff = ((CheckBox)findViewById(R.id.sundayCheckBox)).isChecked();
+        calcs[calcType].holidaysOff = ((CheckBox)findViewById(R.id.holidaysCheckBox)).isChecked();
+        calcs[calcType].country = ((Switch)findViewById(R.id.USAorCA)).isChecked() ? 1 : 0;
         unregisterReceiver(zUpdateReceiver);
     }
 
@@ -698,6 +749,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         calcs[0].c = Double.parseDouble(cVal.getText().toString());
         calcs[0].z = calcs[0].a + calcs[0].b + calcs[0].c;
 
+        calcs[calcType].pctInZones[0] = Double.parseDouble(zone1PCT.getText().toString().replace("%", ""));
+        calcs[calcType].pctInZones[1] = Double.parseDouble(zone2PCT.getText().toString().replace("%", ""));
+        calcs[calcType].pctInZones[2] = Double.parseDouble(zone3PCT.getText().toString().replace("%", ""));
+        calcs[calcType].pctInZones[3] = Double.parseDouble(zoneOutPCT.getText().toString().replace("%", ""));
+        calcs[calcType].saturdaysOff = ((CheckBox)findViewById(R.id.saturdayCheckBox)).isChecked();
+        calcs[calcType].sundaysOff = ((CheckBox)findViewById(R.id.sundayCheckBox)).isChecked();
+        calcs[calcType].holidaysOff = ((CheckBox)findViewById(R.id.holidaysCheckBox)).isChecked();
+        calcs[calcType].country = ((Switch)findViewById(R.id.USAorCA)).isChecked() ? 1 : 0;
+
         calcs[calcType].monthsPerBillingCycle = billingFrequencySpinner.getSelectedItemPosition() + 1;
 
         Gson gson = new Gson();
@@ -742,18 +802,99 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 findViewById(R.id.ToSetTierRanges).setVisibility(View.VISIBLE);
                 findViewById(R.id.ToSetZoneDetails).setVisibility(View.GONE);
                 findViewById(R.id.ToSetUtilityRates).setVisibility(View.VISIBLE);
+                findViewById(R.id.ToSetHolidayDetails).setVisibility(View.GONE);
+                findViewById(R.id.TOUProperties).setVisibility(View.GONE);
+                findViewById(R.id.pctInZonesLayout).setVisibility(View.GONE);
                 break;
             case 1:
                 findViewById(R.id.ToSetTierRanges).setVisibility(View.GONE);
                 findViewById(R.id.ToSetZoneDetails).setVisibility(View.GONE);
                 findViewById(R.id.ToSetUtilityRates).setVisibility(View.VISIBLE);
+                findViewById(R.id.ToSetHolidayDetails).setVisibility(View.GONE);
+                findViewById(R.id.TOUProperties).setVisibility(View.GONE);
+                findViewById(R.id.pctInZonesLayout).setVisibility(View.GONE);
                 break;
             case 2:
                 findViewById(R.id.ToSetTierRanges).setVisibility(View.GONE);
                 findViewById(R.id.ToSetZoneDetails).setVisibility(View.VISIBLE);
                 findViewById(R.id.ToSetUtilityRates).setVisibility(View.GONE);
+                findViewById(R.id.ToSetHolidayDetails).setVisibility(View.VISIBLE);
+                findViewById(R.id.TOUProperties).setVisibility(View.VISIBLE);
+                findViewById(R.id.pctInZonesLayout).setVisibility(View.VISIBLE);
                 break;
         }
     }
 
+
+    public void TOUPropertiesUpdate(View view) {
+        calcs[calcType].saturdaysOff = ((CheckBox)findViewById(R.id.saturdayCheckBox)).isChecked();
+        calcs[calcType].sundaysOff = ((CheckBox)findViewById(R.id.sundayCheckBox)).isChecked();
+        calcs[calcType].holidaysOff = ((CheckBox)findViewById(R.id.holidaysCheckBox)).isChecked();
+
+        if (((Switch)findViewById(R.id.USAorCA)).isChecked()) {
+            calcs[calcType].country = 1;
+        }
+        else {
+            calcs[calcType].country = 0;
+        }
+    }
+
+    public void initZonePCT() {
+        zone1PCT.setText(String.format("%.02f", calcs[2].pctInZones[0]) + "%");
+        zone2PCT.setText(String.format("%.02f%%", calcs[2].pctInZones[1]));
+        zone3PCT.setText(String.format("%.02f%%", calcs[2].pctInZones[2]));
+        zoneOutPCT.setText(String.format("%.02f%%", calcs[2].pctInZones[3]));
+
+        zone1PCT.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!zone1PCT.getText().toString().endsWith("%")) {
+                    zone1PCT.setText(zone1PCT.getText().toString() + "%");
+                }
+            }
+        });
+
+        zone2PCT.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!zone2PCT.getText().toString().endsWith("%")) {
+                    zone2PCT.setText(zone2PCT.getText().toString() + "%");
+                }
+            }
+        });
+
+        zone3PCT.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!zone3PCT.getText().toString().endsWith("%")) {
+                    zone3PCT.setText(zone3PCT.getText().toString() + "%");
+                }
+            }
+        });
+
+        zoneOutPCT.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (!zoneOutPCT.getText().toString().endsWith("%")) {
+                    zoneOutPCT.setText(zoneOutPCT.getText().toString() + "%");
+                }
+            }
+        });
+    }
 }

@@ -1,5 +1,7 @@
 package com.puffpiratestudios;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -30,6 +32,8 @@ public class Calc {
     int country; // 0 = USA, 1 = CANADA
     boolean holidaysOff, sundaysOff, saturdaysOff;
 
+    double[] pctInZones;
+
     public Calc(int billingStructure) {
         this.seasons = new ArrayList<Season>();
         for (int i = 0; i < 4; i++) {
@@ -59,6 +63,12 @@ public class Calc {
         sundaysOff = false;
         saturdaysOff = false;
         country = 0;
+
+        pctInZones = new double[4];
+        pctInZones[0] = 0;
+        pctInZones[1] = 0;
+        pctInZones[2] = 0;
+        pctInZones[3] = 0;
     }
 
     public void updateAllSeasonTiers(int new_tier) {
@@ -199,6 +209,11 @@ public class Calc {
 
         double energyPerCycle = dailyEnergyUsage() * totalDays;
 
+        // if TOU billing structure, total must be calculated a different way
+        if (billingStructure == 3) {
+            return calculateTOUTotal(totalDays, energyPerCycle);
+        }
+
         for (Map.Entry<Integer, Integer> s : sMap.entrySet()) {
             double pctOfBC = ((double)s.getValue() / totalDays);
             totalCost += (pctOfBC * seasons.get(s.getKey()).calcTotal(energyPerCycle, billingStructure));
@@ -206,6 +221,94 @@ public class Calc {
 
         return totalCost;
     }
+
+    public double calculateTOUTotal(double totalDays, double energyPerCycle) {
+        double totalCost = 0;
+
+        // Create GregorianCalendars to represent the start and end date of the billing cycle
+        GregorianCalendar startGC = new GregorianCalendar(startYear, startMonth - 1, startDay);
+        GregorianCalendar endGC = new GregorianCalendar(startYear, startMonth - 1, startDay);
+        endGC.add(Calendar.MONTH, monthsPerBillingCycle);
+
+        // if only 1 season, don't use season dates, just calculate days of the billing cycle
+        if (numSeasons == 1) {
+            int numDays = numDaysBetweenPeriod(startGC, endGC);
+            double pct = (double)numDays / totalDays;
+            Log.i("pct", String.format("%f", pct));
+            totalCost += pct * seasons.get(0).calcTOUTotal(energyPerCycle, pctInZones);
+            return totalCost;
+        }
+
+        // iterate through the seasons and calculate how much cost per season depending on days spent in season
+        for (int i = 0; i < numSeasons; i++) {
+            int daysInCurrentSeason = calcDaysInSeason(i, startGC, endGC);
+            double pctOfBC = (double) daysInCurrentSeason / totalDays;
+            totalCost += pctOfBC * seasons.get(i).calcTOUTotal(energyPerCycle, pctInZones);
+        }
+        return totalCost;
+    }
+
+    /**
+     * Calculates the number of days spent in each season <br>
+     * Accounts for days off (weekends, holidays)
+     * @param seasonNum the index of the season (0-3)
+     * @param BCStartDate GregorianCalendar of the start date of Billing Cycle
+     * @param BCEndDate GregorianCalendar of the end date of Billing Cycle (should be start date + monthsInBillingCycle)
+     * @return number of days spent in the season that will be charged
+     */
+    private int calcDaysInSeason(int seasonNum, GregorianCalendar BCStartDate, GregorianCalendar BCEndDate) {
+        //Create GregorianCalendar for seasonStartDate and seasonEndDate
+        GregorianCalendar sStartDate;
+        GregorianCalendar sEndDate;
+
+        //Create int values for season date month and day
+        int sStartMonth = seasons.get(seasonNum).startDate[0];
+        int sStartDay = seasons.get(seasonNum).startDate[1];
+        int sEndMonth = seasons.get(seasonNum).endDate[0];
+        int sEndDay = seasons.get(seasonNum).endDate[1];
+
+        sStartDate = new GregorianCalendar(BCStartDate.get(Calendar.YEAR),
+                sStartMonth - 1, sStartDay);
+
+        // if startDate month is after endDate month then the season cross a year (ex: from Dec to Jan)
+        if (sStartMonth > sEndMonth) {
+            //set season endDate to following year
+            sEndDate = new GregorianCalendar(BCStartDate.get(Calendar.YEAR) + 1,
+                    sEndMonth - 1, sEndDay);
+        }
+        else {
+            // otherwise set season endDate to current year
+            sEndDate = new GregorianCalendar(BCStartDate.get(Calendar.YEAR),
+                    sEndMonth - 1, sEndDay);
+        }
+
+        // add one day to the season end date because day calculation is exclusive
+        sEndDate.add(Calendar.DAY_OF_YEAR, 1);
+
+        // subtract one day from the season start date because day calculation is exclusive
+        sStartDate.add(Calendar.DAY_OF_YEAR, -1);
+
+        // if billing cycle is entirely in the season
+        if (sStartDate.before(BCStartDate) && sEndDate.after(BCEndDate)) {
+            return numDaysBetweenPeriod(BCStartDate, BCEndDate);
+        }
+        // if billing cycle starts after the season startDate but ends after the endDate
+        else if (sStartDate.before(BCStartDate)) {
+            // return days between BCStartDate and season End Date
+            return numDaysBetweenPeriod(BCStartDate, sEndDate);
+        }
+        // if billing cycle starts before the season startDate but ends before the endDate
+        else if (sEndDate.after(BCEndDate)) {
+            // return days between sStartDate and the BCEndDate
+            return numDaysBetweenPeriod(sStartDate, BCEndDate);
+        }
+        // at this point, we know the billing cycle has ZERO days in the season
+        else {
+            return 0;
+        }
+
+    }
+
 
     /**
      * Creates a hash map that includes the number of days the billing cycle is in a season

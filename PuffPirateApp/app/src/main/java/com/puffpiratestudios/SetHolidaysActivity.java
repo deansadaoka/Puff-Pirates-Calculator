@@ -35,10 +35,14 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
 
     private FloatingActionButton addHolidayFAB;
 
-    HolidayDataSet holidayDataSet = new HolidayDataSet();
-
+    ArrayList<HolidayData> holidaysUSA = new ArrayList<>();
+    ArrayList<HolidayData> holidaysCA = new ArrayList<>();
 
     int country;
+
+    String nameToBeAdded;
+
+    HolidayAdapter holidayAdapterUSA;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +70,11 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
         Intent i = getIntent();
         country = i.getIntExtra("country", 0);
 
-        holidayDataSet.addIntentHolidays(i.getStringArrayListExtra("holidayNamesUSA"),
-                i.getLongArrayExtra("datesUSA"), 0);
+        addIntentHolidays(holidaysUSA, i.getStringArrayListExtra("holidayNamesUSA"),
+                i.getLongArrayExtra("datesUSA"));
 
-        holidayDataSet.addIntentHolidays(i.getStringArrayListExtra("holidayNamesCA"),
-                i.getLongArrayExtra("datesCA"), 1);
+        addIntentHolidays(holidaysCA, i.getStringArrayListExtra("holidayNamesCA"),
+                i.getLongArrayExtra("datesCA"));
 
 
         String[] countryOptions = new String[] {"USA", "Canada"};
@@ -83,18 +87,23 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
         countrySpinner.setOnItemSelectedListener(this);
         countrySpinner.setSelection(country);
 
+
+        holidayAdapterUSA = new HolidayAdapter(holidaysUSA, getApplicationContext());
+        USAListView = findViewById(R.id.USAListView);
+        USAListView.setAdapter(holidayAdapterUSA);
+
+
+
     }
 
     public void submit(View v) {
         Intent i = new Intent();
 
-        holidayDataSet.prepReturnValues();
+        i.putExtra("holidayNamesUSA", getHolidayNames(holidaysUSA));
+        i.putExtra("holidayNamesCA", getHolidayNames(holidaysCA));
 
-        i.putExtra("holidayNamesUSA", holidayDataSet.getHolidayNames(0));
-        i.putExtra("holidayNamesCA", holidayDataSet.getHolidayNames(0));
-
-        i.putExtra("datesUSA", holidayDataSet.getHolidayDates(0));
-        i.putExtra("datesCA", holidayDataSet.getHolidayDates(1));
+        i.putExtra("datesUSA", getHolidayDates(holidaysUSA));
+        i.putExtra("datesCA", getHolidayDates(holidaysCA));
 
         setResult(RESULT_OK, i);
         finish();
@@ -119,7 +128,7 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
         builder.setPositiveButton("Set Date", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                holidayDataSet.queueString(nameEdit.getText().toString());
+                nameToBeAdded = nameEdit.getText().toString();
                 openDateSetDialog();
             }
         });
@@ -136,7 +145,13 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
     DatePickerDialog.OnDateSetListener onDateSetListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            holidayDataSet.addDateToName((new GregorianCalendar(year, month, dayOfMonth)).getTime().getTime(), country);
+            if (country == 0) {
+                holidaysUSA.add(new HolidayData(nameToBeAdded, (new GregorianCalendar(year, month, dayOfMonth)).getTime().getTime()));
+                holidayAdapterUSA.notifyDataSetChanged();
+            }
+            else {
+                holidaysCA.add(new HolidayData(nameToBeAdded, (new GregorianCalendar(year, month, dayOfMonth)).getTime().getTime()));
+            }
         }
     };
 
@@ -166,5 +181,27 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {}
+
+    private void addIntentHolidays(ArrayList<HolidayData> data, ArrayList<String> names, long[] dates) {
+        for (int i = 0; i < names.size(); i++) {
+            data.add(new HolidayData(names.get(i), dates[i]));
+        }
+    }
+
+    private ArrayList<String> getHolidayNames(ArrayList<HolidayData> data) {
+        ArrayList<String> names = new ArrayList<>();
+        for (int i = 0; i < data.size(); i++) {
+            names.add(data.get(i).getName());
+        }
+        return names;
+    }
+
+    private long[] getHolidayDates(ArrayList<HolidayData> data) {
+        long[] dates = new long[data.size()];
+        for (int i = 0; i < data.size(); i++) {
+            dates[i] = data.get(i).getDate();
+        }
+        return dates;
+    }
 
 }
