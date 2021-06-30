@@ -429,6 +429,10 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
         s4z3ToButton.setText(formatTime(s4_z3_out_hour, s4_z3_out_min));
         s4OutFrom.setText(formatTime(s4_z3_out_hour, s4_z3_out_min));
 
+        set_s1_out_from_text();
+        set_s2_out_from_text();
+        set_s3_out_from_text();
+        set_s4_out_from_text();
 
 
     }

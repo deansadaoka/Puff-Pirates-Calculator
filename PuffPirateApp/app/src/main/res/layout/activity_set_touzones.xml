@@ -51,13 +51,11 @@
                 <EditText
                     android:id="@+id/z1NameEdit"
                     android:layout_width="100dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="40dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
-                    android:ems="10"
                     android:inputType="textPersonName"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <TextView
@@ -78,8 +76,7 @@
                     android:layout_marginLeft="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
                 <TextView
@@ -100,8 +97,7 @@
                     android:layout_marginLeft="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:textColor="#000000"
-                    android:textColorHint="#000000"
+                    android:textColor="@color/black"
                     android:textSize="16sp" />
 
             </LinearLayout>

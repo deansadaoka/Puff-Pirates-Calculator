@@ -749,16 +749,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         calcs[0].c = Double.parseDouble(cVal.getText().toString());
         calcs[0].z = calcs[0].a + calcs[0].b + calcs[0].c;
 
-        calcs[calcType].pctInZones[0] = Double.parseDouble(zone1PCT.getText().toString().replace("%", ""));
-        calcs[calcType].pctInZones[1] = Double.parseDouble(zone2PCT.getText().toString().replace("%", ""));
-        calcs[calcType].pctInZones[2] = Double.parseDouble(zone3PCT.getText().toString().replace("%", ""));
-        calcs[calcType].pctInZones[3] = Double.parseDouble(zoneOutPCT.getText().toString().replace("%", ""));
-        calcs[calcType].saturdaysOff = ((CheckBox)findViewById(R.id.saturdayCheckBox)).isChecked();
-        calcs[calcType].sundaysOff = ((CheckBox)findViewById(R.id.sundayCheckBox)).isChecked();
-        calcs[calcType].holidaysOff = ((CheckBox)findViewById(R.id.holidaysCheckBox)).isChecked();
-        calcs[calcType].country = ((Switch)findViewById(R.id.USAorCA)).isChecked() ? 1 : 0;
-
-        calcs[calcType].monthsPerBillingCycle = billingFrequencySpinner.getSelectedItemPosition() + 1;
+        for (int i = 0; i < 3; i++) {
+            storeDataFromMain(i);
+        }
 
         Gson gson = new Gson();
         String dataJson = gson.toJson(calcs);
@@ -896,5 +889,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }
             }
         });
+    }
+
+    public void storeDataFromMain(int curCalc) {
+        calcs[curCalc].pctInZones[0] = Double.parseDouble(zone1PCT.getText().toString().replace("%", ""));
+        calcs[curCalc].pctInZones[1] = Double.parseDouble(zone2PCT.getText().toString().replace("%", ""));
+        calcs[curCalc].pctInZones[2] = Double.parseDouble(zone3PCT.getText().toString().replace("%", ""));
+        calcs[curCalc].pctInZones[3] = Double.parseDouble(zoneOutPCT.getText().toString().replace("%", ""));
+        calcs[curCalc].saturdaysOff = ((CheckBox)findViewById(R.id.saturdayCheckBox)).isChecked();
+        calcs[curCalc].sundaysOff = ((CheckBox)findViewById(R.id.sundayCheckBox)).isChecked();
+        calcs[curCalc].holidaysOff = ((CheckBox)findViewById(R.id.holidaysCheckBox)).isChecked();
+        calcs[curCalc].country = ((Switch)findViewById(R.id.USAorCA)).isChecked() ? 1 : 0;
+
+        calcs[curCalc].monthsPerBillingCycle = billingFrequencySpinner.getSelectedItemPosition() + 1;
     }
 }

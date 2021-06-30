@@ -243,7 +243,9 @@ public class Calc {
         for (int i = 0; i < numSeasons; i++) {
             int daysInCurrentSeason = calcDaysInSeason(i, startGC, endGC);
             double pctOfBC = (double) daysInCurrentSeason / totalDays;
+            Log.i("Days In Current Seasons", String.format("%d", daysInCurrentSeason));
             totalCost += pctOfBC * seasons.get(i).calcTOUTotal(energyPerCycle, pctInZones);
+            Log.i("Total Cost", String.format("%f", totalCost));
         }
         return totalCost;
     }
@@ -272,8 +274,14 @@ public class Calc {
 
         // if startDate month is after endDate month then the season cross a year (ex: from Dec to Jan)
         if (sStartMonth > sEndMonth) {
+            if (sStartMonth > BCEndDate.get(Calendar.MONTH) + 1) {
+                sStartDate.add(Calendar.YEAR, -1);
+            }
+            else if (sStartMonth == BCEndDate.get(Calendar.MONTH) && sStartDay >  BCEndDate.get(Calendar.DAY_OF_MONTH)) {
+                sStartDate.add(Calendar.YEAR, -1);
+            }
             //set season endDate to following year
-            sEndDate = new GregorianCalendar(BCStartDate.get(Calendar.YEAR) + 1,
+            sEndDate = new GregorianCalendar(sStartDate.get(Calendar.YEAR) + 1,
                     sEndMonth - 1, sEndDay);
         }
         else {
