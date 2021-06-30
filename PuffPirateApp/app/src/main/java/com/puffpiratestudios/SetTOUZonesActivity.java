@@ -192,7 +192,7 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
         setContentView(R.layout.activity_set_touzones);
 
         TextView title = (TextView) findViewById(R.id.ZoneTitle);
-        title.setBackgroundColor(Color.parseColor("#008b8b"));
+        title.setBackgroundColor(Color.parseColor("#d71414"));
         title.setTextColor(getResources().getColor(R.color.white));
 
         TextView s1Title = (TextView) findViewById(R.id.s1ZoneTitle);

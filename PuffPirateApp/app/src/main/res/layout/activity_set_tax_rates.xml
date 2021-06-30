@@ -17,7 +17,7 @@
 
             <TextView
                 android:id="@+id/TaxTitle"
-                android:layout_width="418dp"
+                android:layout_width="match_parent"
                 android:layout_height="37dp"
                 android:gravity="center"
                 android:text="Set Tax Rates"

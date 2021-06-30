@@ -30,7 +30,7 @@ public class SetDeliveryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_set_delivery);
 
         TextView title = (TextView) findViewById(R.id.DeliveryTitle);
-        title.setBackgroundColor(Color.parseColor("#008b8b"));
+        title.setBackgroundColor(Color.parseColor("#d71414"));
         title.setTextColor(getResources().getColor(R.color.white));
 
         s1DeliveryText = findViewById(R.id.s1Delivery);

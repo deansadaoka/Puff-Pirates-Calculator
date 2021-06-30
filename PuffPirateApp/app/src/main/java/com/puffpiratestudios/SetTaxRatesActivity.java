@@ -30,7 +30,7 @@ public class SetTaxRatesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_set_tax_rates);
 
         TextView title = (TextView) findViewById(R.id.TaxTitle);
-        title.setBackgroundColor(Color.parseColor("#008b8b"));
+        title.setBackgroundColor(Color.parseColor("#d71414"));
         title.setTextColor(getResources().getColor(R.color.white));
 
         s1TaxText = findViewById(R.id.s1Tax);

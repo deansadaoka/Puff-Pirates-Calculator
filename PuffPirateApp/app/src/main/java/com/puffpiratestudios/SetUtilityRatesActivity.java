@@ -61,7 +61,7 @@ public class SetUtilityRatesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_set_utility_rates);
 
         TextView title = (TextView) findViewById(R.id.UtilTitle);
-        title.setBackgroundColor(Color.parseColor("#008b8b"));
+        title.setBackgroundColor(Color.parseColor("#d71414"));
         title.setTextColor(getResources().getColor(R.color.white));
 
         TextView s1Title = (TextView) findViewById(R.id.s1UtilTitle);
@@ -327,13 +327,13 @@ public class SetUtilityRatesActivity extends AppCompatActivity {
 
     public void setTypeVisible(int structure) {
         switch(structure) {
-            case 1:
+            case 0:
                 ((TextView)findViewById(R.id.s1t1UtilText)).setText("Season 1 Tier 1 Rate: $");
                 ((TextView)findViewById(R.id.s2t1UtilText)).setText("Season 2 Tier 1 Rate: $");
                 ((TextView)findViewById(R.id.s3t1UtilText)).setText("Season 3 Tier 1 Rate: $");
                 ((TextView)findViewById(R.id.s4t1UtilText)).setText("Season 4 Tier 1 Rate: $");
                 break;
-            case 2:
+            case 1:
                 ((TextView)findViewById(R.id.s1t1UtilText)).setText("Season 1 Rate: $");
                 ((TextView)findViewById(R.id.s2t1UtilText)).setText("Season 2 Rate: $");
                 ((TextView)findViewById(R.id.s3t1UtilText)).setText("Season 3 Rate: $");

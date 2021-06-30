@@ -31,7 +31,7 @@ public class SetRegulatoryChargesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_set_regulatory_charges);
 
         TextView title = (TextView) findViewById(R.id.RegChargeTitle);
-        title.setBackgroundColor(Color.parseColor("#008b8b"));
+        title.setBackgroundColor(Color.parseColor("#d71414"));
         title.setTextColor(getResources().getColor(R.color.white));
 
         s1RegText = findViewById(R.id.s1RCharge);

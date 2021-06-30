@@ -50,7 +50,7 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
         setContentView(R.layout.activity_set_holidays);
 
         TextView title = (TextView) findViewById(R.id.HolidayTitle);
-        title.setBackgroundColor(Color.parseColor("#008b8b"));
+        title.setBackgroundColor(Color.parseColor("#d71414"));
         title.setTextColor(getResources().getColor(R.color.white));
 
         addHolidayFAB = findViewById(R.id.holidayFAB);

@@ -75,7 +75,7 @@ public class SetSeasonDetailsActivity extends AppCompatActivity implements Adapt
         setContentView(R.layout.activity_set_season_details);
 
         TextView title = (TextView) findViewById(R.id.SeasonDetailTitle);
-        title.setBackgroundColor(Color.parseColor("#008b8b"));
+        title.setBackgroundColor(Color.parseColor("#d71414"));
         title.setTextColor(getResources().getColor(R.color.white));
 
         TextView s1Label = (TextView) findViewById(R.id.s1Label);

@@ -67,7 +67,7 @@ public class SetTierRangesActivity extends AppCompatActivity implements AdapterV
         setContentView(R.layout.activity_set_tier_ranges);
 
         TextView title = (TextView) findViewById(R.id.TierRangeTitle);
-        title.setBackgroundColor(Color.parseColor("#008b8b"));
+        title.setBackgroundColor(Color.parseColor("#d71414"));
         title.setTextColor(getResources().getColor(R.color.white));
 
         TextView s1Title = (TextView) findViewById(R.id.s1TierRangeTitle);
