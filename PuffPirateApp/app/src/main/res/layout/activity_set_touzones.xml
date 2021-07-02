@@ -35,6 +35,32 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="left|center_vertical"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/zoneNumText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Number of Zones: "
+                    android:textColor="#040303"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/zoneSpinner"
+                    android:layout_width="91dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginLeft="4dp"
+                    android:background="@android:drawable/btn_dropdown"
+                    android:spinnerMode="dropdown" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="left|center"
                 android:layout_marginTop="16dp">
@@ -122,33 +148,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left|center_vertical"
-                    android:orientation="horizontal" >
-
-
-
-                    <TextView
-                        android:id="@+id/s1ZoneNumText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Number of Zones: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/s1ZoneSpinner"
-                        android:layout_width="91dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginLeft="4dp"
-                        android:background="@android:drawable/btn_dropdown"
-                        android:spinnerMode="dropdown" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/s1z1Layout"
@@ -463,33 +462,6 @@
                     android:textColor="#000000"
                     android:textSize="18sp"
                     android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left|center_vertical"
-                    android:orientation="horizontal" >
-
-
-                    <TextView
-                        android:id="@+id/s2ZoneNumText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Number of Zones: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/s2ZoneSpinner"
-                        android:layout_width="91dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginLeft="4dp"
-                        android:background="@android:drawable/btn_dropdown"
-                        android:spinnerMode="dropdown" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/s2z1Layout"
@@ -808,32 +780,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left|center_vertical"
-                    android:orientation="horizontal" >
-
-
-                    <TextView
-                        android:id="@+id/s3ZoneNumText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Number of Zones: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/s3ZoneSpinner"
-                        android:layout_width="91dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginLeft="4dp"
-                        android:background="@android:drawable/btn_dropdown"
-                        android:spinnerMode="dropdown" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/s3z1Layout"
@@ -1150,31 +1096,6 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="left|center_vertical"
-                    android:orientation="horizontal" >
-
-                    <TextView
-                        android:id="@+id/s4ZoneNumText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Number of Zones: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <Spinner
-                        android:id="@+id/s4ZoneSpinner"
-                        android:layout_width="91dp"
-                        android:layout_height="50dp"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginLeft="4dp"
-                        android:background="@android:drawable/btn_dropdown"
-                        android:spinnerMode="dropdown" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/s4z1Layout"

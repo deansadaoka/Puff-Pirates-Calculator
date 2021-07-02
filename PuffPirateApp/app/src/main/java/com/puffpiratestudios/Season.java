@@ -36,7 +36,6 @@ public class Season {
     public int[] endDate; // [month, day]
 
     public Zone[] zones; // [zone 1, zone 2, zone 3, outside zones]
-    public int numZones;
 
     public String name;
 
@@ -53,7 +52,6 @@ public class Season {
         this.startDate = new int[2];
         this.endDate = new int[2];
         this.zones = new Zone[4];
-        this.numZones = 2;
         name = "Name";
 
         for (int i = 0; i < 4; i++) {
@@ -75,7 +73,6 @@ public class Season {
         this.startDate = new int[2];
         this.endDate = new int[2];
         this.zones = new Zone[4];
-        this.numZones = 2;
         name = "Name";
 
         for (int i = 0; i < 4; i++) {
@@ -116,7 +113,7 @@ public class Season {
         monthlyBill = energyUsage * utilRates[0];
     }
 
-    public double calcTOUTotal(double energyUsage, double[] percentInZones) {
+    public double calcTOUTotal(double energyUsage, double[] percentInZones, int numZones) {
         monthlyBill = 0;
         for (int i = 0; i < numZones - 1; i++) {
             monthlyBill += energyUsage * (0.01 * percentInZones[i]) * zones[i].rate;

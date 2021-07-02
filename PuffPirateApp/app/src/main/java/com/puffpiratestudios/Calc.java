@@ -20,6 +20,7 @@ public class Calc {
     public int monthsPerBillingCycle;
 
     public int numTiers;
+    public int numZones;
 
     public int billingStructure; //1 = tiered, 2 = flat, 3 = TOU
 
@@ -69,6 +70,8 @@ public class Calc {
         pctInZones[1] = 0;
         pctInZones[2] = 0;
         pctInZones[3] = 0;
+
+        numZones = 2;
     }
 
     public void updateAllSeasonTiers(int new_tier) {
@@ -235,7 +238,7 @@ public class Calc {
             int numDays = numDaysBetweenPeriod(startGC, endGC);
             double pct = (double)numDays / totalDays;
             Log.i("pct", String.format("%f", pct));
-            totalCost += pct * seasons.get(0).calcTOUTotal(energyPerCycle, pctInZones);
+            totalCost += pct * seasons.get(0).calcTOUTotal(energyPerCycle, pctInZones, numZones);
             return totalCost;
         }
 
@@ -244,7 +247,7 @@ public class Calc {
             int daysInCurrentSeason = calcDaysInSeason(i, startGC, endGC);
             double pctOfBC = (double) daysInCurrentSeason / totalDays;
             Log.i("Days In Current Seasons", String.format("%d", daysInCurrentSeason));
-            totalCost += pctOfBC * seasons.get(i).calcTOUTotal(energyPerCycle, pctInZones);
+            totalCost += pctOfBC * seasons.get(i).calcTOUTotal(energyPerCycle, pctInZones, numZones);
             Log.i("Total Cost", String.format("%f", totalCost));
         }
         return totalCost;

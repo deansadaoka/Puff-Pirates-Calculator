@@ -193,6 +193,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         billingStructureSpinner.setOnItemSelectedListener(this);
         billingStructureSpinner.setSelection(calcType);
         switchToCalcType();
+
+        setZonePCTVisible();
     }
 
     public void setFixedCharges(View v) {
@@ -324,10 +326,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent i = new Intent(this, SetTOUZonesActivity.class);
         i.putExtra("numSeasons", calcs[calcType].numSeasons);
 
-        i.putExtra("s1NumZones", calcs[calcType].seasons.get(0).numZones);
-        i.putExtra("s2NumZones", calcs[calcType].seasons.get(1).numZones);
-        i.putExtra("s3NumZones", calcs[calcType].seasons.get(2).numZones);
-        i.putExtra("s4NumZones", calcs[calcType].seasons.get(3).numZones);
+        i.putExtra("numZones", calcs[calcType].numZones);
 
         i.putExtra("z1Name", calcs[calcType].zoneNames[0]);
         i.putExtra("z2Name", calcs[calcType].zoneNames[1]);
@@ -619,10 +618,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
             case TOU_ZONES_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
-                    calcs[calcType].seasons.get(0).numZones = data.getIntExtra("s1NumZones", calcs[calcType].seasons.get(0).numZones);
-                    calcs[calcType].seasons.get(1).numZones = data.getIntExtra("s2NumZones", calcs[calcType].seasons.get(1).numZones);
-                    calcs[calcType].seasons.get(2).numZones = data.getIntExtra("s3NumZones", calcs[calcType].seasons.get(2).numZones);
-                    calcs[calcType].seasons.get(3).numZones = data.getIntExtra("s4NumZones", calcs[calcType].seasons.get(3).numZones);
+                    calcs[calcType].numZones = data.getIntExtra("numZones", calcs[calcType].numZones);
 
                     calcs[calcType].zoneNames[0] = data.getStringExtra("z1Name");
                     calcs[calcType].zoneNames[1] = data.getStringExtra("z2Name");
@@ -721,6 +717,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     calcs[calcType].seasons.get(2).zones[3].toMinute = data.getIntExtra("s3OutToMin", calcs[calcType].seasons.get(2).zones[3].toMinute);
                     calcs[calcType].seasons.get(3).zones[3].toMinute = data.getIntExtra("s4OutToMin", calcs[calcType].seasons.get(3).zones[3].toMinute);
 
+                    setZonePCTVisible();
                 }
                 break;
             case HOLIDAY_DETAILS_ACTIVITY_REQUEST_CODE:
@@ -902,5 +899,28 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         calcs[curCalc].country = ((Switch)findViewById(R.id.USAorCA)).isChecked() ? 1 : 0;
 
         calcs[curCalc].monthsPerBillingCycle = billingFrequencySpinner.getSelectedItemPosition() + 1;
+    }
+
+    public void setZonePCTVisible() {
+        switch (calcs[2].numZones) {
+            case 2:
+                zone2PCT.setVisibility(View.GONE);
+                zone3PCT.setVisibility(View.GONE);
+                findViewById(R.id.zone2PCTText).setVisibility(View.GONE);
+                findViewById(R.id.zone3PCTText).setVisibility(View.GONE);
+                break;
+            case 3:
+                zone2PCT.setVisibility(View.VISIBLE);
+                zone3PCT.setVisibility(View.GONE);
+                findViewById(R.id.zone2PCTText).setVisibility(View.VISIBLE);
+                findViewById(R.id.zone3PCTText).setVisibility(View.GONE);
+                break;
+            case 4:
+                zone2PCT.setVisibility(View.VISIBLE);
+                zone3PCT.setVisibility(View.VISIBLE);
+                findViewById(R.id.zone2PCTText).setVisibility(View.VISIBLE);
+                findViewById(R.id.zone3PCTText).setVisibility(View.VISIBLE);
+                break;
+        }
     }
 }

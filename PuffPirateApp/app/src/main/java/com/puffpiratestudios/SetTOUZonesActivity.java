@@ -143,22 +143,14 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
     EditText s4OutRateEdit;
 
 
-    int s1NumZones;
-    int s2NumZones;
-    int s3NumZones;
-    int s4NumZones;
+    int numZones;
 
-
-    Spinner s1ZoneSpinner;
-    Spinner s2ZoneSpinner;
-    Spinner s3ZoneSpinner;
-    Spinner s4ZoneSpinner;
+    Spinner zoneSpinner;
 
 
     String z1Name;
     String z2Name;
     String z3Name;
-    String z4Name;
 
 
     double s1z1Rate;
@@ -279,10 +271,7 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
 
         numSeasons = i.getIntExtra("numSeasons", 1);
 
-        s1NumZones = i.getIntExtra("s1NumZones", 2);
-        s2NumZones = i.getIntExtra("s2NumZones", 2);
-        s3NumZones = i.getIntExtra("s3NumZones", 2);
-        s4NumZones = i.getIntExtra("s4NumZones", 2);
+        numZones = i.getIntExtra("numZones", 2);
 
         z1Name = i.getStringExtra("z1Name");
         z2Name = i.getStringExtra("z2Name");
@@ -334,25 +323,11 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
                 android.R.layout.simple_spinner_item,zoneOptions);
         zoneAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        s1ZoneSpinner = findViewById(R.id.s1ZoneSpinner);
-        s2ZoneSpinner = findViewById(R.id.s2ZoneSpinner);
-        s3ZoneSpinner = findViewById(R.id.s3ZoneSpinner);
-        s4ZoneSpinner = findViewById(R.id.s4ZoneSpinner);
+        zoneSpinner = findViewById(R.id.zoneSpinner);
+        zoneSpinner.setAdapter(zoneAdapter);
+        zoneSpinner.setOnItemSelectedListener(this);
+        zoneSpinner.setSelection(numZones - 2);
 
-        s1ZoneSpinner.setAdapter(zoneAdapter);
-        s2ZoneSpinner.setAdapter(zoneAdapter);
-        s3ZoneSpinner.setAdapter(zoneAdapter);
-        s4ZoneSpinner.setAdapter(zoneAdapter);
-
-        s1ZoneSpinner.setOnItemSelectedListener(this);
-        s2ZoneSpinner.setOnItemSelectedListener(this);
-        s3ZoneSpinner.setOnItemSelectedListener(this);
-        s4ZoneSpinner.setOnItemSelectedListener(this);
-
-        s1ZoneSpinner.setSelection(s1NumZones - 2);
-        s2ZoneSpinner.setSelection(s2NumZones - 2);
-        s3ZoneSpinner.setSelection(s3NumZones - 2);
-        s4ZoneSpinner.setSelection(s4NumZones - 2);
 
         setSeasonsVisible(numSeasons);
 
@@ -464,11 +439,7 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
         i.putExtra("s3OutRate", Double.parseDouble(s3OutRateEdit.getText().toString()));
         i.putExtra("s4OutRate", Double.parseDouble(s4OutRateEdit.getText().toString()));
 
-        i.putExtra("s1NumZones", s1NumZones);
-        i.putExtra("s2NumZones", s2NumZones);
-        i.putExtra("s3NumZones", s3NumZones);
-        i.putExtra("s4NumZones", s4NumZones);
-
+        i.putExtra("numZones", numZones);
 
         i.putExtra("s1OutFromHour", s1_z3_out_hour);
         i.putExtra("s1OutFromMin", s1_z3_out_min);
@@ -672,7 +643,7 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
     }
 
     public void set_s1_out_from_text() {
-        switch(s1NumZones) {
+        switch(numZones) {
             case 2:
                 s1OutFrom.setText(formatTime(s1_z1_z2_hour, s1_z1_z2_min));
                 break;
@@ -686,7 +657,7 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
     }
 
     public void set_s2_out_from_text() {
-        switch(s2NumZones) {
+        switch(numZones) {
             case 2:
                 s2OutFrom.setText(formatTime(s2_z1_z2_hour, s2_z1_z2_min));
                 break;
@@ -700,7 +671,7 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
     }
 
     public void set_s3_out_from_text() {
-        switch(s3NumZones) {
+        switch(numZones) {
             case 2:
                 s3OutFrom.setText(formatTime(s3_z1_z2_hour, s3_z1_z2_min));
                 break;
@@ -714,7 +685,7 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
     }
 
     public void set_s4_out_from_text() {
-        switch(s4NumZones) {
+        switch(numZones) {
             case 2:
                 s4OutFrom.setText(formatTime(s4_z1_z2_hour, s4_z1_z2_min));
                 break;
@@ -770,21 +741,13 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         switch(parent.getId()) {
-            case R.id.s1ZoneSpinner:
-                s1NumZones = parent.getSelectedItemPosition() + 2;
-                setS1ZonesVisible(s1NumZones);
-                break;
-            case R.id.s2ZoneSpinner:
-                s2NumZones = parent.getSelectedItemPosition() + 2;
-                setS2ZonesVisible(s2NumZones);
-                break;
-            case R.id.s3ZoneSpinner:
-                s3NumZones = parent.getSelectedItemPosition() + 2;
-                setS3ZonesVisible(s3NumZones);
-                break;
-            case R.id.s4ZoneSpinner:
-                s4NumZones = parent.getSelectedItemPosition() + 2;
-                setS4ZonesVisible(s4NumZones);
+            case R.id.zoneSpinner:
+                numZones = parent.getSelectedItemPosition() + 2;
+                setS1ZonesVisible(numZones);
+                setS2ZonesVisible(numZones);
+                setS3ZonesVisible(numZones);
+                setS4ZonesVisible(numZones);
+                setZoneNamesVisible(numZones);
                 break;
         }
     }
@@ -886,4 +849,28 @@ public class SetTOUZonesActivity extends AppCompatActivity implements AdapterVie
                 break;
         }
     }
+
+    public void setZoneNamesVisible(int n) {
+        switch (n) {
+            case 2:
+                z2NameEdit.setVisibility(View.GONE);
+                z3NameEdit.setVisibility(View.GONE);
+                findViewById(R.id.z2NameText).setVisibility(View.GONE);
+                findViewById(R.id.z3NameText).setVisibility(View.GONE);
+                break;
+            case 3:
+                z2NameEdit.setVisibility(View.VISIBLE);
+                z3NameEdit.setVisibility(View.GONE);
+                findViewById(R.id.z2NameText).setVisibility(View.VISIBLE);
+                findViewById(R.id.z3NameText).setVisibility(View.GONE);
+                break;
+            case 4:
+                z2NameEdit.setVisibility(View.VISIBLE);
+                z3NameEdit.setVisibility(View.VISIBLE);
+                findViewById(R.id.z2NameText).setVisibility(View.VISIBLE);
+                findViewById(R.id.z3NameText).setVisibility(View.VISIBLE);
+                break;
+        }
+    }
+
 }
