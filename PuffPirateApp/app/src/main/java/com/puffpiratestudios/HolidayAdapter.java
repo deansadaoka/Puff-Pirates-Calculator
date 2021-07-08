@@ -1,10 +1,13 @@
 package com.puffpiratestudios;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
@@ -29,14 +32,7 @@ public class HolidayAdapter extends ArrayAdapter<HolidayData> implements View.On
     }
 
     @Override
-    public void onClick(View v) {
-
-        int position=(Integer) v.getTag();
-        Object object= getItem(position);
-        HolidayData holidayData=(HolidayData)object;
-
-        // insert what to do when clicked (edit date)
-    }
+    public void onClick(View v) {}
 
 
     @NonNull
@@ -52,6 +48,16 @@ public class HolidayAdapter extends ArrayAdapter<HolidayData> implements View.On
 
         name.setText(dataSet.get(position).getName());
         date.setText(dataSet.get(position).getDateString());
+
+        LinearLayout rowLayout = (LinearLayout)convertView.findViewById(R.id.holidayRowLayout);
+
+        // if even, background is light blue, if odd, background is white
+        if (position % 2 == 0) {
+            rowLayout.setBackgroundColor(Color.parseColor("#c7f5ff"));
+        }
+        else {
+            rowLayout.setBackgroundColor(Color.parseColor("#e3e3e3"));
+        }
 
         return convertView;
     }

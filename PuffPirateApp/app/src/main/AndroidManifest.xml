@@ -9,29 +9,39 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PuffPirateApp">
+        <activity android:name=".SetTouDetailsActivity"></activity>
         <activity
             android:name=".SetHolidaysActivity"
-            android:screenOrientation="landscape"
             android:label="@string/title_activity_set_holidays"
-            android:theme="@style/Theme.PuffPirateApp.NoActionBar"></activity>
-        <activity android:name=".SetTOUZonesActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".SetSeasonDetailsActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".SetTierRangesActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".SetUtilityRatesActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".SetTaxRatesActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".SetDeliveryActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".SetRegulatoryChargesActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".SetFixedChargesActivity"
-            android:screenOrientation="landscape"/>
-        <activity android:name=".MainActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.PuffPirateApp.NoActionBar" />
+        <activity
+            android:name=".SetTOUZonesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SetSeasonDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SetTierRangesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SetUtilityRatesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SetTaxRatesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SetDeliveryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SetRegulatoryChargesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SetFixedChargesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

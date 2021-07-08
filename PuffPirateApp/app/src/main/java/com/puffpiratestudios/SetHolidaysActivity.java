@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -43,6 +44,10 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
     String nameToBeAdded;
 
     HolidayAdapter holidayAdapterUSA;
+    HolidayAdapter holidayAdapterCA;
+
+    int editing;
+    String currentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,10 +67,12 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
         addHolidayFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                editing = -1;
                 openHolidayDialog();
             }
         });
 
+        editing = -1;
 
         Intent i = getIntent();
         country = i.getIntExtra("country", 0);
@@ -92,6 +99,27 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
         USAListView = findViewById(R.id.USAListView);
         USAListView.setAdapter(holidayAdapterUSA);
 
+        holidayAdapterCA = new HolidayAdapter(holidaysCA, getApplicationContext());
+        CAListView = findViewById(R.id.CAListView);
+        CAListView.setAdapter(holidayAdapterCA);
+
+        USAListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                editing = position;
+                currentName = holidaysUSA.get(editing).getName();
+                openHolidayDialog();
+            }
+        });
+
+        CAListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                editing = position;
+                currentName = holidaysCA.get(editing).getName();
+                openHolidayDialog();
+            }
+        });
 
 
     }
@@ -119,10 +147,21 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
     private void openHolidayDialog() {
         android.app.AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        builder.setTitle("Enter Holiday Details");
+        if (editing != -1) {
+            builder.setTitle("Edit Name");
+        }
+        else {
+            builder.setTitle("Enter Holiday Name");
+        }
 
         final EditText nameEdit = new EditText(this);
         nameEdit.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+        if (editing != -1) {
+            nameEdit.setText(currentName);
+        }
+        else {
+            nameEdit.setHint("Enter Holiday Name");
+        }
         builder.setView(nameEdit);
 
         builder.setPositiveButton("Set Date", new DialogInterface.OnClickListener() {
@@ -133,7 +172,36 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
             }
         });
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        if (editing != -1) {
+            builder.setNegativeButton("Delete Holiday", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    new AlertDialog.Builder(((Dialog)dialog).getContext())
+                            .setTitle("Deleting Holiday")
+                            .setMessage("Are you sure you want to delete "
+                                    + (country == 0 ? holidaysUSA.get(editing).getName() : holidaysCA.get(editing).getName())
+                                    + "?")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    if (country == 0) {
+                                        holidaysUSA.remove(editing);
+                                        holidayAdapterUSA.notifyDataSetChanged();
+                                    }
+                                    else {
+                                        holidaysCA.remove(editing);
+                                        holidayAdapterCA.notifyDataSetChanged();
+                                    }
+                                }
+                            })
+                            .setNegativeButton("No", null)
+                            .show();
+                }
+            });
+        }
+
+
+        builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -146,12 +214,26 @@ public class SetHolidaysActivity extends AppCompatActivity implements AdapterVie
         @Override
         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
             if (country == 0) {
-                holidaysUSA.add(new HolidayData(nameToBeAdded, (new GregorianCalendar(year, month, dayOfMonth)).getTime().getTime()));
+                if (editing != -1) {
+                    holidaysUSA.get(editing).setName(nameToBeAdded);
+                    holidaysUSA.get(editing).setDate((new GregorianCalendar(year, month, dayOfMonth)).getTime().getTime());
+                }
+                else {
+                    holidaysUSA.add(new HolidayData(nameToBeAdded, (new GregorianCalendar(year, month, dayOfMonth)).getTime().getTime()));
+                }
                 holidayAdapterUSA.notifyDataSetChanged();
             }
             else {
-                holidaysCA.add(new HolidayData(nameToBeAdded, (new GregorianCalendar(year, month, dayOfMonth)).getTime().getTime()));
+                if (editing != -1) {
+                    holidaysCA.get(editing).setName(nameToBeAdded);
+                    holidaysCA.get(editing).setDate((new GregorianCalendar(year, month, dayOfMonth)).getTime().getTime());
+                }
+                else {
+                    holidaysCA.add(new HolidayData(nameToBeAdded, (new GregorianCalendar(year, month, dayOfMonth)).getTime().getTime()));
+                }
+                holidayAdapterCA.notifyDataSetChanged();
             }
+            editing = -1;
         }
     };
 

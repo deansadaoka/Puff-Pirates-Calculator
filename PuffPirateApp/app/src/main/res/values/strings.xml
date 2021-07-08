@@ -1,8 +1,12 @@
 <resources>
-    <string name="app_name">Tiered Calculator</string>
+    <string name="app_name">Billing Rate Calculator</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="date_label_set">Billing Cycle Start Date: </string>
+    <string name="billing_frequency_text">Billing Frequency: </string>
+    <string name="tou_rates_apply_text"><b><u>Days Included in Billing</u></b></string>
+    <string name="tou_zone_pct_text"><b><u>Percent of Time in Zone</u></b></string>
+    <string name="tou_zone_name_text"><b>Enter Zone Names</b></string>
     <string name="date_button_set">Set Date</string>
     <string name="date_view_set">The Date is: </string>
     <string name="date_selected"></string>

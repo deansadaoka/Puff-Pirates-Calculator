@@ -86,7 +86,7 @@ public class Calc {
      */
     public String dateToString() {
         if (startYear == 0) {
-            return "Date";
+            return "Set Date";
         }
         return formatDate(startYear, startMonth, startDay);
     }
@@ -217,9 +217,16 @@ public class Calc {
             return calculateTOUTotal(totalDays, energyPerCycle);
         }
 
-        for (Map.Entry<Integer, Integer> s : sMap.entrySet()) {
-            double pctOfBC = ((double)s.getValue() / totalDays);
-            totalCost += (pctOfBC * seasons.get(s.getKey()).calcTotal(energyPerCycle, billingStructure));
+        // Create GregorianCalendars to represent the start and end date of the billing cycle
+        GregorianCalendar startGC = new GregorianCalendar(startYear, startMonth - 1, startDay);
+        GregorianCalendar endGC = new GregorianCalendar(startYear, startMonth - 1, startDay);
+        endGC.add(Calendar.MONTH, monthsPerBillingCycle);
+
+
+        for (int i = 0; i < numSeasons; i++) {
+            int daysInCurrentSeason = calcDaysInSeason(i, startGC, endGC);
+            double pctOfBC = (double) daysInCurrentSeason / totalDays;
+            totalCost += (pctOfBC * seasons.get(i).calcTotal(energyPerCycle, billingStructure));
         }
 
         return totalCost;
@@ -237,7 +244,6 @@ public class Calc {
         if (numSeasons == 1) {
             int numDays = numDaysBetweenPeriod(startGC, endGC);
             double pct = (double)numDays / totalDays;
-            Log.i("pct", String.format("%f", pct));
             totalCost += pct * seasons.get(0).calcTOUTotal(energyPerCycle, pctInZones, numZones);
             return totalCost;
         }
@@ -246,9 +252,7 @@ public class Calc {
         for (int i = 0; i < numSeasons; i++) {
             int daysInCurrentSeason = calcDaysInSeason(i, startGC, endGC);
             double pctOfBC = (double) daysInCurrentSeason / totalDays;
-            Log.i("Days In Current Seasons", String.format("%d", daysInCurrentSeason));
             totalCost += pctOfBC * seasons.get(i).calcTOUTotal(energyPerCycle, pctInZones, numZones);
-            Log.i("Total Cost", String.format("%f", totalCost));
         }
         return totalCost;
     }
@@ -280,7 +284,7 @@ public class Calc {
             if (sStartMonth > BCEndDate.get(Calendar.MONTH) + 1) {
                 sStartDate.add(Calendar.YEAR, -1);
             }
-            else if (sStartMonth == BCEndDate.get(Calendar.MONTH) && sStartDay >  BCEndDate.get(Calendar.DAY_OF_MONTH)) {
+            else if (sStartMonth == BCEndDate.get(Calendar.MONTH) + 1 && sStartDay >  BCEndDate.get(Calendar.DAY_OF_MONTH)) {
                 sStartDate.add(Calendar.YEAR, -1);
             }
             //set season endDate to following year
@@ -303,20 +307,29 @@ public class Calc {
         if (sStartDate.before(BCStartDate) && sEndDate.after(BCEndDate)) {
             return numDaysBetweenPeriod(BCStartDate, BCEndDate);
         }
+
+        int total = 0;
+
         // if billing cycle starts after the season startDate but ends after the endDate
-        else if (sStartDate.before(BCStartDate)) {
+        if (sStartDate.before(BCStartDate) && sEndDate.before(BCEndDate)) {
             // return days between BCStartDate and season End Date
-            return numDaysBetweenPeriod(BCStartDate, sEndDate);
+            total += numDaysBetweenPeriod(BCStartDate, sEndDate);
         }
+
         // if billing cycle starts before the season startDate but ends before the endDate
-        else if (sEndDate.after(BCEndDate)) {
+        if (sStartDate.after(BCStartDate) && sEndDate.after(BCEndDate)) {
             // return days between sStartDate and the BCEndDate
-            return numDaysBetweenPeriod(sStartDate, BCEndDate);
+            total += numDaysBetweenPeriod(sStartDate, BCEndDate);
         }
-        // at this point, we know the billing cycle has ZERO days in the season
-        else {
-            return 0;
-        }
+
+
+        return total;
+
+
+        //WRITE FUNCTION TO GET DAYS IN COMMON BETWEEN TWO DATE RANGES (4 DATES TOTAL)
+        //IF BC GOES OVER A YEAR, THEN THE FUNCTION WILL BE CALLED TWICE FOR EACH YEAR
+        //IF A PERIOD GOES OVER A YEAR, THE FIRST YEAR WILL END AT THE LAST DAY AND THE SECOND YEAR WILL START AT NEW YEARS
+
 
     }
 

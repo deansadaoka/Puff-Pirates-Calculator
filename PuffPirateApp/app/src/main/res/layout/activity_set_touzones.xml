@@ -42,6 +42,7 @@
                     android:id="@+id/zoneNumText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
                     android:text="Number of Zones: "
                     android:textColor="#040303"
                     android:textSize="16sp"
@@ -58,73 +59,101 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/zoneNameTitleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/tou_zone_name_text"
+                android:textColor="#040303"
+                android:background="#c9f3fc"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:gravity="left|center"
-                android:layout_marginTop="16dp">
+                android:layout_marginTop="4dp">
 
-                <TextView
-                    android:id="@+id/z1NameText"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Zone 1 Name: "
-                    android:textColor="#040303"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal"
+                    android:gravity="left" >
 
-                <EditText
-                    android:id="@+id/z1NameEdit"
-                    android:layout_width="100dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/z1NameText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:text="Zone 1: "
+                        android:textColor="#040303"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/z2NameText"
-                    android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/z1NameEdit"
+                        android:layout_width="100dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/z2NameText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Zone 2: "
+                        android:textColor="#040303"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="32dp"/>
+
+                    <EditText
+                        android:id="@+id/z2NameEdit"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Zone 2 Name: "
-                    android:textColor="#040303"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="32dp"/>
+                    android:orientation="horizontal"
+                    android:gravity="left" >
 
-                <EditText
-                    android:id="@+id/z2NameEdit"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/z3NameText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="4dp"
+                        android:text="Zone 3: "
+                        android:textColor="#040303"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/z3NameText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Zone 3 Name: "
-                    android:textColor="#040303"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="32dp"/>
+                    <EditText
+                        android:id="@+id/z3NameEdit"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:ems="10"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/z3NameEdit"
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -140,12 +169,13 @@
                 <TextView
                     android:id="@+id/s1ZoneTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:text="Season 1"
                     android:textColor="#000000"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:background="#fcd2c9"
                     android:textStyle="bold" />
 
 
@@ -153,198 +183,284 @@
                     android:id="@+id/s1z1Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s1z1FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s1z1Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 1 From: "
+                        android:gravity="center"
+                        android:text="Zone 1"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s1z1FromButton"
-                        android:onClick="s1z1FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s1z1ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s1z1ToButton"
-                        android:onClick="s1z1ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s1z1FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s1z1RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s1z1FromButton"
+                            android:onClick="s1z1FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s1z1ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s1z1ToButton"
+                            android:onClick="s1z1ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s1z1RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s1z1RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s1z1RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/s1z2Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s1z2FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s1z2Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 2 From: "
+                        android:gravity="center"
+                        android:text="Zone 2"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s1z2FromButton"
-                        android:onClick="s1z2FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s1z2ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s1z2ToButton"
-                        android:onClick="s1z2ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s1z2FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s1z2RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s1z2FromButton"
+                            android:onClick="s1z2FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s1z2ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s1z2ToButton"
+                            android:onClick="s1z2ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s1z2RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s1z2RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s1z2RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/s1z3Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s1z3FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s1z3Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 3 From: "
+                        android:gravity="center"
+                        android:text="Zone 3"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s1z3FromButton"
-                        android:onClick="s1z3FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s1z3ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s1z3ToButton"
-                        android:onClick="s1z3ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s1z3FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s1z3RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s1z3FromButton"
+                            android:onClick="s1z3FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s1z3ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s1z3ToButton"
+                            android:onClick="s1z3ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s1z3RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s1z3RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s1z3RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -352,95 +468,105 @@
                     android:id="@+id/s1OutLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                    <TextView
+                        android:id="@+id/s1OutTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Outside Zone"
+                        android:textColor="#040303"
+                        android:background="#d4fcc9"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/s1OutText"
-                            android:layout_width="45dp"
-                            android:layout_height="wrap_content"
-                            android:text="Outside Zone"
-                            android:gravity="center"
-                            android:textColor="#040303"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical|left" >
 
                         <TextView
                             android:id="@+id/s1OutFromText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" From: "
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
                             android:textColor="#040303"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
+                        <TextView
+                            android:id="@+id/s1OutFrom"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="normal"
+                            android:text="Set zone times first"
+                            android:gravity="center_vertical|left"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s1OutToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <TextView
+                            android:id="@+id/s1OutTo"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:textColor="#040303"
+                            android:textSize="16sp"
+                            android:textStyle="normal"
+                            android:text="Set zone times first"
+                            android:gravity="center_vertical|left"
+                            android:layout_marginLeft="8dp"/>
 
                     </LinearLayout>
 
-
-                    <TextView
-                        android:id="@+id/s1OutFrom"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        android:text="Set zone times first"
-                        android:gravity="center_vertical|left"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s1OutToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <TextView
-                        android:id="@+id/s1OutTo"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        android:text="Set zone times first"
-                        android:gravity="center_vertical|left"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s1OutRateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
 
-                    <TextView
-                        android:id="@+id/s1OutRateText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        <EditText
+                            android:id="@+id/s1OutRateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/s1OutRateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
+
+
 
 
 
@@ -455,210 +581,298 @@
                 <TextView
                     android:id="@+id/s2ZoneTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:text="Season 2"
                     android:textColor="#000000"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:background="#fcd2c9"
                     android:textStyle="bold" />
+
 
                 <LinearLayout
                     android:id="@+id/s2z1Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s2z1FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s2z1Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 1 From: "
+                        android:gravity="center"
+                        android:text="Zone 1"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s2z1FromButton"
-                        android:onClick="s2z1FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s2z1ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s2z1ToButton"
-                        android:onClick="s2z1ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s2z1FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s2z1RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s2z1FromButton"
+                            android:onClick="s2z1FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s2z1ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s2z1ToButton"
+                            android:onClick="s2z1ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s2z1RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s2z1RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s2z1RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/s2z2Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s2z2FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s2z2Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 2 From: "
+                        android:gravity="center"
+                        android:text="Zone 2"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s2z2FromButton"
-                        android:onClick="s2z2FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s2z2ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s2z2ToButton"
-                        android:onClick="s2z2ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s2z2FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s2z2RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s2z2FromButton"
+                            android:onClick="s2z2FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s2z2ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s2z2ToButton"
+                            android:onClick="s2z2ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s2z2RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s2z2RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s2z2RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/s2z3Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s2z3FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s2z3Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 3 From: "
+                        android:gravity="center"
+                        android:text="Zone 3"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s2z3FromButton"
-                        android:onClick="s2z3FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s2z3ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s2z3ToButton"
-                        android:onClick="s2z3ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s2z3FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s2z3RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s2z3FromButton"
+                            android:onClick="s2z3FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s2z3ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s2z3ToButton"
+                            android:onClick="s2z3ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s2z3RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s2z3RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s2z3RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -666,95 +880,104 @@
                     android:id="@+id/s2OutLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                    <TextView
+                        android:id="@+id/s2OutTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Outside Zone"
+                        android:textColor="#040303"
+                        android:background="#d4fcc9"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/s2OutText"
-                            android:layout_width="45dp"
-                            android:layout_height="wrap_content"
-                            android:text="Outside Zone"
-                            android:gravity="center"
-                            android:textColor="#040303"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical|left" >
 
                         <TextView
                             android:id="@+id/s2OutFromText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" From: "
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
                             android:textColor="#040303"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
+                        <TextView
+                            android:id="@+id/s2OutFrom"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="normal"
+                            android:text="Set zone times first"
+                            android:gravity="center_vertical|left"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s2OutToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <TextView
+                            android:id="@+id/s2OutTo"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:textColor="#040303"
+                            android:textSize="16sp"
+                            android:textStyle="normal"
+                            android:text="Set zone times first"
+                            android:gravity="center_vertical|left"
+                            android:layout_marginLeft="8dp"/>
 
                     </LinearLayout>
 
-
-                    <TextView
-                        android:id="@+id/s2OutFrom"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        android:text="Set zone times first"
-                        android:gravity="center_vertical|left"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s2OutToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <TextView
-                        android:id="@+id/s2OutTo"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        android:text="Set zone times first"
-                        android:gravity="center_vertical|left"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s2OutRateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
 
-                    <TextView
-                        android:id="@+id/s2OutRateText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        <EditText
+                            android:id="@+id/s2OutRateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/s2OutRateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
+
 
 
 
@@ -772,12 +995,13 @@
                 <TextView
                     android:id="@+id/s3ZoneTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:text="Season 3"
                     android:textColor="#000000"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:background="#fcd2c9"
                     android:textStyle="bold" />
 
 
@@ -785,198 +1009,284 @@
                     android:id="@+id/s3z1Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s3z1FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s3z1Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 1 From: "
+                        android:gravity="center"
+                        android:text="Zone 1"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s3z1FromButton"
-                        android:onClick="s3z1FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s3z1ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s3z1ToButton"
-                        android:onClick="s3z1ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s3z1FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s3z1RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s3z1FromButton"
+                            android:onClick="s3z1FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s3z1ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s3z1ToButton"
+                            android:onClick="s3z1ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s3z1RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s3z1RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s3z1RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/s3z2Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s3z2FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s3z2Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 2 From: "
+                        android:gravity="center"
+                        android:text="Zone 2"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s3z2FromButton"
-                        android:onClick="s3z2FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s3z2ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s3z2ToButton"
-                        android:onClick="s3z2ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s3z2FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s3z2RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s3z2FromButton"
+                            android:onClick="s3z2FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s3z2ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s3z2ToButton"
+                            android:onClick="s3z2ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s3z2RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s3z2RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s3z2RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/s3z3Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s3z3FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s3z3Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 3 From: "
+                        android:gravity="center"
+                        android:text="Zone 3"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s3z3FromButton"
-                        android:onClick="s3z3FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s3z3ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s3z3ToButton"
-                        android:onClick="s3z3ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s3z3FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s3z3RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s3z3FromButton"
+                            android:onClick="s3z3FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s3z3ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s3z3ToButton"
+                            android:onClick="s3z3ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s3z3RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s3z3RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s3z3RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -984,95 +1294,104 @@
                     android:id="@+id/s3OutLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                    <TextView
+                        android:id="@+id/s3OutTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Outside Zone"
+                        android:textColor="#040303"
+                        android:background="#d4fcc9"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/s3OutText"
-                            android:layout_width="45dp"
-                            android:layout_height="wrap_content"
-                            android:text="Outside Zone"
-                            android:gravity="center"
-                            android:textColor="#040303"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical|left" >
 
                         <TextView
                             android:id="@+id/s3OutFromText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" From: "
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
                             android:textColor="#040303"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
+                        <TextView
+                            android:id="@+id/s3OutFrom"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="normal"
+                            android:text="Set zone times first"
+                            android:gravity="center_vertical|left"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s3OutToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <TextView
+                            android:id="@+id/s3OutTo"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:textColor="#040303"
+                            android:textSize="16sp"
+                            android:textStyle="normal"
+                            android:text="Set zone times first"
+                            android:gravity="center_vertical|left"
+                            android:layout_marginLeft="8dp"/>
 
                     </LinearLayout>
 
-
-                    <TextView
-                        android:id="@+id/s3OutFrom"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        android:text="Set zone times first"
-                        android:gravity="center_vertical|left"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s3OutToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <TextView
-                        android:id="@+id/s3OutTo"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        android:text="Set zone times first"
-                        android:gravity="center_vertical|left"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s3OutRateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
 
-                    <TextView
-                        android:id="@+id/s3OutRateText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        <EditText
+                            android:id="@+id/s3OutRateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/s3OutRateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
             </LinearLayout>
+
 
 
 
@@ -1088,12 +1407,13 @@
                 <TextView
                     android:id="@+id/s4ZoneTitle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="center"
                     android:text="Season 4"
                     android:textColor="#000000"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
+                    android:background="#fcd2c9"
                     android:textStyle="bold" />
 
 
@@ -1101,198 +1421,284 @@
                     android:id="@+id/s4z1Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s4z1FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s4z1Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 1 From: "
+                        android:gravity="center"
+                        android:text="Zone 1"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s4z1FromButton"
-                        android:onClick="s4z1FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s4z1ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s4z1ToButton"
-                        android:onClick="s4z1ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s4z1FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s4z1RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s4z1FromButton"
+                            android:onClick="s4z1FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s4z1ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s4z1ToButton"
+                            android:onClick="s4z1ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s4z1RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s4z1RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s4z1RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/s4z2Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s4z2FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s4z2Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 2 From: "
+                        android:gravity="center"
+                        android:text="Zone 2"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s4z2FromButton"
-                        android:onClick="s4z2FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s4z2ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s4z2ToButton"
-                        android:onClick="s4z2ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s4z2FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s4z2RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s4z2FromButton"
+                            android:onClick="s4z2FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s4z2ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s4z2ToButton"
+                            android:onClick="s4z2ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s4z2RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s4z2RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s4z2RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/s4z3Layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
                     <TextView
-                        android:id="@+id/s4z3FromText"
-                        android:layout_width="100dp"
+                        android:id="@+id/s4z3Title"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Zone 3 From: "
+                        android:gravity="center"
+                        android:text="Zone 3"
                         android:textColor="#040303"
+                        android:background="#d4fcc9"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <Button
-                        android:id="@+id/s4z3FromButton"
-                        android:onClick="s4z3FromClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s4z3ToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:orientation="horizontal"
+                        android:gravity="top|left" >
 
-                    <Button
-                        android:id="@+id/s4z3ToButton"
-                        android:onClick="s4z3ToClicked"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:text="Select Time"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s4z3FromText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/s4z3RateText"
-                        android:layout_width="wrap_content"
+                        <Button
+                            android:id="@+id/s4z3FromButton"
+                            android:onClick="s4z3FromClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s4z3ToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <Button
+                            android:id="@+id/s4z3ToButton"
+                            android:onClick="s4z3ToClicked"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:text="Set Time"
+                            android:layout_marginLeft="8dp"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/s4z3RateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                        <TextView
+                            android:id="@+id/s4z3RateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
+
+                        <EditText
+                            android:id="@+id/s4z3RateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -1300,91 +1706,99 @@
                     android:id="@+id/s4OutLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical"
                     android:gravity="left|center_vertical" >
 
-                    <LinearLayout
-                        android:layout_width="100dp"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:gravity="center">
+                    <TextView
+                        android:id="@+id/s4OutTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Outside Zone"
+                        android:textColor="#040303"
+                        android:background="#d4fcc9"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/s4OutText"
-                            android:layout_width="45dp"
-                            android:layout_height="wrap_content"
-                            android:text="Outside Zone"
-                            android:gravity="center"
-                            android:textColor="#040303"
-                            android:textSize="12sp"
-                            android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical|left" >
 
                         <TextView
                             android:id="@+id/s4OutFromText"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" From: "
+                            android:layout_marginLeft="4dp"
+                            android:text="From: "
                             android:textColor="#040303"
-                            android:textSize="16sp"
+                            android:textSize="14sp"
                             android:textStyle="bold" />
 
+                        <TextView
+                            android:id="@+id/s4OutFrom"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="normal"
+                            android:text="Set zone times first"
+                            android:gravity="center_vertical|left"
+                            android:layout_marginLeft="8dp"/>
+
+                        <TextView
+                            android:id="@+id/s4OutToText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="To: "
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="16dp"/>
+
+                        <TextView
+                            android:id="@+id/s4OutTo"
+                            android:layout_width="110dp"
+                            android:layout_height="50dp"
+                            android:textColor="#040303"
+                            android:textSize="16sp"
+                            android:textStyle="normal"
+                            android:text="Set zone times first"
+                            android:gravity="center_vertical|left"
+                            android:layout_marginLeft="8dp"/>
 
                     </LinearLayout>
 
-
-                    <TextView
-                        android:id="@+id/s4OutFrom"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        android:text="Set zone times first"
-                        android:gravity="center_vertical|left"
-                        android:layout_marginLeft="8dp"/>
-
-                    <TextView
-                        android:id="@+id/s4OutToText"
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="To: "
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        android:gravity="left"
+                        android:orientation="horizontal" >
 
-                    <TextView
-                        android:id="@+id/s4OutTo"
-                        android:layout_width="135dp"
-                        android:layout_height="50dp"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="normal"
-                        android:text="Set zone times first"
-                        android:gravity="center_vertical|left"
-                        android:layout_marginLeft="8dp"/>
+                        <TextView
+                            android:id="@+id/s4OutRateText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rate: $"
+                            android:textColor="#040303"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="4dp"/>
 
-                    <TextView
-                        android:id="@+id/s4OutRateText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Rate: $"
-                        android:textColor="#040303"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="16dp"/>
+                        <EditText
+                            android:id="@+id/s4OutRateEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:textColor="#000000"
+                            android:textColorHint="#000000"
+                            android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/s4OutRateEdit"
-                        android:layout_width="120dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:ems="10"
-                        android:inputType="textPersonName"
-                        android:textColor="#000000"
-                        android:textColorHint="#000000"
-                        android:textSize="16sp" />
+                    </LinearLayout>
 
                 </LinearLayout>
 
@@ -1396,8 +1810,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:gravity="center"
                 android:orientation="horizontal">
 
