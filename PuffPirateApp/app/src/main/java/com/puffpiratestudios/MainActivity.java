@@ -31,6 +31,8 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import com.puffpiratestudios.algos.*;
+
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private static final int FIXED_CHARGES_ACTIVITY_REQUEST_CODE = 2;
@@ -45,7 +47,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     private static final int TOU_DETAILS_ACTIVITY_REQUEST_CODE = 11;
 
     private static final String SHARED_PREFERENCES_DATA_FILE = "calcData";
-    private static final String SHARED_PREFERENCES_DATA_KEY = "Calc_Data";
+
+    private static final String SHARED_PREFERENCES_DATA_KEY_TIER = "Calc_Data_Tier";
+    private static final String SHARED_PREFERENCES_DATA_KEY_FLAT = "Calc_Data_Flat";
+    private static final String SHARED_PREFERENCES_DATA_KEY_TOU = "Calc_Data_TOU";
 
     private DatePicker datePicker;
     private Calendar calendar;
@@ -61,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     Spinner billingStructureSpinner;
 
-    Calc[] calcs;
+    Calc[] calcs = new Calc[3];
 
     private int calcType; // tiered = 0, flat = 1, TOU = 2
     private double a, b, c, z;
@@ -71,35 +76,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Context context = getApplicationContext();
-        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_DATA_FILE, MODE_PRIVATE);
-
-//        SharedPreferences.Editor editor = sharedPreferences.edit();
-//        editor.remove(SHARED_PREFERENCES_DATA_KEY);
-//        editor.commit();
-
-        if (sharedPreferences.contains(SHARED_PREFERENCES_DATA_KEY)) {
-            Gson gson = new Gson();
-            String calcJson = sharedPreferences.getString(SHARED_PREFERENCES_DATA_KEY, "NaN");
-            Log.i("Gson", calcJson);
-            if (calcJson.equals("NaN")) {
-                calcs = new Calc[3];
-                calcs[0] = new Calc(1);
-                calcs[1] = new Calc(2);
-                calcs[2] = new Calc(3);
-            }
-            else {
-                calcs = gson.fromJson(calcJson, Calc[].class);
-            }
-        }
-        else {
-            calcs = new Calc[3];
-            calcs[0] = new Calc(1);
-            calcs[1] = new Calc(2);
-            calcs[2] = new Calc(3);
-        }
-
-        calcs[1].updateAllSeasonTiers(1);
+        loadData();
 
         calcType = 0;
 
@@ -324,11 +301,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Intent i = new Intent(this, SetTOUZonesActivity.class);
         i.putExtra("numSeasons", calcs[calcType].numSeasons);
 
-        i.putExtra("numZones", calcs[calcType].numZones);
+        i.putExtra("numZones", ((TouCalc)calcs[2]).numZones);
 
-        i.putExtra("z1Name", calcs[calcType].zoneNames[0]);
-        i.putExtra("z2Name", calcs[calcType].zoneNames[1]);
-        i.putExtra("z3Name", calcs[calcType].zoneNames[2]);
+        i.putExtra("z1Name", ((TouCalc)calcs[2]).zoneNames[0]);
+        i.putExtra("z2Name", ((TouCalc)calcs[2]).zoneNames[1]);
+        i.putExtra("z3Name", ((TouCalc)calcs[2]).zoneNames[2]);
 
         i.putExtra("s1z1Rate", calcs[calcType].seasons.get(0).zones[0].rate);
         i.putExtra("s2z1Rate", calcs[calcType].seasons.get(1).zones[0].rate);
@@ -392,13 +369,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void setHolidayDetails(View v) {
         Intent i = new Intent(this, SetHolidaysActivity.class);
 
-        i.putExtra("country", calcs[calcType].country);
+        i.putExtra("country", ((TouCalc)calcs[2]).country);
 
-        i.putExtra("datesUSA", calcs[calcType].getHolidayDatesArray(0));
-        i.putExtra("datesCA", calcs[calcType].getHolidayDatesArray(1));
+        i.putExtra("datesUSA", ((TouCalc)calcs[2]).getHolidayDatesArray(0));
+        i.putExtra("datesCA", ((TouCalc)calcs[2]).getHolidayDatesArray(1));
 
-        i.putExtra("holidayNamesUSA", calcs[calcType].holidayNames[0]);
-        i.putExtra("holidayNamesCA", calcs[calcType].holidayNames[1]);
+        i.putExtra("holidayNamesUSA", ((TouCalc)calcs[2]).holidayNames[0]);
+        i.putExtra("holidayNamesCA", ((TouCalc)calcs[2]).holidayNames[1]);
 
         startActivityForResult(i, HOLIDAY_DETAILS_ACTIVITY_REQUEST_CODE);
     }
@@ -406,18 +383,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void setTouDetails(View v) {
         Intent i = new Intent(this, SetTouDetailsActivity.class);
 
-        i.putExtra("saturday", calcs[2].saturdaysOff);
-        i.putExtra("sunday", calcs[2].sundaysOff);
-        i.putExtra("holiday", calcs[2].holidaysOff);
+        i.putExtra("saturday", ((TouCalc)calcs[2]).saturdaysOff);
+        i.putExtra("sunday", ((TouCalc)calcs[2]).sundaysOff);
+        i.putExtra("holiday", ((TouCalc)calcs[2]).holidaysOff);
 
-        i.putExtra("country", calcs[2].country);
+        i.putExtra("country", ((TouCalc)calcs[2]).country);
 
-        i.putExtra("z1pct", calcs[2].pctInZones[0]);
-        i.putExtra("z2pct", calcs[2].pctInZones[1]);
-        i.putExtra("z3pct", calcs[2].pctInZones[2]);
-        i.putExtra("zOutpct", calcs[2].pctInZones[3]);
+        i.putExtra("z1pct", ((TouCalc)calcs[2]).pctInZones[0]);
+        i.putExtra("z2pct", ((TouCalc)calcs[2]).pctInZones[1]);
+        i.putExtra("z3pct", ((TouCalc)calcs[2]).pctInZones[2]);
+        i.putExtra("zOutpct", ((TouCalc)calcs[2]).pctInZones[3]);
 
-        i.putExtra("numZones", calcs[2].numZones);
+        i.putExtra("numZones", ((TouCalc)calcs[2]).numZones);
 
         startActivityForResult(i, TOU_DETAILS_ACTIVITY_REQUEST_CODE);
     }
@@ -627,11 +604,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
             case TOU_ZONES_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
-                    calcs[calcType].numZones = data.getIntExtra("numZones", calcs[calcType].numZones);
+                    ((TouCalc)calcs[2]).numZones = data.getIntExtra("numZones", ((TouCalc)calcs[2]).numZones);
 
-                    calcs[calcType].zoneNames[0] = data.getStringExtra("z1Name");
-                    calcs[calcType].zoneNames[1] = data.getStringExtra("z2Name");
-                    calcs[calcType].zoneNames[2] = data.getStringExtra("z3Name");
+                    ((TouCalc)calcs[2]).zoneNames[0] = data.getStringExtra("z1Name");
+                    ((TouCalc)calcs[2]).zoneNames[1] = data.getStringExtra("z2Name");
+                    ((TouCalc)calcs[2]).zoneNames[2] = data.getStringExtra("z3Name");
 
                     calcs[calcType].seasons.get(0).zones[0].rate = data.getDoubleExtra("s1z1Rate", calcs[calcType].seasons.get(0).zones[0].rate);
                     calcs[calcType].seasons.get(1).zones[0].rate = data.getDoubleExtra("s2z1Rate", calcs[calcType].seasons.get(1).zones[0].rate);
@@ -729,24 +706,24 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 break;
             case HOLIDAY_DETAILS_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
-                    calcs[calcType].updateHolidayNames(data.getStringArrayListExtra("holidayNamesUSA"), 0);
-                    calcs[calcType].updateHolidayNames(data.getStringArrayListExtra("holidayNamesCA"), 1);
-                    calcs[calcType].updateHolidayDates(data.getLongArrayExtra("datesUSA"), 0);
-                    calcs[calcType].updateHolidayDates(data.getLongArrayExtra("datesCA"), 1);
+                    ((TouCalc)calcs[2]).updateHolidayNames(data.getStringArrayListExtra("holidayNamesUSA"), 0);
+                    ((TouCalc)calcs[2]).updateHolidayNames(data.getStringArrayListExtra("holidayNamesCA"), 1);
+                    ((TouCalc)calcs[2]).updateHolidayDates(data.getLongArrayExtra("datesUSA"), 0);
+                    ((TouCalc)calcs[2]).updateHolidayDates(data.getLongArrayExtra("datesCA"), 1);
                 }
                 break;
             case TOU_DETAILS_ACTIVITY_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
-                    calcs[2].saturdaysOff = data.getBooleanExtra("saturday", false);
-                    calcs[2].sundaysOff = data.getBooleanExtra("sunday", false);
-                    calcs[2].holidaysOff = data.getBooleanExtra("holiday", false);
+                    ((TouCalc)calcs[2]).saturdaysOff = data.getBooleanExtra("saturday", false);
+                    ((TouCalc)calcs[2]).sundaysOff = data.getBooleanExtra("sunday", false);
+                    ((TouCalc)calcs[2]).holidaysOff = data.getBooleanExtra("holiday", false);
 
-                    calcs[2].country = data.getIntExtra("country", 0);
+                    ((TouCalc)calcs[2]).country = data.getIntExtra("country", 0);
 
-                    calcs[2].pctInZones[0] = data.getDoubleExtra("z1pct", 0);
-                    calcs[2].pctInZones[1] = data.getDoubleExtra("z2pct", 0);
-                    calcs[2].pctInZones[2] = data.getDoubleExtra("z3pct", 0);
-                    calcs[2].pctInZones[3] = data.getDoubleExtra("zOutpct", 0);
+                    ((TouCalc)calcs[2]).pctInZones[0] = data.getDoubleExtra("z1pct", 0);
+                    ((TouCalc)calcs[2]).pctInZones[1] = data.getDoubleExtra("z2pct", 0);
+                    ((TouCalc)calcs[2]).pctInZones[2] = data.getDoubleExtra("z3pct", 0);
+                    ((TouCalc)calcs[2]).pctInZones[3] = data.getDoubleExtra("zOutpct", 0);
                 }
                 break;
 
@@ -777,11 +754,15 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         }
 
         Gson gson = new Gson();
-        String dataJson = gson.toJson(calcs);
+        String dataTier = gson.toJson(calcs[0]);
+        String dataFlat = gson.toJson(calcs[1]);
+        String dataTOU = gson.toJson(calcs[2]);
         Context context = getApplicationContext();
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_DATA_FILE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(SHARED_PREFERENCES_DATA_KEY, dataJson);
+        editor.putString(SHARED_PREFERENCES_DATA_KEY_TIER, dataTier);
+        editor.putString(SHARED_PREFERENCES_DATA_KEY_FLAT, dataFlat);
+        editor.putString(SHARED_PREFERENCES_DATA_KEY_TOU, dataTOU);
         editor.commit();
         Toast.makeText(context, "Data has been saved", Toast.LENGTH_SHORT).show();
     }
@@ -790,9 +771,41 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         Context context = getApplicationContext();
         SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_DATA_FILE, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove(SHARED_PREFERENCES_DATA_KEY);
+        editor.remove(SHARED_PREFERENCES_DATA_KEY_TIER);
+        editor.remove(SHARED_PREFERENCES_DATA_KEY_FLAT);
+        editor.remove(SHARED_PREFERENCES_DATA_KEY_TOU);
         editor.commit();
         Toast.makeText(context, "Saved Data has been cleared", Toast.LENGTH_SHORT).show();
+    }
+
+    private void loadData() {
+        Context context = getApplicationContext();
+        SharedPreferences sharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_DATA_FILE, MODE_PRIVATE);
+
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+//        editor.remove(SHARED_PREFERENCES_DATA_KEY_TIER);
+//        editor.commit();
+
+        // only need to check for tiered since saving data saves all three calcs
+        if (sharedPreferences.contains(SHARED_PREFERENCES_DATA_KEY_TIER)) {
+            Gson gson = new Gson();
+            String jsonTier = sharedPreferences.getString(SHARED_PREFERENCES_DATA_KEY_TIER, "NaN");
+            if (jsonTier.equals("NaN")) {
+                calcs[0] = new TierCalc();
+                calcs[1] = new FlatCalc();
+                calcs[2] = new TouCalc();
+            }
+            else {
+                calcs[0] = gson.fromJson(jsonTier, TierCalc.class);
+                calcs[1] = gson.fromJson(sharedPreferences.getString(SHARED_PREFERENCES_DATA_KEY_FLAT, "NaN"), FlatCalc.class);
+                calcs[2] = gson.fromJson(sharedPreferences.getString(SHARED_PREFERENCES_DATA_KEY_TOU, "NaN"), TouCalc.class);
+            }
+        }
+        else {
+            calcs[0] = new TierCalc();
+            calcs[1] = new FlatCalc();
+            calcs[2] = new TouCalc();
+        }
     }
 
 

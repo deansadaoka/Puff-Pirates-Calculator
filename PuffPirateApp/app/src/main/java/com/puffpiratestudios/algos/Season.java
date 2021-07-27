@@ -1,25 +1,8 @@
-package com.puffpiratestudios;
-
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.util.Log;
+package com.puffpiratestudios.algos;
 
 import java.util.Date;
 
 public class Season {
-
-    private static final int JAN_DAYS = 31;
-    private static final int FEB_DAYS = 28;
-    private static final int MAR_DAYS = 31;
-    private static final int APR_DAYS = 30;
-    private static final int MAY_DAYS = 31;
-    private static final int JUN_DAYS = 30;
-    private static final int JUL_DAYS = 31;
-    private static final int AUG_DAYS = 31;
-    private static final int SEP_DAYS = 30;
-    private static final int OCT_DAYS = 31;
-    private static final int NOV_DAYS = 30;
-    private static final int DEC_DAYS = 31;
 
     public double[] energyRange;
     public double[] utilRates;
@@ -187,88 +170,6 @@ public class Season {
         this.name.concat(new_name);
     }
 
-//    /**
-//     * Sets the start date to the date provided
-//     * @param y year
-//     * @param m month
-//     * @param d day
-//     */
-//    public void setStartDate(int y, int m, int d) {
-//        startDate[0] = y;
-//        startDate[1] = m;
-//        startDate[2] = d;
-//    }
-//
-//    /**
-//     * Sets the end date to the date provided
-//     * @param y year
-//     * @param m month
-//     * @param d day
-//     */
-//    public void setEndDate(int y, int m, int d) {
-//        endDate[0] = y;
-//        endDate[1] = m;
-//        endDate[2] = d;
-//    }
-//
-//    /**
-//     * Creates string with start date
-//     * @returna string with the date formatted
-//     */
-//    public String startDateToSting() {
-//        if (startDate[0] == 0) {
-//            return "Start Date";
-//        }
-//        return formatDate(startDate);
-//    }
-//
-//    /**
-//     * Creates string with end date
-//     * @returna string with the date formatted
-//     */
-//    public String endDateToSting() {
-//        if (endDate[0] == 0) {
-//            return "End Date";
-//        }
-//        return formatDate(endDate);
-//    }
-//
-//    private String formatDate(int[] date) {
-//        String day = String.format("%02d", date[2]);
-//        String year = String.format("%04d", date[0]);
-//        String month;
-//        switch(date[1]) {
-//            case 1:
-//                month = "Jan";
-//            case 2:
-//                month = "Feb";
-//            case 3:
-//                month = "Mar";
-//            case 4:
-//                month = "Apr";
-//            case 5:
-//                month = "May";
-//            case 6:
-//                month = "Jun";
-//            case 7:
-//                month = "Jul";
-//            case 8:
-//                month = "Aug";
-//            case 9:
-//                month = "Sep";
-//            case 10:
-//                month = "Oct";
-//            case 11:
-//                month = "Nov";
-//            case 12:
-//                month = "Dec";
-//            default:
-//                month = "Date";
-//        }
-//        return (new StringBuilder().append(month).append(" ")
-//                .append(day).append(", ").append(year)).toString();
-//    }
-
     /**
      * Returns string in number format YYYY/MM/DD
      * @return returns string of start date
@@ -420,7 +321,7 @@ public class Season {
         // Otherwise, all months are still 1-12
         // ex: Season Range (11 - 2), Date (1) -> Season Range (11 - 14), Date (13)
 
-         return (isDateBeforeOrEqual(startDate, tempDate) && isDateAfterOrEqual(tempEnd, tempDate));
+        return (isDateBeforeOrEqual(startDate, tempDate) && isDateAfterOrEqual(tempEnd, tempDate));
 
     }
 
